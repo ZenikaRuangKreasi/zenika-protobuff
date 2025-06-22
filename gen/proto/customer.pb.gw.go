@@ -66,13 +66,13 @@ func request_CustomerService_GetCustomer_0(ctx context.Context, marshaler runtim
 		err      error
 	)
 	io.Copy(io.Discard, req.Body)
-	val, ok := pathParams["phone"]
+	val, ok := pathParams["customer_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phone")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "customer_id")
 	}
-	protoReq.Phone, err = runtime.String(val)
+	protoReq.CustomerId, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "phone", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "customer_id", err)
 	}
 	msg, err := client.GetCustomer(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -84,13 +84,13 @@ func local_request_CustomerService_GetCustomer_0(ctx context.Context, marshaler 
 		metadata runtime.ServerMetadata
 		err      error
 	)
-	val, ok := pathParams["phone"]
+	val, ok := pathParams["customer_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phone")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "customer_id")
 	}
-	protoReq.Phone, err = runtime.String(val)
+	protoReq.CustomerId, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "phone", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "customer_id", err)
 	}
 	msg, err := server.GetCustomer(ctx, &protoReq)
 	return msg, metadata, err
@@ -138,13 +138,13 @@ func request_CustomerService_UpdateCustomer_0(ctx context.Context, marshaler run
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	val, ok := pathParams["phone"]
+	val, ok := pathParams["customer_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phone")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "customer_id")
 	}
-	protoReq.Phone, err = runtime.String(val)
+	protoReq.CustomerId, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "phone", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "customer_id", err)
 	}
 	msg, err := client.UpdateCustomer(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -159,13 +159,13 @@ func local_request_CustomerService_UpdateCustomer_0(ctx context.Context, marshal
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	val, ok := pathParams["phone"]
+	val, ok := pathParams["customer_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phone")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "customer_id")
 	}
-	protoReq.Phone, err = runtime.String(val)
+	protoReq.CustomerId, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "phone", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "customer_id", err)
 	}
 	msg, err := server.UpdateCustomer(ctx, &protoReq)
 	return msg, metadata, err
@@ -178,13 +178,13 @@ func request_CustomerService_DeleteCustomer_0(ctx context.Context, marshaler run
 		err      error
 	)
 	io.Copy(io.Discard, req.Body)
-	val, ok := pathParams["phone"]
+	val, ok := pathParams["customer_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phone")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "customer_id")
 	}
-	protoReq.Phone, err = runtime.String(val)
+	protoReq.CustomerId, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "phone", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "customer_id", err)
 	}
 	msg, err := client.DeleteCustomer(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -196,13 +196,13 @@ func local_request_CustomerService_DeleteCustomer_0(ctx context.Context, marshal
 		metadata runtime.ServerMetadata
 		err      error
 	)
-	val, ok := pathParams["phone"]
+	val, ok := pathParams["customer_id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "phone")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "customer_id")
 	}
-	protoReq.Phone, err = runtime.String(val)
+	protoReq.CustomerId, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "phone", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "customer_id", err)
 	}
 	msg, err := server.DeleteCustomer(ctx, &protoReq)
 	return msg, metadata, err
@@ -240,7 +240,7 @@ func RegisterCustomerServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.CustomerService/GetCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{phone}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.CustomerService/GetCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{customer_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -280,7 +280,7 @@ func RegisterCustomerServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.CustomerService/UpdateCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{phone}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.CustomerService/UpdateCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{customer_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -300,7 +300,7 @@ func RegisterCustomerServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.CustomerService/DeleteCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{phone}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/api.CustomerService/DeleteCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{customer_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -375,7 +375,7 @@ func RegisterCustomerServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.CustomerService/GetCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{phone}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.CustomerService/GetCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{customer_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -409,7 +409,7 @@ func RegisterCustomerServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.CustomerService/UpdateCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{phone}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.CustomerService/UpdateCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{customer_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -426,7 +426,7 @@ func RegisterCustomerServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.CustomerService/DeleteCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{phone}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/api.CustomerService/DeleteCustomer", runtime.WithHTTPPathPattern("/api/v1/customers/{customer_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -444,10 +444,10 @@ func RegisterCustomerServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 
 var (
 	pattern_CustomerService_CreateCustomer_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "customers"}, ""))
-	pattern_CustomerService_GetCustomer_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "customers", "phone"}, ""))
+	pattern_CustomerService_GetCustomer_0    = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "customers", "customer_id"}, ""))
 	pattern_CustomerService_ListCustomers_0  = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "customers"}, ""))
-	pattern_CustomerService_UpdateCustomer_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "customers", "phone"}, ""))
-	pattern_CustomerService_DeleteCustomer_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "customers", "phone"}, ""))
+	pattern_CustomerService_UpdateCustomer_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "customers", "customer_id"}, ""))
+	pattern_CustomerService_DeleteCustomer_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "customers", "customer_id"}, ""))
 )
 
 var (

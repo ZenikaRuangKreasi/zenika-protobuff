@@ -1,0 +1,44 @@
+name: Auto Version Tag
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all tags
+
+      - name: Set up Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Determine next version tag
+        id: tag
+        run: |
+          # Get latest tag matching v?\d+.\d+.\d+
+          latest=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n 1)
+          echo "Latest tag: $latest"
+          if [[ -z "$latest" ]]; then
+            next="v0.0.1"
+          else
+            IFS='.' read -r major minor patch <<<"${latest#v}"
+            patch=$((patch+1))
+            next="v${major}.${minor}.${patch}"
+          fi
+          echo "Next tag: $next"
+          echo "next_tag=$next" >> $GITHUB_OUTPUT
+
+      - name: Create new tag
+        run: |
+          git tag ${{ steps.tag.outputs.next_tag }}
+          git push origin ${{ steps.tag.outputs.next_tag }}

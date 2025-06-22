@@ -55,21 +55,23 @@ message LoginRequest {
 }
 
 message LoginResponse {
- string message = 1;
- LoginData data = 2;
+  string message = 1;
+  LoginData data = 2;
+}
+
 message LoginData{
   string accessToken = 1;
   UserInfo user = 2;  
-  
-  message UserInfo {
-    string userId = 1;   
-    string name = 2;    
-    string email = 3;   
-    string phone = 4;  
-  }
-}
 }
 
+message UserInfo {
+  uint64 id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+  string status = 5;
+  string created_at = 6;
+}
 
 message LogoutRequest {
   string refresh_token = 1;
@@ -80,18 +82,18 @@ message LogoutResponse {
   string message = 2;
 }
 
-
 message RefreshTokenRequest {
   string refresh_token = 1;
 }
 
 message RefreshTokenResponse  {
- string message = 1;
- RefreshTokenData data = 2;
+  string message = 1;
+  RefreshTokenData data = 2;
+}
+
 message RefreshTokenData{
   string accessToken = 1;
   string refreshToken = 2;
-}
 }
 
 message RegisterRequest {
@@ -123,12 +125,4 @@ message ChangePasswordRequest {
 message ChangePasswordResponse {
   bool success = 1;
   string message = 2;
-}
-
-message UserInfo {
-  uint64 id = 1;
-  string name = 2;
-  string email = 3;
-  string status = 5;
-  string created_at = 6;
 } 

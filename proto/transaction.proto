@@ -5,14 +5,14 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 service TransactionService {
-   rpc SendTransaction(TransactionRequest) returns (TransactionResponse);
- }
- 
- message TransactionRequest {
-   string order_id = 1;
- }
+  rpc SendTransaction(TransactionRequest) returns (TransactionResponse);
+}
 
- message TransactionResponse {
-   bool success = 1;
-   string message = 2;
- } 
+message TransactionRequest {
+  string order_id = 1;
+}
+
+message TransactionResponse {
+  bool success = 1;
+  string message = 2;
+} 
