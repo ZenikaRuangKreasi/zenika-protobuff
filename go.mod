@@ -1,4 +1,4 @@
-module github.com/zenika/zenika-protobuff
+module github.com/ZenikaRuangKreasi/zenika-protobuff
 
 go 1.24.4
 
