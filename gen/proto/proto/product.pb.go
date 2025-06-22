@@ -689,7 +689,7 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x15GetProductsByCategory\x12#.proto.GetProductsByCategoryRequest\x1a\x1b.proto.ListProductsResponse\",\x82\xd3\xe4\x93\x02&\x12$/api/v1/products/category/{category}\x12a\n" +
 	"\rCreateProduct\x12\x1b.proto.CreateProductRequest\x1a\x16.proto.ProductResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/products\x12f\n" +
 	"\rUpdateProduct\x12\x1b.proto.UpdateProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}\x12i\n" +
-	"\rDeleteProduct\x12\x1b.proto.DeleteProductRequest\x1a\x1c.proto.DeleteProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/api/v1/products/{id}B4Z2github.com/zenika/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\rDeleteProduct\x12\x1b.proto.DeleteProductRequest\x1a\x1c.proto.DeleteProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/api/v1/products/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_product_proto_rawDescOnce sync.Once

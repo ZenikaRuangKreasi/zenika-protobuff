@@ -358,7 +358,7 @@ const file_proto_customer_proto_rawDesc = "" +
 	"\vGetCustomer\x12\x0f.api.CustomerId\x1a\r.api.Customer\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/api/v1/customers/{phone}\x12a\n" +
 	"\rListCustomers\x12\x19.api.ListCustomersRequest\x1a\x1a.api.ListCustomersResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/customers\x12T\n" +
 	"\x0eUpdateCustomer\x12\r.api.Customer\x1a\r.api.Customer\"$\x82\xd3\xe4\x93\x02\x1e:\x01*\x1a\x19/api/v1/customers/{phone}\x12\\\n" +
-	"\x0eDeleteCustomer\x12\x0f.api.CustomerId\x1a\x16.google.protobuf.Empty\"!\x82\xd3\xe4\x93\x02\x1b*\x19/api/v1/customers/{phone}B4Z2github.com/zenika/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x0eDeleteCustomer\x12\x0f.api.CustomerId\x1a\x16.google.protobuf.Empty\"!\x82\xd3\xe4\x93\x02\x1b*\x19/api/v1/customers/{phone}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_customer_proto_rawDescOnce sync.Once

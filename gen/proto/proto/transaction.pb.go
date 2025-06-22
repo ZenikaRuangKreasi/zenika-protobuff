@@ -128,7 +128,7 @@ const file_proto_transaction_proto_rawDesc = "" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage2^\n" +
 	"\x12TransactionService\x12H\n" +
-	"\x0fSendTransaction\x12\x19.proto.TransactionRequest\x1a\x1a.proto.TransactionResponseB4Z2github.com/zenika/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x0fSendTransaction\x12\x19.proto.TransactionRequest\x1a\x1a.proto.TransactionResponseB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_transaction_proto_rawDescOnce sync.Once

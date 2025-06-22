@@ -358,7 +358,7 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\vGetMerchant\x12\x0f.api.MerchantId\x1a\r.api.Merchant\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/v1/merchants/{id}\x12a\n" +
 	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12Q\n" +
 	"\x0eUpdateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\x1a\x16/api/v1/merchants/{id}\x12Y\n" +
-	"\x0eDeleteMerchant\x12\x0f.api.MerchantId\x1a\x16.google.protobuf.Empty\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/api/v1/merchants/{id}B4Z2github.com/zenika/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x0eDeleteMerchant\x12\x0f.api.MerchantId\x1a\x16.google.protobuf.Empty\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/api/v1/merchants/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_merchant_proto_rawDescOnce sync.Once

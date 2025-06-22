@@ -592,7 +592,7 @@ const file_proto_order_proto_rawDesc = "" +
 	"\n" +
 	"ListOrders\x12\x18.proto.ListOrdersRequest\x1a\x19.proto.ListOrdersResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/orders\x12Y\n" +
 	"\vCreateOrder\x12\x19.proto.CreateOrderRequest\x1a\x14.proto.OrderResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/v1/orders\x12j\n" +
-	"\fConfirmOrder\x12\x1a.proto.ConfirmOrderRequest\x1a\x1b.proto.ConfirmOrderResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/orders/confirmB4Z2github.com/zenika/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\fConfirmOrder\x12\x1a.proto.ConfirmOrderRequest\x1a\x1b.proto.ConfirmOrderResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/orders/confirmB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_order_proto_rawDescOnce sync.Once
