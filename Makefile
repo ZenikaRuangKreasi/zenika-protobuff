@@ -1,6 +1,6 @@
 PROTOC   = protoc
 PROTOS   = $(wildcard proto/*.proto)
-OUT_DIR  = gen/proto
+OUT_DIR  = gen
 
 .PHONY: proto
 proto:
