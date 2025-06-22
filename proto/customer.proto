@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/zenika/zenika-protobuff/pkg/proto;proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+message Customer {
+  string phone = 1;
+  string name = 2;
+  string created_at = 3;
+  string updated_at = 4;
+  string created_by = 5;
+  string updated_by = 6;
+}
+
+message CustomerId {
+  string phone = 1;
+}
+
+message CustomerList {
+  repeated Customer customers = 1;
+}
+
+message ListCustomersRequest {
+  string search = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message ListCustomersResponse {
+  repeated Customer customers = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+service CustomerService {
+  rpc CreateCustomer(Customer) returns (Customer) {
+    option (google.api.http) = {
+      post: "/api/v1/customers"
+      body: "*"
+    };
+  }
+  rpc GetCustomer(CustomerId) returns (Customer) {
+    option (google.api.http) = {
+      get: "/api/v1/customers/{phone}"
+    };
+  }
+  rpc ListCustomers(ListCustomersRequest) returns (ListCustomersResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/customers"
+    };
+  }
+  rpc UpdateCustomer(Customer) returns (Customer) {
+    option (google.api.http) = {
+      put: "/api/v1/customers/{phone}"
+      body: "*"
+    };
+  }
+  rpc DeleteCustomer(CustomerId) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/api/v1/customers/{phone}"
+    };
+  }
+} 

@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/zenika/zenika-protobuff/pkg/proto;proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+service OrderService {
+  rpc GetOrder(GetOrderRequest) returns (OrderResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/orders/{id}"
+    };
+  }
+
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/orders"
+    };
+  }
+
+  rpc CreateOrder(CreateOrderRequest) returns (OrderResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/orders"
+      body: "*"
+    };
+  }
+
+  // Confirm an order (mock, no DB change yet)
+  rpc ConfirmOrder(ConfirmOrderRequest) returns (ConfirmOrderResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/orders/confirm"
+      body: "*"
+    };
+  }
+}
+
+message GetOrderRequest {
+  string id = 1;
+}
+
+message ListOrdersRequest {
+  string search = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message CreateOrderRequest {
+  string order_number = 1;
+  string merchant_id = 2;
+  string customer_id = 3;
+  google.protobuf.Struct invoice = 4;
+  double amount_item = 5;
+  double platform_fee = 6;
+  string chat_id = 7;
+  string created_by = 8;
+}
+
+message OrderResponse {
+  string id = 1;
+  string order_number = 2;
+  string merchant_id = 3;
+  string customer_id = 4;
+  google.protobuf.Struct invoice = 5;
+  double amount_item = 6;
+  double platform_fee = 7;
+  string chat_id = 8;
+  string payment_link = 9;
+  string created_at = 10;
+  string updated_at = 11;
+  string created_by = 12;
+  string updated_by = 13;
+}
+
+message ListOrdersResponse {
+  repeated OrderResponse orders = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message ConfirmOrderRequest {
+  string order_id = 1;
+}
+
+message ConfirmOrderResponse {
+  bool success = 1;
+  string message = 2;
+} 

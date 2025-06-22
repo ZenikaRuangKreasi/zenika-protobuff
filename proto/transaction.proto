@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/zenika/zenika-protobuff/pkg/proto;proto";
+
+service TransactionService {
+   rpc SendTransaction(TransactionRequest) returns (TransactionResponse);
+ }
+ 
+ message TransactionRequest {
+   string order_id = 1;
+ }
+
+ message TransactionResponse {
+   bool success = 1;
+   string message = 2;
+ } 

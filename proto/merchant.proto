@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/zenika/zenika-protobuff/pkg/proto;proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+message Merchant {
+  string id = 1;
+  string name = 2;
+  string phone = 3;
+  string email = 4;
+  string address = 5;
+  string longitude = 6;
+  string latitude = 7;
+  string created_at = 8;
+  string updated_at = 9;
+  string created_by = 10;
+  string updated_by = 11;
+}
+
+message MerchantId {
+  string id = 1;
+}
+
+message ListMerchantsRequest {
+  string search = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message ListMerchantsResponse {
+  repeated Merchant merchants = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+service MerchantService {
+  rpc CreateMerchant(Merchant) returns (Merchant) {
+    option (google.api.http) = {
+      post: "/api/v1/merchants"
+      body: "*"
+    };
+  }
+  rpc GetMerchant(MerchantId) returns (Merchant) {
+    option (google.api.http) = {
+      get: "/api/v1/merchants/{id}"
+    };
+  }
+  rpc ListMerchants(ListMerchantsRequest) returns (ListMerchantsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/merchants"
+    };
+  }
+  rpc UpdateMerchant(Merchant) returns (Merchant) {
+    option (google.api.http) = {
+      put: "/api/v1/merchants/{id}"
+      body: "*"
+    };
+  }
+  rpc DeleteMerchant(MerchantId) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/api/v1/merchants/{id}"
+    };
+  }
+} 
