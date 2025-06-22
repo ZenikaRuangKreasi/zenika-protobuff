@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
+option go_package = "wa-dashcore/pkg/proto";
 
 import "google/api/annotations.proto";
 
@@ -23,8 +23,7 @@ service AuthService {
   
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {
     option (google.api.http) = {
-      post: "/api/v1/auth/refresh"
-      body: "*"
+      get: "/api/v1/auth/refresh-token"
     };
   }
 
@@ -55,8 +54,21 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string access_token = 1;
+ string message = 1;
+ LoginData data = 2;
+message LoginData{
+  string accessToken = 1;
+  UserInfo user = 2;  
+  
+  message UserInfo {
+    string userId = 1;   
+    string name = 2;    
+    string email = 3;   
+    string phone = 4;  
+  }
 }
+}
+
 
 message LogoutRequest {
   string refresh_token = 1;
@@ -67,15 +79,18 @@ message LogoutResponse {
   string message = 2;
 }
 
+
 message RefreshTokenRequest {
   string refresh_token = 1;
 }
 
-message RefreshTokenResponse {
-  string access_token = 1;
-  string refresh_token = 2;
-  string token_type = 3;
-  int64 expires_in = 4;
+message RefreshTokenResponse  {
+ string message = 1;
+ RefreshTokenData data = 2;
+message RefreshTokenData{
+  string accessToken = 1;
+  string refreshToken = 2;
+}
 }
 
 message RegisterRequest {
