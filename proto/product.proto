@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-option go_package = "github.com/zenika/zenika-protobuff/pkg/proto;proto";
+option go_package = "github.com/zenika/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
 

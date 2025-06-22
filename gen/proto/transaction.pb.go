@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v5.29.3
-// source: transaction.proto
+// source: proto/transaction.proto
 
 package proto
 
@@ -30,7 +30,7 @@ type TransactionRequest struct {
 
 func (x *TransactionRequest) Reset() {
 	*x = TransactionRequest{}
-	mi := &file_transaction_proto_msgTypes[0]
+	mi := &file_proto_transaction_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +42,7 @@ func (x *TransactionRequest) String() string {
 func (*TransactionRequest) ProtoMessage() {}
 
 func (x *TransactionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[0]
+	mi := &file_proto_transaction_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +55,7 @@ func (x *TransactionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransactionRequest.ProtoReflect.Descriptor instead.
 func (*TransactionRequest) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{0}
+	return file_proto_transaction_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *TransactionRequest) GetOrderId() string {
@@ -75,7 +75,7 @@ type TransactionResponse struct {
 
 func (x *TransactionResponse) Reset() {
 	*x = TransactionResponse{}
-	mi := &file_transaction_proto_msgTypes[1]
+	mi := &file_proto_transaction_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -87,7 +87,7 @@ func (x *TransactionResponse) String() string {
 func (*TransactionResponse) ProtoMessage() {}
 
 func (x *TransactionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_transaction_proto_msgTypes[1]
+	mi := &file_proto_transaction_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -100,7 +100,7 @@ func (x *TransactionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransactionResponse.ProtoReflect.Descriptor instead.
 func (*TransactionResponse) Descriptor() ([]byte, []int) {
-	return file_transaction_proto_rawDescGZIP(), []int{1}
+	return file_proto_transaction_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TransactionResponse) GetSuccess() bool {
@@ -117,37 +117,37 @@ func (x *TransactionResponse) GetMessage() string {
 	return ""
 }
 
-var File_transaction_proto protoreflect.FileDescriptor
+var File_proto_transaction_proto protoreflect.FileDescriptor
 
-const file_transaction_proto_rawDesc = "" +
+const file_proto_transaction_proto_rawDesc = "" +
 	"\n" +
-	"\x11transaction.proto\x12\x05proto\"/\n" +
+	"\x17proto/transaction.proto\x12\x05proto\"/\n" +
 	"\x12TransactionRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\tR\aorderId\"I\n" +
 	"\x13TransactionResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage2^\n" +
 	"\x12TransactionService\x12H\n" +
-	"\x0fSendTransaction\x12\x19.proto.TransactionRequest\x1a\x1a.proto.TransactionResponseB4Z2github.com/zenika/zenika-protobuff/pkg/proto;protob\x06proto3"
+	"\x0fSendTransaction\x12\x19.proto.TransactionRequest\x1a\x1a.proto.TransactionResponseB4Z2github.com/zenika/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
-	file_transaction_proto_rawDescOnce sync.Once
-	file_transaction_proto_rawDescData []byte
+	file_proto_transaction_proto_rawDescOnce sync.Once
+	file_proto_transaction_proto_rawDescData []byte
 )
 
-func file_transaction_proto_rawDescGZIP() []byte {
-	file_transaction_proto_rawDescOnce.Do(func() {
-		file_transaction_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_transaction_proto_rawDesc), len(file_transaction_proto_rawDesc)))
+func file_proto_transaction_proto_rawDescGZIP() []byte {
+	file_proto_transaction_proto_rawDescOnce.Do(func() {
+		file_proto_transaction_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_transaction_proto_rawDesc), len(file_proto_transaction_proto_rawDesc)))
 	})
-	return file_transaction_proto_rawDescData
+	return file_proto_transaction_proto_rawDescData
 }
 
-var file_transaction_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_transaction_proto_goTypes = []any{
+var file_proto_transaction_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_transaction_proto_goTypes = []any{
 	(*TransactionRequest)(nil),  // 0: proto.TransactionRequest
 	(*TransactionResponse)(nil), // 1: proto.TransactionResponse
 }
-var file_transaction_proto_depIdxs = []int32{
+var file_proto_transaction_proto_depIdxs = []int32{
 	0, // 0: proto.TransactionService.SendTransaction:input_type -> proto.TransactionRequest
 	1, // 1: proto.TransactionService.SendTransaction:output_type -> proto.TransactionResponse
 	1, // [1:2] is the sub-list for method output_type
@@ -157,26 +157,26 @@ var file_transaction_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_transaction_proto_init() }
-func file_transaction_proto_init() {
-	if File_transaction_proto != nil {
+func init() { file_proto_transaction_proto_init() }
+func file_proto_transaction_proto_init() {
+	if File_proto_transaction_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_transaction_proto_rawDesc), len(file_transaction_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_transaction_proto_rawDesc), len(file_proto_transaction_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_transaction_proto_goTypes,
-		DependencyIndexes: file_transaction_proto_depIdxs,
-		MessageInfos:      file_transaction_proto_msgTypes,
+		GoTypes:           file_proto_transaction_proto_goTypes,
+		DependencyIndexes: file_proto_transaction_proto_depIdxs,
+		MessageInfos:      file_proto_transaction_proto_msgTypes,
 	}.Build()
-	File_transaction_proto = out.File
-	file_transaction_proto_goTypes = nil
-	file_transaction_proto_depIdxs = nil
+	File_proto_transaction_proto = out.File
+	file_proto_transaction_proto_goTypes = nil
+	file_proto_transaction_proto_depIdxs = nil
 }
