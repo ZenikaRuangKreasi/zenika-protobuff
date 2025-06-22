@@ -5,6 +5,7 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse) {
