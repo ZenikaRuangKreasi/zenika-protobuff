@@ -959,7 +959,7 @@ const file_proto_auth_proto_rawDesc = "" +
 	"\fRefreshToken\x12\x1a.proto.RefreshTokenRequest\x1a\x1b.proto.RefreshTokenResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/api/v1/auth/refresh-token\x12]\n" +
 	"\bRegister\x12\x16.proto.RegisterRequest\x1a\x17.proto.RegisterResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\"\x15/api/v1/auth/register\x12k\n" +
 	"\x0eGetUserProfile\x12\x1c.proto.GetUserProfileRequest\x1a\x1d.proto.GetUserProfileResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/api/v1/auth/profile\x12v\n" +
-	"\x0eChangePassword\x12\x1c.proto.ChangePasswordRequest\x1a\x1d.proto.ChangePasswordResponse\"'\x82\xd3\xe4\x93\x02!:\x01*\"\x1c/api/v1/auth/change-passwordB\x17Z\x15wa-dashcore/pkg/protob\x06proto3"
+	"\x0eChangePassword\x12\x1c.proto.ChangePasswordRequest\x1a\x1d.proto.ChangePasswordResponse\"'\x82\xd3\xe4\x93\x02!:\x01*\"\x1c/api/v1/auth/change-passwordB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_auth_proto_rawDescOnce sync.Once
