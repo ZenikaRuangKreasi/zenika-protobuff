@@ -13,7 +13,12 @@ service CustomerService {
     };
   }
 } 
-message ListCustomersResponse{
+
+message ListCustomersResponse {
+  string message = 1;
+  ProductData data = 2;
+}
+message ProductData{
     uint32 page=1;
     uint32 perPage=2;
     uint32 totalItems=3;

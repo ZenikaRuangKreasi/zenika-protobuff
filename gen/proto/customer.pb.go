@@ -24,10 +24,8 @@ const (
 
 type ListCustomersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
-	PerPage       uint32                 `protobuf:"varint,2,opt,name=perPage,proto3" json:"perPage,omitempty"`
-	TotalItems    uint32                 `protobuf:"varint,3,opt,name=totalItems,proto3" json:"totalItems,omitempty"`
-	Items         []*CustomerTableData   `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Data          *ProductData           `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,28 +60,82 @@ func (*ListCustomersResponse) Descriptor() ([]byte, []int) {
 	return file_proto_customer_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ListCustomersResponse) GetPage() uint32 {
+func (x *ListCustomersResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *ListCustomersResponse) GetData() *ProductData {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type ProductData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	PerPage       uint32                 `protobuf:"varint,2,opt,name=perPage,proto3" json:"perPage,omitempty"`
+	TotalItems    uint32                 `protobuf:"varint,3,opt,name=totalItems,proto3" json:"totalItems,omitempty"`
+	Items         []*CustomerTableData   `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProductData) Reset() {
+	*x = ProductData{}
+	mi := &file_proto_customer_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProductData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProductData) ProtoMessage() {}
+
+func (x *ProductData) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_customer_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProductData.ProtoReflect.Descriptor instead.
+func (*ProductData) Descriptor() ([]byte, []int) {
+	return file_proto_customer_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ProductData) GetPage() uint32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListCustomersResponse) GetPerPage() uint32 {
+func (x *ProductData) GetPerPage() uint32 {
 	if x != nil {
 		return x.PerPage
 	}
 	return 0
 }
 
-func (x *ListCustomersResponse) GetTotalItems() uint32 {
+func (x *ProductData) GetTotalItems() uint32 {
 	if x != nil {
 		return x.TotalItems
 	}
 	return 0
 }
 
-func (x *ListCustomersResponse) GetItems() []*CustomerTableData {
+func (x *ProductData) GetItems() []*CustomerTableData {
 	if x != nil {
 		return x.Items
 	}
@@ -103,7 +155,7 @@ type CustomerTableData struct {
 
 func (x *CustomerTableData) Reset() {
 	*x = CustomerTableData{}
-	mi := &file_proto_customer_proto_msgTypes[1]
+	mi := &file_proto_customer_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -115,7 +167,7 @@ func (x *CustomerTableData) String() string {
 func (*CustomerTableData) ProtoMessage() {}
 
 func (x *CustomerTableData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_customer_proto_msgTypes[1]
+	mi := &file_proto_customer_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -128,7 +180,7 @@ func (x *CustomerTableData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CustomerTableData.ProtoReflect.Descriptor instead.
 func (*CustomerTableData) Descriptor() ([]byte, []int) {
-	return file_proto_customer_proto_rawDescGZIP(), []int{1}
+	return file_proto_customer_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CustomerTableData) GetPhone() string {
@@ -180,7 +232,7 @@ type ListCustomersRequest struct {
 
 func (x *ListCustomersRequest) Reset() {
 	*x = ListCustomersRequest{}
-	mi := &file_proto_customer_proto_msgTypes[2]
+	mi := &file_proto_customer_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +244,7 @@ func (x *ListCustomersRequest) String() string {
 func (*ListCustomersRequest) ProtoMessage() {}
 
 func (x *ListCustomersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_customer_proto_msgTypes[2]
+	mi := &file_proto_customer_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +257,7 @@ func (x *ListCustomersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListCustomersRequest.ProtoReflect.Descriptor instead.
 func (*ListCustomersRequest) Descriptor() ([]byte, []int) {
-	return file_proto_customer_proto_rawDescGZIP(), []int{2}
+	return file_proto_customer_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListCustomersRequest) GetSearch() string {
@@ -254,8 +306,11 @@ var File_proto_customer_proto protoreflect.FileDescriptor
 
 const file_proto_customer_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/customer.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\"\x93\x01\n" +
-	"\x15ListCustomersResponse\x12\x12\n" +
+	"\x14proto/customer.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\"W\n" +
+	"\x15ListCustomersResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12$\n" +
+	"\x04data\x18\x02 \x01(\v2\x10.api.ProductDataR\x04data\"\x89\x01\n" +
+	"\vProductData\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\rR\x04page\x12\x18\n" +
 	"\aperPage\x18\x02 \x01(\rR\aperPage\x12\x1e\n" +
 	"\n" +
@@ -292,21 +347,23 @@ func file_proto_customer_proto_rawDescGZIP() []byte {
 	return file_proto_customer_proto_rawDescData
 }
 
-var file_proto_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_proto_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_customer_proto_goTypes = []any{
 	(*ListCustomersResponse)(nil), // 0: api.ListCustomersResponse
-	(*CustomerTableData)(nil),     // 1: api.CustomerTableData
-	(*ListCustomersRequest)(nil),  // 2: api.ListCustomersRequest
+	(*ProductData)(nil),           // 1: api.ProductData
+	(*CustomerTableData)(nil),     // 2: api.CustomerTableData
+	(*ListCustomersRequest)(nil),  // 3: api.ListCustomersRequest
 }
 var file_proto_customer_proto_depIdxs = []int32{
-	1, // 0: api.ListCustomersResponse.items:type_name -> api.CustomerTableData
-	2, // 1: api.CustomerService.ListCustomers:input_type -> api.ListCustomersRequest
-	0, // 2: api.CustomerService.ListCustomers:output_type -> api.ListCustomersResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 0: api.ListCustomersResponse.data:type_name -> api.ProductData
+	2, // 1: api.ProductData.items:type_name -> api.CustomerTableData
+	3, // 2: api.CustomerService.ListCustomers:input_type -> api.ListCustomersRequest
+	0, // 3: api.CustomerService.ListCustomers:output_type -> api.ListCustomersResponse
+	3, // [3:4] is the sub-list for method output_type
+	2, // [2:3] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_proto_customer_proto_init() }
@@ -320,7 +377,7 @@ func file_proto_customer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_customer_proto_rawDesc), len(file_proto_customer_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
