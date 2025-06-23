@@ -25,7 +25,7 @@ const (
 type ListCustomersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Data          *ProductData           `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Data          *CustomerData          `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -67,14 +67,14 @@ func (x *ListCustomersResponse) GetMessage() string {
 	return ""
 }
 
-func (x *ListCustomersResponse) GetData() *ProductData {
+func (x *ListCustomersResponse) GetData() *CustomerData {
 	if x != nil {
 		return x.Data
 	}
 	return nil
 }
 
-type ProductData struct {
+type CustomerData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
 	PerPage       uint32                 `protobuf:"varint,2,opt,name=perPage,proto3" json:"perPage,omitempty"`
@@ -84,20 +84,20 @@ type ProductData struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ProductData) Reset() {
-	*x = ProductData{}
+func (x *CustomerData) Reset() {
+	*x = CustomerData{}
 	mi := &file_proto_customer_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ProductData) String() string {
+func (x *CustomerData) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ProductData) ProtoMessage() {}
+func (*CustomerData) ProtoMessage() {}
 
-func (x *ProductData) ProtoReflect() protoreflect.Message {
+func (x *CustomerData) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_customer_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -109,33 +109,33 @@ func (x *ProductData) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ProductData.ProtoReflect.Descriptor instead.
-func (*ProductData) Descriptor() ([]byte, []int) {
+// Deprecated: Use CustomerData.ProtoReflect.Descriptor instead.
+func (*CustomerData) Descriptor() ([]byte, []int) {
 	return file_proto_customer_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ProductData) GetPage() uint32 {
+func (x *CustomerData) GetPage() uint32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ProductData) GetPerPage() uint32 {
+func (x *CustomerData) GetPerPage() uint32 {
 	if x != nil {
 		return x.PerPage
 	}
 	return 0
 }
 
-func (x *ProductData) GetTotalItems() uint32 {
+func (x *CustomerData) GetTotalItems() uint32 {
 	if x != nil {
 		return x.TotalItems
 	}
 	return 0
 }
 
-func (x *ProductData) GetItems() []*CustomerTableData {
+func (x *CustomerData) GetItems() []*CustomerTableData {
 	if x != nil {
 		return x.Items
 	}
@@ -306,11 +306,11 @@ var File_proto_customer_proto protoreflect.FileDescriptor
 
 const file_proto_customer_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/customer.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\"W\n" +
+	"\x14proto/customer.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\"X\n" +
 	"\x15ListCustomersResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\x12$\n" +
-	"\x04data\x18\x02 \x01(\v2\x10.api.ProductDataR\x04data\"\x89\x01\n" +
-	"\vProductData\x12\x12\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12%\n" +
+	"\x04data\x18\x02 \x01(\v2\x11.api.CustomerDataR\x04data\"\x8a\x01\n" +
+	"\fCustomerData\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\rR\x04page\x12\x18\n" +
 	"\aperPage\x18\x02 \x01(\rR\aperPage\x12\x1e\n" +
 	"\n" +
@@ -350,13 +350,13 @@ func file_proto_customer_proto_rawDescGZIP() []byte {
 var file_proto_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_customer_proto_goTypes = []any{
 	(*ListCustomersResponse)(nil), // 0: api.ListCustomersResponse
-	(*ProductData)(nil),           // 1: api.ProductData
+	(*CustomerData)(nil),          // 1: api.CustomerData
 	(*CustomerTableData)(nil),     // 2: api.CustomerTableData
 	(*ListCustomersRequest)(nil),  // 3: api.ListCustomersRequest
 }
 var file_proto_customer_proto_depIdxs = []int32{
-	1, // 0: api.ListCustomersResponse.data:type_name -> api.ProductData
-	2, // 1: api.ProductData.items:type_name -> api.CustomerTableData
+	1, // 0: api.ListCustomersResponse.data:type_name -> api.CustomerData
+	2, // 1: api.CustomerData.items:type_name -> api.CustomerTableData
 	3, // 2: api.CustomerService.ListCustomers:input_type -> api.ListCustomersRequest
 	0, // 3: api.CustomerService.ListCustomers:output_type -> api.ListCustomersResponse
 	3, // [3:4] is the sub-list for method output_type
