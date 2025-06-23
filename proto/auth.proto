@@ -15,14 +15,14 @@ service AuthService {
     };
   }
   
-  rpc Logout() returns (LogoutResponse) {
+  rpc Logout(google.protobuf.Empty) returns (LogoutResponse) {
     option (google.api.http) = {
       post: "/api/v1/auth/logout"
       body: "*"
     };
   }
   
-  rpc RefreshToken() returns (RefreshTokenResponse) {
+  rpc RefreshToken(google.protobuf.Empty) returns (RefreshTokenResponse) {
     option (google.api.http) = {
       get: "/api/v1/auth/refresh-token"
     };
