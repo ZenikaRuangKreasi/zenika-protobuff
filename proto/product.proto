@@ -19,96 +19,41 @@ service ProductService {
     };
   }
   
-  rpc SearchProducts(SearchProductsRequest) returns (ListProductsResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/products/search"
-    };
-  }
-  
-  rpc GetProductsByCategory(GetProductsByCategoryRequest) returns (ListProductsResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/products/category/{category}"
-    };
-  }
-  
-  rpc CreateProduct(CreateProductRequest) returns (ProductResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/products"
-      body: "*"
-    };
-  }
-  
   rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse) {
     option (google.api.http) = {
       put: "/api/v1/products/{id}"
       body: "*"
     };
   }
-  
-  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse) {
-    option (google.api.http) = {
-      delete: "/api/v1/products/{id}"
-    };
-  }
-}
-
-message GetProductRequest {
-  string id = 1;
-}
-
-message ListProductsRequest {
-  int32 page = 1;
-  int32 limit = 2;
-  string search = 3; 
-}
-
-message SearchProductsRequest {
-  string query = 1;
-  int32 page = 2;
-  int32 limit = 3;
-}
-
-message GetProductsByCategoryRequest {
-  string category = 1;
-}
-
-message CreateProductRequest {
-  string name = 1;
-  double price = 2;
-  int32 stock = 3;
-  string merchant_id = 4;
-}
-
-message UpdateProductRequest {
-  string id = 1;
-  string name = 2;
-  double price = 3;
-  int32 stock = 4;
-  string merchant_id = 5;
-}
-
-message DeleteProductRequest {
-  string id = 1;
-}
-
-message ProductResponse {
-  string id = 1;
-  string name = 2;
-  double price = 3;
-  int32 stock = 4;
-  string merchant_id = 5;
-  string created_at = 6;
-  string updated_at = 7;
 }
 
 message ListProductsResponse {
-  repeated ProductResponse products = 1;
-  int32 total = 2;
-  int32 page = 3;
-  int32 limit = 4;
+  string message = 1;
+  ProductData data = 2;
+  message ProductData{
+    int page=1
+    int perPage=2
+    int totalItems=3
+    ProductList[] items=4
+    message ProductList{
+      string id=1
+      string name=2
+      int64 price=3
+      int qty=4
+      int quantitySold=5
+      string cratedAt=6
+      string updatedAt=7
+    }
+  }
 }
 
-message DeleteProductResponse {
-  bool success = 1;
-  string message = 2;
-} 
+message ProductResponse {
+  string message = 1;
+  Product data = 2;
+  message Product{
+    string id=1
+    string name=2
+    int64 price=3
+    int qty=4
+  }
+}
