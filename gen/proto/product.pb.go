@@ -10,6 +10,7 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -546,7 +547,7 @@ var File_proto_product_proto protoreflect.FileDescriptor
 
 const file_proto_product_proto_rawDesc = "" +
 	"\n" +
-	"\x13proto/product.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"\xd0\x03\n" +
+	"\x13proto/product.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xd0\x03\n" +
 	"\x14ListProductsResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12;\n" +
 	"\x04data\x18\x02 \x01(\v2'.proto.ListProductsResponse.ProductDataR\x04data\x1a\xe0\x02\n" +
@@ -585,12 +586,14 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
-	"\x04date\x18\x06 \x01(\tR\x04date2\xb7\x02\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date2\x92\x03\n" +
 	"\x0eProductService\x12]\n" +
 	"\n" +
 	"GetProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/api/v1/products/{id}\x12a\n" +
 	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12c\n" +
-	"\rUpdateProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\rUpdateProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}\x12Y\n" +
+	"\n" +
+	"AddProduct\x12\x16.google.protobuf.Empty\x1a\x16.proto.ProductResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/productsB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_product_proto_rawDescOnce sync.Once
@@ -614,6 +617,7 @@ var file_proto_product_proto_goTypes = []any{
 	(*ListProductsResponse_ProductData)(nil),             // 5: proto.ListProductsResponse.ProductData
 	(*ListProductsResponse_ProductData_ProductList)(nil), // 6: proto.ListProductsResponse.ProductData.ProductList
 	(*ProductResponse_Product)(nil),                      // 7: proto.ProductResponse.Product
+	(*emptypb.Empty)(nil),                                // 8: google.protobuf.Empty
 }
 var file_proto_product_proto_depIdxs = []int32{
 	5, // 0: proto.ListProductsResponse.data:type_name -> proto.ListProductsResponse.ProductData
@@ -622,11 +626,13 @@ var file_proto_product_proto_depIdxs = []int32{
 	3, // 3: proto.ProductService.GetProduct:input_type -> proto.GetProductRequest
 	4, // 4: proto.ProductService.ListProducts:input_type -> proto.ListProductsRequest
 	3, // 5: proto.ProductService.UpdateProduct:input_type -> proto.GetProductRequest
-	1, // 6: proto.ProductService.GetProduct:output_type -> proto.ProductResponse
-	0, // 7: proto.ProductService.ListProducts:output_type -> proto.ListProductsResponse
-	1, // 8: proto.ProductService.UpdateProduct:output_type -> proto.ProductResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
+	8, // 6: proto.ProductService.AddProduct:input_type -> google.protobuf.Empty
+	1, // 7: proto.ProductService.GetProduct:output_type -> proto.ProductResponse
+	0, // 8: proto.ProductService.ListProducts:output_type -> proto.ListProductsResponse
+	1, // 9: proto.ProductService.UpdateProduct:output_type -> proto.ProductResponse
+	1, // 10: proto.ProductService.AddProduct:output_type -> proto.ProductResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name

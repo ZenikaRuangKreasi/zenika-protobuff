@@ -5,6 +5,7 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
 service ProductService {
   rpc GetProduct(GetProductRequest) returns (ProductResponse) {
@@ -22,6 +23,12 @@ service ProductService {
   rpc UpdateProduct(GetProductRequest) returns (ProductResponse) {
     option (google.api.http) = {
       put: "/api/v1/products/{id}"
+      body: "*"
+    };
+  }
+  rpc AddProduct(google.protobuf.Empty) returns (ProductResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/products"
       body: "*"
     };
   }
