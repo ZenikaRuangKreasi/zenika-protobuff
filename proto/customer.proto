@@ -5,61 +5,33 @@ package api;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
-
-message Customer {
-  string customer_id = 1;
-  string phone = 2;
-  string name = 3;
-  string created_at = 4;
-  string updated_at = 5;
-  string created_by = 6;
-  string updated_by = 7;
-}
-
-message CustomerId {
-  string customer_id = 1;
-}
-
-message ListCustomersRequest {
-  string search = 1;
-  int32 page = 2;
-  int32 limit = 3;
-}
-
-message ListCustomersResponse {
-  repeated Customer customers = 1;
-  int32 total = 2;
-  int32 page = 3;
-  int32 limit = 4;
-}
 
 service CustomerService {
-  rpc CreateCustomer(Customer) returns (Customer) {
-    option (google.api.http) = {
-      post: "/api/v1/customers"
-      body: "*"
-    };
-  }
-  rpc GetCustomer(CustomerId) returns (Customer) {
-    option (google.api.http) = {
-      get: "/api/v1/customers/{customer_id}"
-    };
-  }
   rpc ListCustomers(ListCustomersRequest) returns (ListCustomersResponse) {
     option (google.api.http) = {
       get: "/api/v1/customers"
     };
   }
-  rpc UpdateCustomer(Customer) returns (Customer) {
-    option (google.api.http) = {
-      put: "/api/v1/customers/{customer_id}"
-      body: "*"
-    };
-  }
-  rpc DeleteCustomer(CustomerId) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete: "/api/v1/customers/{customer_id}"
-    };
-  }
 } 
+message ListCustomersResponse{
+    uint32 page=1;
+    uint32 perPage=2;
+    uint32 totalItems=3;
+    repeated CustomerTableData items=4;
+}
+message CustomerTableData{
+  string phone=1;
+  string name=2;
+  uint32 orderCount=3;
+  string cratedAt=4;
+  string updatedAt=5;
+}
+message ListCustomersRequest {
+  string search = 1;
+  string orderBy = 2;
+  string order = 3;
+  uint32 page = 4;
+  uint32 rowsPerPage = 5;
+  string date = 6;
+}
+ 

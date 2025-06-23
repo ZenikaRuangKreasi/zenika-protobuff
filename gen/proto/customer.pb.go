@@ -10,7 +10,6 @@ import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -23,33 +22,30 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Customer struct {
+type ListCustomersResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CustomerId    string                 `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	Phone         string                 `protobuf:"bytes,2,opt,name=phone,proto3" json:"phone,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedBy     string                 `protobuf:"bytes,6,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
-	UpdatedBy     string                 `protobuf:"bytes,7,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	PerPage       uint32                 `protobuf:"varint,2,opt,name=perPage,proto3" json:"perPage,omitempty"`
+	TotalItems    uint32                 `protobuf:"varint,3,opt,name=totalItems,proto3" json:"totalItems,omitempty"`
+	Items         []*CustomerTableData   `protobuf:"bytes,4,rep,name=items,proto3" json:"items,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Customer) Reset() {
-	*x = Customer{}
+func (x *ListCustomersResponse) Reset() {
+	*x = ListCustomersResponse{}
 	mi := &file_proto_customer_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Customer) String() string {
+func (x *ListCustomersResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Customer) ProtoMessage() {}
+func (*ListCustomersResponse) ProtoMessage() {}
 
-func (x *Customer) ProtoReflect() protoreflect.Message {
+func (x *ListCustomersResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_customer_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -61,100 +57,111 @@ func (x *Customer) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Customer.ProtoReflect.Descriptor instead.
-func (*Customer) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListCustomersResponse.ProtoReflect.Descriptor instead.
+func (*ListCustomersResponse) Descriptor() ([]byte, []int) {
 	return file_proto_customer_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Customer) GetCustomerId() string {
+func (x *ListCustomersResponse) GetPage() uint32 {
 	if x != nil {
-		return x.CustomerId
+		return x.Page
 	}
-	return ""
+	return 0
 }
 
-func (x *Customer) GetPhone() string {
+func (x *ListCustomersResponse) GetPerPage() uint32 {
+	if x != nil {
+		return x.PerPage
+	}
+	return 0
+}
+
+func (x *ListCustomersResponse) GetTotalItems() uint32 {
+	if x != nil {
+		return x.TotalItems
+	}
+	return 0
+}
+
+func (x *ListCustomersResponse) GetItems() []*CustomerTableData {
+	if x != nil {
+		return x.Items
+	}
+	return nil
+}
+
+type CustomerTableData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Phone         string                 `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	OrderCount    uint32                 `protobuf:"varint,3,opt,name=orderCount,proto3" json:"orderCount,omitempty"`
+	CratedAt      string                 `protobuf:"bytes,4,opt,name=cratedAt,proto3" json:"cratedAt,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,5,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CustomerTableData) Reset() {
+	*x = CustomerTableData{}
+	mi := &file_proto_customer_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CustomerTableData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CustomerTableData) ProtoMessage() {}
+
+func (x *CustomerTableData) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_customer_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CustomerTableData.ProtoReflect.Descriptor instead.
+func (*CustomerTableData) Descriptor() ([]byte, []int) {
+	return file_proto_customer_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CustomerTableData) GetPhone() string {
 	if x != nil {
 		return x.Phone
 	}
 	return ""
 }
 
-func (x *Customer) GetName() string {
+func (x *CustomerTableData) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *Customer) GetCreatedAt() string {
+func (x *CustomerTableData) GetOrderCount() uint32 {
 	if x != nil {
-		return x.CreatedAt
+		return x.OrderCount
+	}
+	return 0
+}
+
+func (x *CustomerTableData) GetCratedAt() string {
+	if x != nil {
+		return x.CratedAt
 	}
 	return ""
 }
 
-func (x *Customer) GetUpdatedAt() string {
+func (x *CustomerTableData) GetUpdatedAt() string {
 	if x != nil {
 		return x.UpdatedAt
-	}
-	return ""
-}
-
-func (x *Customer) GetCreatedBy() string {
-	if x != nil {
-		return x.CreatedBy
-	}
-	return ""
-}
-
-func (x *Customer) GetUpdatedBy() string {
-	if x != nil {
-		return x.UpdatedBy
-	}
-	return ""
-}
-
-type CustomerId struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	CustomerId    string                 `protobuf:"bytes,1,opt,name=customer_id,json=customerId,proto3" json:"customer_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CustomerId) Reset() {
-	*x = CustomerId{}
-	mi := &file_proto_customer_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CustomerId) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CustomerId) ProtoMessage() {}
-
-func (x *CustomerId) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_customer_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CustomerId.ProtoReflect.Descriptor instead.
-func (*CustomerId) Descriptor() ([]byte, []int) {
-	return file_proto_customer_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CustomerId) GetCustomerId() string {
-	if x != nil {
-		return x.CustomerId
 	}
 	return ""
 }
@@ -162,8 +169,11 @@ func (x *CustomerId) GetCustomerId() string {
 type ListCustomersRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Search        string                 `protobuf:"bytes,1,opt,name=search,proto3" json:"search,omitempty"`
-	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         int32                  `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	OrderBy       string                 `protobuf:"bytes,2,opt,name=orderBy,proto3" json:"orderBy,omitempty"`
+	Order         string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
+	Page          uint32                 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
+	RowsPerPage   uint32                 `protobuf:"varint,5,opt,name=rowsPerPage,proto3" json:"rowsPerPage,omitempty"`
+	Date          string                 `protobuf:"bytes,6,opt,name=date,proto3" json:"date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -205,125 +215,70 @@ func (x *ListCustomersRequest) GetSearch() string {
 	return ""
 }
 
-func (x *ListCustomersRequest) GetPage() int32 {
+func (x *ListCustomersRequest) GetOrderBy() string {
+	if x != nil {
+		return x.OrderBy
+	}
+	return ""
+}
+
+func (x *ListCustomersRequest) GetOrder() string {
+	if x != nil {
+		return x.Order
+	}
+	return ""
+}
+
+func (x *ListCustomersRequest) GetPage() uint32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListCustomersRequest) GetLimit() int32 {
+func (x *ListCustomersRequest) GetRowsPerPage() uint32 {
 	if x != nil {
-		return x.Limit
+		return x.RowsPerPage
 	}
 	return 0
 }
 
-type ListCustomersResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Customers     []*Customer            `protobuf:"bytes,1,rep,name=customers,proto3" json:"customers,omitempty"`
-	Total         int32                  `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         int32                  `protobuf:"varint,4,opt,name=limit,proto3" json:"limit,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ListCustomersResponse) Reset() {
-	*x = ListCustomersResponse{}
-	mi := &file_proto_customer_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ListCustomersResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCustomersResponse) ProtoMessage() {}
-
-func (x *ListCustomersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_customer_proto_msgTypes[3]
+func (x *ListCustomersRequest) GetDate() string {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+		return x.Date
 	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCustomersResponse.ProtoReflect.Descriptor instead.
-func (*ListCustomersResponse) Descriptor() ([]byte, []int) {
-	return file_proto_customer_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *ListCustomersResponse) GetCustomers() []*Customer {
-	if x != nil {
-		return x.Customers
-	}
-	return nil
-}
-
-func (x *ListCustomersResponse) GetTotal() int32 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *ListCustomersResponse) GetPage() int32 {
-	if x != nil {
-		return x.Page
-	}
-	return 0
-}
-
-func (x *ListCustomersResponse) GetLimit() int32 {
-	if x != nil {
-		return x.Limit
-	}
-	return 0
+	return ""
 }
 
 var File_proto_customer_proto protoreflect.FileDescriptor
 
 const file_proto_customer_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/customer.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xd1\x01\n" +
-	"\bCustomer\x12\x1f\n" +
-	"\vcustomer_id\x18\x01 \x01(\tR\n" +
-	"customerId\x12\x14\n" +
-	"\x05phone\x18\x02 \x01(\tR\x05phone\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12\x1d\n" +
+	"\x14proto/customer.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\"\x93\x01\n" +
+	"\x15ListCustomersResponse\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\rR\x04page\x12\x18\n" +
+	"\aperPage\x18\x02 \x01(\rR\aperPage\x12\x1e\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"totalItems\x18\x03 \x01(\rR\n" +
+	"totalItems\x12,\n" +
+	"\x05items\x18\x04 \x03(\v2\x16.api.CustomerTableDataR\x05items\"\x97\x01\n" +
+	"\x11CustomerTableData\x12\x14\n" +
+	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
-	"updated_at\x18\x05 \x01(\tR\tupdatedAt\x12\x1d\n" +
-	"\n" +
-	"created_by\x18\x06 \x01(\tR\tcreatedBy\x12\x1d\n" +
-	"\n" +
-	"updated_by\x18\a \x01(\tR\tupdatedBy\"-\n" +
-	"\n" +
-	"CustomerId\x12\x1f\n" +
-	"\vcustomer_id\x18\x01 \x01(\tR\n" +
-	"customerId\"X\n" +
+	"orderCount\x18\x03 \x01(\rR\n" +
+	"orderCount\x12\x1a\n" +
+	"\bcratedAt\x18\x04 \x01(\tR\bcratedAt\x12\x1c\n" +
+	"\tupdatedAt\x18\x05 \x01(\tR\tupdatedAt\"\xa8\x01\n" +
 	"\x14ListCustomersRequest\x12\x16\n" +
-	"\x06search\x18\x01 \x01(\tR\x06search\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x14\n" +
-	"\x05limit\x18\x03 \x01(\x05R\x05limit\"\x84\x01\n" +
-	"\x15ListCustomersResponse\x12+\n" +
-	"\tcustomers\x18\x01 \x03(\v2\r.api.CustomerR\tcustomers\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x05R\x05total\x12\x12\n" +
-	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\x05R\x05limit2\xda\x03\n" +
-	"\x0fCustomerService\x12L\n" +
-	"\x0eCreateCustomer\x12\r.api.Customer\x1a\r.api.Customer\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/customers\x12V\n" +
-	"\vGetCustomer\x12\x0f.api.CustomerId\x1a\r.api.Customer\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/customers/{customer_id}\x12a\n" +
-	"\rListCustomers\x12\x19.api.ListCustomersRequest\x1a\x1a.api.ListCustomersResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/customers\x12Z\n" +
-	"\x0eUpdateCustomer\x12\r.api.Customer\x1a\r.api.Customer\"*\x82\xd3\xe4\x93\x02$:\x01*\x1a\x1f/api/v1/customers/{customer_id}\x12b\n" +
-	"\x0eDeleteCustomer\x12\x0f.api.CustomerId\x1a\x16.google.protobuf.Empty\"'\x82\xd3\xe4\x93\x02!*\x1f/api/v1/customers/{customer_id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x06search\x18\x01 \x01(\tR\x06search\x12\x18\n" +
+	"\aorderBy\x18\x02 \x01(\tR\aorderBy\x12\x14\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
+	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
+	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date2t\n" +
+	"\x0fCustomerService\x12a\n" +
+	"\rListCustomers\x12\x19.api.ListCustomersRequest\x1a\x1a.api.ListCustomersResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/customersB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_customer_proto_rawDescOnce sync.Once
@@ -337,28 +292,18 @@ func file_proto_customer_proto_rawDescGZIP() []byte {
 	return file_proto_customer_proto_rawDescData
 }
 
-var file_proto_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_proto_customer_proto_goTypes = []any{
-	(*Customer)(nil),              // 0: api.Customer
-	(*CustomerId)(nil),            // 1: api.CustomerId
+	(*ListCustomersResponse)(nil), // 0: api.ListCustomersResponse
+	(*CustomerTableData)(nil),     // 1: api.CustomerTableData
 	(*ListCustomersRequest)(nil),  // 2: api.ListCustomersRequest
-	(*ListCustomersResponse)(nil), // 3: api.ListCustomersResponse
-	(*emptypb.Empty)(nil),         // 4: google.protobuf.Empty
 }
 var file_proto_customer_proto_depIdxs = []int32{
-	0, // 0: api.ListCustomersResponse.customers:type_name -> api.Customer
-	0, // 1: api.CustomerService.CreateCustomer:input_type -> api.Customer
-	1, // 2: api.CustomerService.GetCustomer:input_type -> api.CustomerId
-	2, // 3: api.CustomerService.ListCustomers:input_type -> api.ListCustomersRequest
-	0, // 4: api.CustomerService.UpdateCustomer:input_type -> api.Customer
-	1, // 5: api.CustomerService.DeleteCustomer:input_type -> api.CustomerId
-	0, // 6: api.CustomerService.CreateCustomer:output_type -> api.Customer
-	0, // 7: api.CustomerService.GetCustomer:output_type -> api.Customer
-	3, // 8: api.CustomerService.ListCustomers:output_type -> api.ListCustomersResponse
-	0, // 9: api.CustomerService.UpdateCustomer:output_type -> api.Customer
-	4, // 10: api.CustomerService.DeleteCustomer:output_type -> google.protobuf.Empty
-	6, // [6:11] is the sub-list for method output_type
-	1, // [1:6] is the sub-list for method input_type
+	1, // 0: api.ListCustomersResponse.items:type_name -> api.CustomerTableData
+	2, // 1: api.CustomerService.ListCustomers:input_type -> api.ListCustomersRequest
+	0, // 2: api.CustomerService.ListCustomers:output_type -> api.ListCustomersResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -375,7 +320,7 @@ func file_proto_customer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_customer_proto_rawDesc), len(file_proto_customer_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
