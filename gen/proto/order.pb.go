@@ -127,7 +127,7 @@ type OrderDetail struct {
 	DeliveryLink    string                 `protobuf:"bytes,5,opt,name=deliveryLink,proto3" json:"deliveryLink,omitempty"`
 	DeliveryNote    string                 `protobuf:"bytes,6,opt,name=deliveryNote,proto3" json:"deliveryNote,omitempty"`
 	DeliveryStatus  string                 `protobuf:"bytes,7,opt,name=deliveryStatus,proto3" json:"deliveryStatus,omitempty"`
-	AmountItem      int64                  `protobuf:"varint,8,opt,name=amountItem,proto3" json:"amountItem,omitempty"`
+	AmountItem      float64                `protobuf:"fixed64,8,opt,name=amountItem,proto3" json:"amountItem,omitempty"`
 	OrderStatus     string                 `protobuf:"bytes,9,opt,name=orderStatus,proto3" json:"orderStatus,omitempty"`
 	OrderDate       string                 `protobuf:"bytes,10,opt,name=orderDate,proto3" json:"orderDate,omitempty"`
 	OrderItem       []*OrderItem           `protobuf:"bytes,11,rep,name=orderItem,proto3" json:"orderItem,omitempty"`
@@ -214,7 +214,7 @@ func (x *OrderDetail) GetDeliveryStatus() string {
 	return ""
 }
 
-func (x *OrderDetail) GetAmountItem() int64 {
+func (x *OrderDetail) GetAmountItem() float64 {
 	if x != nil {
 		return x.AmountItem
 	}
@@ -246,8 +246,8 @@ type OrderItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductName   string                 `protobuf:"bytes,1,opt,name=productName,proto3" json:"productName,omitempty"`
 	Qty           int32                  `protobuf:"varint,2,opt,name=qty,proto3" json:"qty,omitempty"`
-	Price         int64                  `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
-	ItemPrice     int64                  `protobuf:"varint,4,opt,name=itemPrice,proto3" json:"itemPrice,omitempty"`
+	Price         float64                `protobuf:"fixed64,3,opt,name=price,proto3" json:"price,omitempty"`
+	ItemPrice     float64                `protobuf:"fixed64,4,opt,name=itemPrice,proto3" json:"itemPrice,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -296,14 +296,14 @@ func (x *OrderItem) GetQty() int32 {
 	return 0
 }
 
-func (x *OrderItem) GetPrice() int64 {
+func (x *OrderItem) GetPrice() float64 {
 	if x != nil {
 		return x.Price
 	}
 	return 0
 }
 
-func (x *OrderItem) GetItemPrice() int64 {
+func (x *OrderItem) GetItemPrice() float64 {
 	if x != nil {
 		return x.ItemPrice
 	}
@@ -641,7 +641,7 @@ const file_proto_order_proto_rawDesc = "" +
 	"\fdeliveryNote\x18\x06 \x01(\tR\fdeliveryNote\x12&\n" +
 	"\x0edeliveryStatus\x18\a \x01(\tR\x0edeliveryStatus\x12\x1e\n" +
 	"\n" +
-	"amountItem\x18\b \x01(\x03R\n" +
+	"amountItem\x18\b \x01(\x01R\n" +
 	"amountItem\x12 \n" +
 	"\vorderStatus\x18\t \x01(\tR\vorderStatus\x12\x1c\n" +
 	"\torderDate\x18\n" +
@@ -650,8 +650,8 @@ const file_proto_order_proto_rawDesc = "" +
 	"\tOrderItem\x12 \n" +
 	"\vproductName\x18\x01 \x01(\tR\vproductName\x12\x10\n" +
 	"\x03qty\x18\x02 \x01(\x05R\x03qty\x12\x14\n" +
-	"\x05price\x18\x03 \x01(\x03R\x05price\x12\x1c\n" +
-	"\titemPrice\x18\x04 \x01(\x03R\titemPrice\"T\n" +
+	"\x05price\x18\x03 \x01(\x01R\x05price\x12\x1c\n" +
+	"\titemPrice\x18\x04 \x01(\x01R\titemPrice\"T\n" +
 	"\x12ListOrdersResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12$\n" +
 	"\x04data\x18\x02 \x01(\v2\x10.proto.OrderDataR\x04data\"\x86\x01\n" +

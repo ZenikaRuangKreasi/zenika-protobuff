@@ -33,7 +33,7 @@ message OrderDetail {
   string deliveryLink=5;
   string deliveryNote=6;
   string deliveryStatus=7;
-  int64 amountItem=8;
+  double amountItem=8;
   string orderStatus=9;
   string orderDate=10;
   repeated OrderItem orderItem=11;
@@ -41,8 +41,8 @@ message OrderDetail {
 message OrderItem{
   string productName=1;
   int32 qty=2;
-  int64 price=3;
-  int64 itemPrice=4;
+  double price=3;
+  double itemPrice=4;
 }
 message ListOrdersResponse {
   string message = 1;
