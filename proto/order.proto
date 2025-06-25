@@ -40,7 +40,7 @@ message OrderDetail {
 }
 message OrderItem{
   string productName=1;
-  int32 orderCount=2;
+  int32 qty=2;
   int64 price=3;
   int64 itemPrice=4;
 }

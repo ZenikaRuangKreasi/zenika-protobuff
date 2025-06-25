@@ -245,7 +245,7 @@ func (x *OrderDetail) GetOrderItem() []*OrderItem {
 type OrderItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductName   string                 `protobuf:"bytes,1,opt,name=productName,proto3" json:"productName,omitempty"`
-	OrderCount    int32                  `protobuf:"varint,2,opt,name=orderCount,proto3" json:"orderCount,omitempty"`
+	Qty           int32                  `protobuf:"varint,2,opt,name=qty,proto3" json:"qty,omitempty"`
 	Price         int64                  `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
 	ItemPrice     int64                  `protobuf:"varint,4,opt,name=itemPrice,proto3" json:"itemPrice,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -289,9 +289,9 @@ func (x *OrderItem) GetProductName() string {
 	return ""
 }
 
-func (x *OrderItem) GetOrderCount() int32 {
+func (x *OrderItem) GetQty() int32 {
 	if x != nil {
-		return x.OrderCount
+		return x.Qty
 	}
 	return 0
 }
@@ -646,12 +646,10 @@ const file_proto_order_proto_rawDesc = "" +
 	"\vorderStatus\x18\t \x01(\tR\vorderStatus\x12\x1c\n" +
 	"\torderDate\x18\n" +
 	" \x01(\tR\torderDate\x12.\n" +
-	"\torderItem\x18\v \x03(\v2\x10.proto.OrderItemR\torderItem\"\x81\x01\n" +
+	"\torderItem\x18\v \x03(\v2\x10.proto.OrderItemR\torderItem\"s\n" +
 	"\tOrderItem\x12 \n" +
-	"\vproductName\x18\x01 \x01(\tR\vproductName\x12\x1e\n" +
-	"\n" +
-	"orderCount\x18\x02 \x01(\x05R\n" +
-	"orderCount\x12\x14\n" +
+	"\vproductName\x18\x01 \x01(\tR\vproductName\x12\x10\n" +
+	"\x03qty\x18\x02 \x01(\x05R\x03qty\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x03R\x05price\x12\x1c\n" +
 	"\titemPrice\x18\x04 \x01(\x03R\titemPrice\"T\n" +
 	"\x12ListOrdersResponse\x12\x18\n" +
