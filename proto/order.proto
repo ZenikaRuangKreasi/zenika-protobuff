@@ -12,6 +12,37 @@ service OrderService {
       get: "/api/v1/orders"
     };
   }
+  rpc OrderDetail(GetOrderDetailRequest) returns (OrderDetailResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/orders/{id}"
+    };
+  }
+}
+message GetOrderDetailRequest {
+  string id = 1;
+}
+message OrderDetailResponse {
+  string message = 1;
+  OrderData data = 2;
+}
+message OrderDetail {
+  string orderNumber=1;
+  string customerName=2;
+  string customerNumber=3;
+  string deliveryAddress=4;
+  string deliveryLink=5;
+  string deliveryNote=6;
+  string deliveryStatus=7;
+  int64 amountItem=8;
+  string orderStatus=9;
+  string orderDate=10;
+  repeated OrderItem orderItem=11;
+}
+message OrderItem{
+  string productName=1;
+  int32 orderCount=2;
+  int64 price=3;
+  int64 itemPrice=4;
 }
 message ListOrdersResponse {
   string message = 1;
@@ -31,7 +62,7 @@ message OrderTableData{
   uint64 amountItem=5;
   uint64 deliveryFee=6;
   string customerPhone=7;
-  string Status=8;
+  string status=8;
   string orderDate=9;
 }
 message ListOrdersRequest {
