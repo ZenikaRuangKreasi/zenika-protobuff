@@ -23,7 +23,7 @@ message GetOrderDetailRequest {
 }
 message OrderDetailResponse {
   string message = 1;
-  OrderData data = 2;
+  OrderDetail data = 2;
 }
 message OrderDetail {
   string orderNumber=1;

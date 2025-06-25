@@ -69,7 +69,7 @@ func (x *GetOrderDetailRequest) GetId() string {
 type OrderDetailResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Data          *OrderData             `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Data          *OrderDetail           `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,7 +111,7 @@ func (x *OrderDetailResponse) GetMessage() string {
 	return ""
 }
 
-func (x *OrderDetailResponse) GetData() *OrderData {
+func (x *OrderDetailResponse) GetData() *OrderDetail {
 	if x != nil {
 		return x.Data
 	}
@@ -628,10 +628,10 @@ const file_proto_order_proto_rawDesc = "" +
 	"\n" +
 	"\x11proto/order.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"'\n" +
 	"\x15GetOrderDetailRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"U\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"W\n" +
 	"\x13OrderDetailResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\x12$\n" +
-	"\x04data\x18\x02 \x01(\v2\x10.proto.OrderDataR\x04data\"\xa5\x03\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12&\n" +
+	"\x04data\x18\x02 \x01(\v2\x12.proto.OrderDetailR\x04data\"\xa5\x03\n" +
 	"\vOrderDetail\x12 \n" +
 	"\vorderNumber\x18\x01 \x01(\tR\vorderNumber\x12\"\n" +
 	"\fcustomerName\x18\x02 \x01(\tR\fcustomerName\x12&\n" +
@@ -712,7 +712,7 @@ var file_proto_order_proto_goTypes = []any{
 	(*ListOrdersRequest)(nil),     // 7: proto.ListOrdersRequest
 }
 var file_proto_order_proto_depIdxs = []int32{
-	5, // 0: proto.OrderDetailResponse.data:type_name -> proto.OrderData
+	2, // 0: proto.OrderDetailResponse.data:type_name -> proto.OrderDetail
 	3, // 1: proto.OrderDetail.orderItem:type_name -> proto.OrderItem
 	5, // 2: proto.ListOrdersResponse.data:type_name -> proto.OrderData
 	6, // 3: proto.OrderData.items:type_name -> proto.OrderTableData
