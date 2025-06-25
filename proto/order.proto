@@ -30,8 +30,8 @@ message OrderTableData{
   uint32 productCount=4;
   uint64 amountItem=5;
   uint64 deliveryFee=6;
-  string paymentLink=7;
-  string paymentStatus=8;
+  string customerPhone=7;
+  string Status=8;
   string orderDate=9;
 }
 message ListOrdersRequest {
