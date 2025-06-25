@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -19,8 +20,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OrderService_ListOrders_FullMethodName  = "/proto.OrderService/ListOrders"
-	OrderService_OrderDetail_FullMethodName = "/proto.OrderService/OrderDetail"
+	OrderService_ListOrders_FullMethodName        = "/proto.OrderService/ListOrders"
+	OrderService_OrderDetail_FullMethodName       = "/proto.OrderService/OrderDetail"
+	OrderService_ConfirmationOrder_FullMethodName = "/proto.OrderService/ConfirmationOrder"
 )
 
 // OrderServiceClient is the client API for OrderService service.
@@ -29,6 +31,7 @@ const (
 type OrderServiceClient interface {
 	ListOrders(ctx context.Context, in *ListOrdersRequest, opts ...grpc.CallOption) (*ListOrdersResponse, error)
 	OrderDetail(ctx context.Context, in *GetOrderDetailRequest, opts ...grpc.CallOption) (*OrderDetailResponse, error)
+	ConfirmationOrder(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error)
 }
 
 type orderServiceClient struct {
@@ -59,12 +62,23 @@ func (c *orderServiceClient) OrderDetail(ctx context.Context, in *GetOrderDetail
 	return out, nil
 }
 
+func (c *orderServiceClient) ConfirmationOrder(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConfirmationOrderResponse)
+	err := c.cc.Invoke(ctx, OrderService_ConfirmationOrder_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderServiceServer is the server API for OrderService service.
 // All implementations must embed UnimplementedOrderServiceServer
 // for forward compatibility.
 type OrderServiceServer interface {
 	ListOrders(context.Context, *ListOrdersRequest) (*ListOrdersResponse, error)
 	OrderDetail(context.Context, *GetOrderDetailRequest) (*OrderDetailResponse, error)
+	ConfirmationOrder(context.Context, *emptypb.Empty) (*ConfirmationOrderResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -80,6 +94,9 @@ func (UnimplementedOrderServiceServer) ListOrders(context.Context, *ListOrdersRe
 }
 func (UnimplementedOrderServiceServer) OrderDetail(context.Context, *GetOrderDetailRequest) (*OrderDetailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderDetail not implemented")
+}
+func (UnimplementedOrderServiceServer) ConfirmationOrder(context.Context, *emptypb.Empty) (*ConfirmationOrderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConfirmationOrder not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
 func (UnimplementedOrderServiceServer) testEmbeddedByValue()                      {}
@@ -138,6 +155,24 @@ func _OrderService_OrderDetail_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderService_ConfirmationOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).ConfirmationOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OrderService_ConfirmationOrder_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).ConfirmationOrder(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OrderService_ServiceDesc is the grpc.ServiceDesc for OrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +187,10 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "OrderDetail",
 			Handler:    _OrderService_OrderDetail_Handler,
+		},
+		{
+			MethodName: "ConfirmationOrder",
+			Handler:    _OrderService_ConfirmationOrder_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

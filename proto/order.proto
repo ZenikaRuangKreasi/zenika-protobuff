@@ -5,6 +5,7 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
 service OrderService {
   rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse) {
@@ -17,6 +18,12 @@ service OrderService {
       get: "/api/v1/orders/{id}"
     };
   }
+  rpc ConfirmationOrder(google.protobuf.Empty) returns (ConfirmationOrderResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/orders"
+      body: "*"
+    };
+  }
 }
 message GetOrderDetailRequest {
   string id = 1;
@@ -24,6 +31,9 @@ message GetOrderDetailRequest {
 message OrderDetailResponse {
   string message = 1;
   OrderDetail data = 2;
+}
+message ConfirmationOrderResponse {
+  string message = 1;
 }
 message OrderDetail {
   string orderNumber=1;
