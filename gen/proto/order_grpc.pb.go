@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -31,7 +30,7 @@ const (
 type OrderServiceClient interface {
 	ListOrders(ctx context.Context, in *ListOrdersRequest, opts ...grpc.CallOption) (*ListOrdersResponse, error)
 	OrderDetail(ctx context.Context, in *GetOrderDetailRequest, opts ...grpc.CallOption) (*OrderDetailResponse, error)
-	ConfirmationOrder(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error)
+	ConfirmationOrder(ctx context.Context, in *ConfirmationOrderRequest, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error)
 }
 
 type orderServiceClient struct {
@@ -62,7 +61,7 @@ func (c *orderServiceClient) OrderDetail(ctx context.Context, in *GetOrderDetail
 	return out, nil
 }
 
-func (c *orderServiceClient) ConfirmationOrder(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error) {
+func (c *orderServiceClient) ConfirmationOrder(ctx context.Context, in *ConfirmationOrderRequest, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ConfirmationOrderResponse)
 	err := c.cc.Invoke(ctx, OrderService_ConfirmationOrder_FullMethodName, in, out, cOpts...)
@@ -78,7 +77,7 @@ func (c *orderServiceClient) ConfirmationOrder(ctx context.Context, in *emptypb.
 type OrderServiceServer interface {
 	ListOrders(context.Context, *ListOrdersRequest) (*ListOrdersResponse, error)
 	OrderDetail(context.Context, *GetOrderDetailRequest) (*OrderDetailResponse, error)
-	ConfirmationOrder(context.Context, *emptypb.Empty) (*ConfirmationOrderResponse, error)
+	ConfirmationOrder(context.Context, *ConfirmationOrderRequest) (*ConfirmationOrderResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -95,7 +94,7 @@ func (UnimplementedOrderServiceServer) ListOrders(context.Context, *ListOrdersRe
 func (UnimplementedOrderServiceServer) OrderDetail(context.Context, *GetOrderDetailRequest) (*OrderDetailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderDetail not implemented")
 }
-func (UnimplementedOrderServiceServer) ConfirmationOrder(context.Context, *emptypb.Empty) (*ConfirmationOrderResponse, error) {
+func (UnimplementedOrderServiceServer) ConfirmationOrder(context.Context, *ConfirmationOrderRequest) (*ConfirmationOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConfirmationOrder not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
@@ -156,7 +155,7 @@ func _OrderService_OrderDetail_Handler(srv interface{}, ctx context.Context, dec
 }
 
 func _OrderService_ConfirmationOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(ConfirmationOrderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -168,7 +167,7 @@ func _OrderService_ConfirmationOrder_Handler(srv interface{}, ctx context.Contex
 		FullMethod: OrderService_ConfirmationOrder_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).ConfirmationOrder(ctx, req.(*emptypb.Empty))
+		return srv.(OrderServiceServer).ConfirmationOrder(ctx, req.(*ConfirmationOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
