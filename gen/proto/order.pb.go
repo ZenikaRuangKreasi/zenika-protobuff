@@ -150,8 +150,8 @@ type OrderTableData struct {
 	ProductCount  uint32                 `protobuf:"varint,4,opt,name=productCount,proto3" json:"productCount,omitempty"`
 	AmountItem    uint64                 `protobuf:"varint,5,opt,name=amountItem,proto3" json:"amountItem,omitempty"`
 	DeliveryFee   uint64                 `protobuf:"varint,6,opt,name=deliveryFee,proto3" json:"deliveryFee,omitempty"`
-	PaymentLink   string                 `protobuf:"bytes,7,opt,name=paymentLink,proto3" json:"paymentLink,omitempty"`
-	PaymentStatus string                 `protobuf:"bytes,8,opt,name=paymentStatus,proto3" json:"paymentStatus,omitempty"`
+	CustomerPhone string                 `protobuf:"bytes,7,opt,name=customerPhone,proto3" json:"customerPhone,omitempty"`
+	Status        string                 `protobuf:"bytes,8,opt,name=Status,proto3" json:"Status,omitempty"`
 	OrderDate     string                 `protobuf:"bytes,9,opt,name=orderDate,proto3" json:"orderDate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -229,16 +229,16 @@ func (x *OrderTableData) GetDeliveryFee() uint64 {
 	return 0
 }
 
-func (x *OrderTableData) GetPaymentLink() string {
+func (x *OrderTableData) GetCustomerPhone() string {
 	if x != nil {
-		return x.PaymentLink
+		return x.CustomerPhone
 	}
 	return ""
 }
 
-func (x *OrderTableData) GetPaymentStatus() string {
+func (x *OrderTableData) GetStatus() string {
 	if x != nil {
-		return x.PaymentStatus
+		return x.Status
 	}
 	return ""
 }
@@ -348,7 +348,7 @@ const file_proto_order_proto_rawDesc = "" +
 	"\n" +
 	"totalItems\x18\x03 \x01(\rR\n" +
 	"totalItems\x12+\n" +
-	"\x05items\x18\x04 \x03(\v2\x15.proto.OrderTableDataR\x05items\"\xb2\x02\n" +
+	"\x05items\x18\x04 \x03(\v2\x15.proto.OrderTableDataR\x05items\"\xa8\x02\n" +
 	"\x0eOrderTableData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\vorderNumber\x18\x02 \x01(\tR\vorderNumber\x12\"\n" +
@@ -357,9 +357,9 @@ const file_proto_order_proto_rawDesc = "" +
 	"\n" +
 	"amountItem\x18\x05 \x01(\x04R\n" +
 	"amountItem\x12 \n" +
-	"\vdeliveryFee\x18\x06 \x01(\x04R\vdeliveryFee\x12 \n" +
-	"\vpaymentLink\x18\a \x01(\tR\vpaymentLink\x12$\n" +
-	"\rpaymentStatus\x18\b \x01(\tR\rpaymentStatus\x12\x1c\n" +
+	"\vdeliveryFee\x18\x06 \x01(\x04R\vdeliveryFee\x12$\n" +
+	"\rcustomerPhone\x18\a \x01(\tR\rcustomerPhone\x12\x16\n" +
+	"\x06Status\x18\b \x01(\tR\x06Status\x12\x1c\n" +
 	"\torderDate\x18\t \x01(\tR\torderDate\"\xa5\x01\n" +
 	"\x11ListOrdersRequest\x12\x16\n" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x18\n" +
