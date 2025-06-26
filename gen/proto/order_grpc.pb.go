@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OrderService_ListOrders_FullMethodName        = "/proto.OrderService/ListOrders"
-	OrderService_OrderDetail_FullMethodName       = "/proto.OrderService/OrderDetail"
-	OrderService_ConfirmationOrder_FullMethodName = "/proto.OrderService/ConfirmationOrder"
+	OrderService_ListOrders_FullMethodName           = "/proto.OrderService/ListOrders"
+	OrderService_OrderDetail_FullMethodName          = "/proto.OrderService/OrderDetail"
+	OrderService_ConfirmationOrder_FullMethodName    = "/proto.OrderService/ConfirmationOrder"
+	OrderService_GenerateLinkDelivery_FullMethodName = "/proto.OrderService/GenerateLinkDelivery"
 )
 
 // OrderServiceClient is the client API for OrderService service.
@@ -31,6 +32,7 @@ type OrderServiceClient interface {
 	ListOrders(ctx context.Context, in *ListOrdersRequest, opts ...grpc.CallOption) (*ListOrdersResponse, error)
 	OrderDetail(ctx context.Context, in *GetOrderDetailRequest, opts ...grpc.CallOption) (*OrderDetailResponse, error)
 	ConfirmationOrder(ctx context.Context, in *ConfirmationOrderRequest, opts ...grpc.CallOption) (*ConfirmationOrderResponse, error)
+	GenerateLinkDelivery(ctx context.Context, in *GenerateLinkDeliveryRequest, opts ...grpc.CallOption) (*GenerateLinkDeliveryResponse, error)
 }
 
 type orderServiceClient struct {
@@ -71,6 +73,16 @@ func (c *orderServiceClient) ConfirmationOrder(ctx context.Context, in *Confirma
 	return out, nil
 }
 
+func (c *orderServiceClient) GenerateLinkDelivery(ctx context.Context, in *GenerateLinkDeliveryRequest, opts ...grpc.CallOption) (*GenerateLinkDeliveryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GenerateLinkDeliveryResponse)
+	err := c.cc.Invoke(ctx, OrderService_GenerateLinkDelivery_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OrderServiceServer is the server API for OrderService service.
 // All implementations must embed UnimplementedOrderServiceServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type OrderServiceServer interface {
 	ListOrders(context.Context, *ListOrdersRequest) (*ListOrdersResponse, error)
 	OrderDetail(context.Context, *GetOrderDetailRequest) (*OrderDetailResponse, error)
 	ConfirmationOrder(context.Context, *ConfirmationOrderRequest) (*ConfirmationOrderResponse, error)
+	GenerateLinkDelivery(context.Context, *GenerateLinkDeliveryRequest) (*GenerateLinkDeliveryResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedOrderServiceServer) OrderDetail(context.Context, *GetOrderDet
 }
 func (UnimplementedOrderServiceServer) ConfirmationOrder(context.Context, *ConfirmationOrderRequest) (*ConfirmationOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConfirmationOrder not implemented")
+}
+func (UnimplementedOrderServiceServer) GenerateLinkDelivery(context.Context, *GenerateLinkDeliveryRequest) (*GenerateLinkDeliveryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateLinkDelivery not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
 func (UnimplementedOrderServiceServer) testEmbeddedByValue()                      {}
@@ -172,6 +188,24 @@ func _OrderService_ConfirmationOrder_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderService_GenerateLinkDelivery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GenerateLinkDeliveryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).GenerateLinkDelivery(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OrderService_GenerateLinkDelivery_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).GenerateLinkDelivery(ctx, req.(*GenerateLinkDeliveryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OrderService_ServiceDesc is the grpc.ServiceDesc for OrderService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ConfirmationOrder",
 			Handler:    _OrderService_ConfirmationOrder_Handler,
+		},
+		{
+			MethodName: "GenerateLinkDelivery",
+			Handler:    _OrderService_GenerateLinkDelivery_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
