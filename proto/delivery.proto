@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
+
+service DeliveryService {
+  rpc CreateLinkDelivery(CreateLinkDeliveryRequest) returns (CreateDeliveryResponse);
+}
+
+message CreateLinkDeliveryRequest {
+  string order_id = 1;
+}
+
+message CreateDeliveryResponse {
+  string message = 1;
+  string data = 2;
+} 
+message LinkDelivery {
+    string link=1;
+}
