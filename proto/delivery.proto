@@ -14,7 +14,7 @@ message CreateLinkDeliveryRequest {
 
 message CreateDeliveryResponse {
   string message = 1;
-  string data = 2;
+  LinkDelivery data = 2;
 } 
 message LinkDelivery {
     string link=1;

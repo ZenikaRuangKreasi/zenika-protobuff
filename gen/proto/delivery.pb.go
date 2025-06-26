@@ -68,7 +68,7 @@ func (x *CreateLinkDeliveryRequest) GetOrderId() string {
 type CreateDeliveryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Data          string                 `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Data          *LinkDelivery          `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,11 +110,11 @@ func (x *CreateDeliveryResponse) GetMessage() string {
 	return ""
 }
 
-func (x *CreateDeliveryResponse) GetData() string {
+func (x *CreateDeliveryResponse) GetData() *LinkDelivery {
 	if x != nil {
 		return x.Data
 	}
-	return ""
+	return nil
 }
 
 type LinkDelivery struct {
@@ -167,10 +167,10 @@ const file_proto_delivery_proto_rawDesc = "" +
 	"\n" +
 	"\x14proto/delivery.proto\x12\x05proto\"6\n" +
 	"\x19CreateLinkDeliveryRequest\x12\x19\n" +
-	"\border_id\x18\x01 \x01(\tR\aorderId\"F\n" +
+	"\border_id\x18\x01 \x01(\tR\aorderId\"[\n" +
 	"\x16CreateDeliveryResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\x12\x12\n" +
-	"\x04data\x18\x02 \x01(\tR\x04data\"\"\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12'\n" +
+	"\x04data\x18\x02 \x01(\v2\x13.proto.LinkDeliveryR\x04data\"\"\n" +
 	"\fLinkDelivery\x12\x12\n" +
 	"\x04link\x18\x01 \x01(\tR\x04link2h\n" +
 	"\x0fDeliveryService\x12U\n" +
@@ -195,13 +195,14 @@ var file_proto_delivery_proto_goTypes = []any{
 	(*LinkDelivery)(nil),              // 2: proto.LinkDelivery
 }
 var file_proto_delivery_proto_depIdxs = []int32{
-	0, // 0: proto.DeliveryService.CreateLinkDelivery:input_type -> proto.CreateLinkDeliveryRequest
-	1, // 1: proto.DeliveryService.CreateLinkDelivery:output_type -> proto.CreateDeliveryResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: proto.CreateDeliveryResponse.data:type_name -> proto.LinkDelivery
+	0, // 1: proto.DeliveryService.CreateLinkDelivery:input_type -> proto.CreateLinkDeliveryRequest
+	1, // 2: proto.DeliveryService.CreateLinkDelivery:output_type -> proto.CreateDeliveryResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_proto_delivery_proto_init() }
