@@ -27,8 +27,7 @@ service OrderService {
   }
    rpc GenerateLinkDelivery(GenerateLinkDeliveryRequest) returns (GenerateLinkDeliveryResponse) {
     option (google.api.http) = {
-      post: "/api/v1/orders/link-delivery/{id}"
-      body: "*"
+      get: "/api/v1/orders/link-delivery/{id}"
     };
   }
 }

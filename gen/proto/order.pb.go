@@ -873,13 +873,13 @@ const file_proto_order_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
-	"\x04date\x18\x06 \x01(\tR\x04date2\xd2\x03\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date2\xcf\x03\n" +
 	"\fOrderService\x12Y\n" +
 	"\n" +
 	"ListOrders\x12\x18.proto.ListOrdersRequest\x1a\x19.proto.ListOrdersResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/orders\x12d\n" +
 	"\vOrderDetail\x12\x1c.proto.GetOrderDetailRequest\x1a\x1a.proto.OrderDetailResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/api/v1/orders/{id}\x12q\n" +
-	"\x11ConfirmationOrder\x12\x1f.proto.ConfirmationOrderRequest\x1a .proto.ConfirmationOrderResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/v1/orders\x12\x8d\x01\n" +
-	"\x14GenerateLinkDelivery\x12\".proto.GenerateLinkDeliveryRequest\x1a#.proto.GenerateLinkDeliveryResponse\",\x82\xd3\xe4\x93\x02&:\x01*\"!/api/v1/orders/link-delivery/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x11ConfirmationOrder\x12\x1f.proto.ConfirmationOrderRequest\x1a .proto.ConfirmationOrderResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/v1/orders\x12\x8a\x01\n" +
+	"\x14GenerateLinkDelivery\x12\".proto.GenerateLinkDeliveryRequest\x1a#.proto.GenerateLinkDeliveryResponse\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/orders/link-delivery/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_order_proto_rawDescOnce sync.Once
