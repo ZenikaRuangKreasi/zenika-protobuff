@@ -5,7 +5,6 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
-import "proto/delivery.proto";
 
 
 service OrderService {

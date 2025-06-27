@@ -4,21 +4,23 @@ package proto;
 
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
-service DeliveryService {
-  rpc CreateLinkDelivery(CreateLinkDeliveryRequest) returns (CreateDeliveryResponse);
-   option (google.api.http) = {
-      post: "/api/v1/delivery/link-delivery"
-    };
-}
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
 
-message CreateLinkDeliveryRequest {
-  string order_id = 1;
+service DeliveryService {
+  rpc CreateLinkDelivery(google.protobuf.Empty) returns (CreateDeliveryResponse) {
+    option (google.api.http) = {  // PINDAHKAN KE DALAM METHOD
+      post: "/api/v1/delivery/link-delivery"
+      body: "*"
+    };
+  }
 }
 
 message CreateDeliveryResponse {
   string message = 1;
   LinkDelivery data = 2;
-} 
+}
+
 message LinkDelivery {
-    string link=1;
+  string link = 1;
 }

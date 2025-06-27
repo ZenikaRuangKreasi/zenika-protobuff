@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -26,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DeliveryServiceClient interface {
-	CreateLinkDelivery(ctx context.Context, in *CreateLinkDeliveryRequest, opts ...grpc.CallOption) (*CreateDeliveryResponse, error)
+	CreateLinkDelivery(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CreateDeliveryResponse, error)
 }
 
 type deliveryServiceClient struct {
@@ -37,7 +38,7 @@ func NewDeliveryServiceClient(cc grpc.ClientConnInterface) DeliveryServiceClient
 	return &deliveryServiceClient{cc}
 }
 
-func (c *deliveryServiceClient) CreateLinkDelivery(ctx context.Context, in *CreateLinkDeliveryRequest, opts ...grpc.CallOption) (*CreateDeliveryResponse, error) {
+func (c *deliveryServiceClient) CreateLinkDelivery(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CreateDeliveryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateDeliveryResponse)
 	err := c.cc.Invoke(ctx, DeliveryService_CreateLinkDelivery_FullMethodName, in, out, cOpts...)
@@ -51,7 +52,7 @@ func (c *deliveryServiceClient) CreateLinkDelivery(ctx context.Context, in *Crea
 // All implementations must embed UnimplementedDeliveryServiceServer
 // for forward compatibility.
 type DeliveryServiceServer interface {
-	CreateLinkDelivery(context.Context, *CreateLinkDeliveryRequest) (*CreateDeliveryResponse, error)
+	CreateLinkDelivery(context.Context, *emptypb.Empty) (*CreateDeliveryResponse, error)
 	mustEmbedUnimplementedDeliveryServiceServer()
 }
 
@@ -62,7 +63,7 @@ type DeliveryServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDeliveryServiceServer struct{}
 
-func (UnimplementedDeliveryServiceServer) CreateLinkDelivery(context.Context, *CreateLinkDeliveryRequest) (*CreateDeliveryResponse, error) {
+func (UnimplementedDeliveryServiceServer) CreateLinkDelivery(context.Context, *emptypb.Empty) (*CreateDeliveryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLinkDelivery not implemented")
 }
 func (UnimplementedDeliveryServiceServer) mustEmbedUnimplementedDeliveryServiceServer() {}
@@ -87,7 +88,7 @@ func RegisterDeliveryServiceServer(s grpc.ServiceRegistrar, srv DeliveryServiceS
 }
 
 func _DeliveryService_CreateLinkDelivery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateLinkDeliveryRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -99,7 +100,7 @@ func _DeliveryService_CreateLinkDelivery_Handler(srv interface{}, ctx context.Co
 		FullMethod: DeliveryService_CreateLinkDelivery_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DeliveryServiceServer).CreateLinkDelivery(ctx, req.(*CreateLinkDeliveryRequest))
+		return srv.(DeliveryServiceServer).CreateLinkDelivery(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
