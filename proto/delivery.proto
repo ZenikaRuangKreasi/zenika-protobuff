@@ -8,8 +8,8 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 service DeliveryService {
-  rpc CreateLinkDelivery(google.protobuf.Empty) returns (CreateDeliveryResponse) {
-    option (google.api.http) = {  // PINDAHKAN KE DALAM METHOD
+  rpc GenerateLinkDelivery(google.protobuf.Empty) returns (CreateDeliveryResponse) {
+    option (google.api.http) = {  
       post: "/api/v1/delivery/link-delivery"
       body: "*"
     };

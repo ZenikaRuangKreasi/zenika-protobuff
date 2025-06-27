@@ -20,14 +20,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DeliveryService_CreateLinkDelivery_FullMethodName = "/proto.DeliveryService/CreateLinkDelivery"
+	DeliveryService_GenerateLinkDelivery_FullMethodName = "/proto.DeliveryService/GenerateLinkDelivery"
 )
 
 // DeliveryServiceClient is the client API for DeliveryService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DeliveryServiceClient interface {
-	CreateLinkDelivery(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CreateDeliveryResponse, error)
+	GenerateLinkDelivery(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CreateDeliveryResponse, error)
 }
 
 type deliveryServiceClient struct {
@@ -38,10 +38,10 @@ func NewDeliveryServiceClient(cc grpc.ClientConnInterface) DeliveryServiceClient
 	return &deliveryServiceClient{cc}
 }
 
-func (c *deliveryServiceClient) CreateLinkDelivery(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CreateDeliveryResponse, error) {
+func (c *deliveryServiceClient) GenerateLinkDelivery(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CreateDeliveryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateDeliveryResponse)
-	err := c.cc.Invoke(ctx, DeliveryService_CreateLinkDelivery_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, DeliveryService_GenerateLinkDelivery_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func (c *deliveryServiceClient) CreateLinkDelivery(ctx context.Context, in *empt
 // All implementations must embed UnimplementedDeliveryServiceServer
 // for forward compatibility.
 type DeliveryServiceServer interface {
-	CreateLinkDelivery(context.Context, *emptypb.Empty) (*CreateDeliveryResponse, error)
+	GenerateLinkDelivery(context.Context, *emptypb.Empty) (*CreateDeliveryResponse, error)
 	mustEmbedUnimplementedDeliveryServiceServer()
 }
 
@@ -63,8 +63,8 @@ type DeliveryServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedDeliveryServiceServer struct{}
 
-func (UnimplementedDeliveryServiceServer) CreateLinkDelivery(context.Context, *emptypb.Empty) (*CreateDeliveryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateLinkDelivery not implemented")
+func (UnimplementedDeliveryServiceServer) GenerateLinkDelivery(context.Context, *emptypb.Empty) (*CreateDeliveryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GenerateLinkDelivery not implemented")
 }
 func (UnimplementedDeliveryServiceServer) mustEmbedUnimplementedDeliveryServiceServer() {}
 func (UnimplementedDeliveryServiceServer) testEmbeddedByValue()                         {}
@@ -87,20 +87,20 @@ func RegisterDeliveryServiceServer(s grpc.ServiceRegistrar, srv DeliveryServiceS
 	s.RegisterService(&DeliveryService_ServiceDesc, srv)
 }
 
-func _DeliveryService_CreateLinkDelivery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DeliveryService_GenerateLinkDelivery_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DeliveryServiceServer).CreateLinkDelivery(ctx, in)
+		return srv.(DeliveryServiceServer).GenerateLinkDelivery(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: DeliveryService_CreateLinkDelivery_FullMethodName,
+		FullMethod: DeliveryService_GenerateLinkDelivery_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DeliveryServiceServer).CreateLinkDelivery(ctx, req.(*emptypb.Empty))
+		return srv.(DeliveryServiceServer).GenerateLinkDelivery(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -113,8 +113,8 @@ var DeliveryService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*DeliveryServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateLinkDelivery",
-			Handler:    _DeliveryService_CreateLinkDelivery_Handler,
+			MethodName: "GenerateLinkDelivery",
+			Handler:    _DeliveryService_GenerateLinkDelivery_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

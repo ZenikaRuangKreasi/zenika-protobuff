@@ -128,9 +128,9 @@ const file_proto_delivery_proto_rawDesc = "" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12'\n" +
 	"\x04data\x18\x02 \x01(\v2\x13.proto.LinkDeliveryR\x04data\"\"\n" +
 	"\fLinkDelivery\x12\x12\n" +
-	"\x04link\x18\x01 \x01(\tR\x04link2\x89\x01\n" +
-	"\x0fDeliveryService\x12v\n" +
-	"\x12CreateLinkDelivery\x12\x16.google.protobuf.Empty\x1a\x1d.proto.CreateDeliveryResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/v1/delivery/link-deliveryB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x04link\x18\x01 \x01(\tR\x04link2\x8b\x01\n" +
+	"\x0fDeliveryService\x12x\n" +
+	"\x14GenerateLinkDelivery\x12\x16.google.protobuf.Empty\x1a\x1d.proto.CreateDeliveryResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/v1/delivery/link-deliveryB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_delivery_proto_rawDescOnce sync.Once
@@ -152,8 +152,8 @@ var file_proto_delivery_proto_goTypes = []any{
 }
 var file_proto_delivery_proto_depIdxs = []int32{
 	1, // 0: proto.CreateDeliveryResponse.data:type_name -> proto.LinkDelivery
-	2, // 1: proto.DeliveryService.CreateLinkDelivery:input_type -> google.protobuf.Empty
-	0, // 2: proto.DeliveryService.CreateLinkDelivery:output_type -> proto.CreateDeliveryResponse
+	2, // 1: proto.DeliveryService.GenerateLinkDelivery:input_type -> google.protobuf.Empty
+	0, // 2: proto.DeliveryService.GenerateLinkDelivery:output_type -> proto.CreateDeliveryResponse
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
