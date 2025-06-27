@@ -25,15 +25,8 @@ service OrderService {
       body: "*"
     };
   }
-   rpc GenerateLinkDelivery(GenerateLinkDeliveryRequest) returns (GenerateLinkDeliveryResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/orders/link-delivery/{id}"
-    };
-  }
 }
-message GenerateLinkDeliveryRequest {
-  string id = 1;
-}
+
 message GetOrderDetailRequest {
   string id = 1;
 }
@@ -45,10 +38,7 @@ message OrderDetailResponse {
   string message = 1;
   OrderDetail data = 2;
 }
-message GenerateLinkDeliveryResponse {
-  string message = 1;
-  LinkDelivery data=2;
-}
+
 message ConfirmationOrderResponse {
   string message = 1;
 }

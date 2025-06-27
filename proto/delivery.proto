@@ -6,6 +6,9 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 
 service DeliveryService {
   rpc CreateLinkDelivery(CreateLinkDeliveryRequest) returns (CreateDeliveryResponse);
+   option (google.api.http) = {
+      post: "/api/v1/delivery/link-delivery"
+    };
 }
 
 message CreateLinkDeliveryRequest {
