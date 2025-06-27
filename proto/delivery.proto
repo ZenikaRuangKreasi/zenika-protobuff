@@ -7,17 +7,17 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 import "google/api/annotations.proto";
 
 service DeliveryService {
-  rpc GenerateLinkDelivery(CreateDeliveryRequest) returns (CreateDeliveryResponse) {
+  rpc GenerateLinkDelivery(GenerateLinkDeliveryRequest) returns (GenerateLinkDeliveryResponse) {
     option (google.api.http) = {  
       post: "/api/v1/delivery/link-delivery"
       body: "*"
     };
   }
 }
-message CreateDeliveryRequest {
+message GenerateLinkDeliveryRequest {
   string orderId = 1;
 }
-message CreateDeliveryResponse {
+message GenerateLinkDeliveryResponse {
   string message = 1;
   LinkDelivery data = 2;
 }
