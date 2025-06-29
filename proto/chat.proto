@@ -29,6 +29,7 @@ message ChatDataList{
   string phoneNumber=2;
   string name=3;
   LashChat lastChat=4;
+  optional string imageProfile=5;
 }
 message LashChat{
   string message=1;

@@ -148,6 +148,7 @@ type ChatDataList struct {
 	PhoneNumber   string                 `protobuf:"bytes,2,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
 	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	LastChat      *LashChat              `protobuf:"bytes,4,opt,name=lastChat,proto3" json:"lastChat,omitempty"`
+	ImageProfile  *string                `protobuf:"bytes,5,opt,name=imageProfile,proto3,oneof" json:"imageProfile,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,6 +209,13 @@ func (x *ChatDataList) GetLastChat() *LashChat {
 		return x.LastChat
 	}
 	return nil
+}
+
+func (x *ChatDataList) GetImageProfile() string {
+	if x != nil && x.ImageProfile != nil {
+		return *x.ImageProfile
+	}
+	return ""
 }
 
 type LashChat struct {
@@ -344,12 +352,14 @@ const file_proto_chat_proto_rawDesc = "" +
 	"\n" +
 	"totalItems\x18\x03 \x01(\rR\n" +
 	"totalItems\x12)\n" +
-	"\x05items\x18\x04 \x03(\v2\x13.proto.ChatDataListR\x05items\"\x81\x01\n" +
+	"\x05items\x18\x04 \x03(\v2\x13.proto.ChatDataListR\x05items\"\xbb\x01\n" +
 	"\fChatDataList\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\vphoneNumber\x18\x02 \x01(\tR\vphoneNumber\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12+\n" +
-	"\blastChat\x18\x04 \x01(\v2\x0f.proto.LashChatR\blastChat\"8\n" +
+	"\blastChat\x18\x04 \x01(\v2\x0f.proto.LashChatR\blastChat\x12'\n" +
+	"\fimageProfile\x18\x05 \x01(\tH\x00R\fimageProfile\x88\x01\x01B\x0f\n" +
+	"\r_imageProfile\"8\n" +
 	"\bLashChat\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\x12\n" +
 	"\x04time\x18\x02 \x01(\tR\x04time\"}\n" +
@@ -399,6 +409,7 @@ func file_proto_chat_proto_init() {
 	if File_proto_chat_proto != nil {
 		return
 	}
+	file_proto_chat_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
