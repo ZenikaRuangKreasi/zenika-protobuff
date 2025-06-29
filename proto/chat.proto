@@ -38,6 +38,7 @@ message LashChat{
 message ListChatRoomRequest {
   string search = 1;
   string orderBy = 2;
+  string order = 3;
   uint32 page = 4;
   uint32 rowsPerPage = 5;
 }
