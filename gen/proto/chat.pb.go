@@ -274,6 +274,7 @@ type ListChatRoomRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Search        string                 `protobuf:"bytes,1,opt,name=search,proto3" json:"search,omitempty"`
 	OrderBy       string                 `protobuf:"bytes,2,opt,name=orderBy,proto3" json:"orderBy,omitempty"`
+	Order         string                 `protobuf:"bytes,3,opt,name=order,proto3" json:"order,omitempty"`
 	Page          uint32                 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	RowsPerPage   uint32                 `protobuf:"varint,5,opt,name=rowsPerPage,proto3" json:"rowsPerPage,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -324,6 +325,13 @@ func (x *ListChatRoomRequest) GetOrderBy() string {
 	return ""
 }
 
+func (x *ListChatRoomRequest) GetOrder() string {
+	if x != nil {
+		return x.Order
+	}
+	return ""
+}
+
 func (x *ListChatRoomRequest) GetPage() uint32 {
 	if x != nil {
 		return x.Page
@@ -362,10 +370,11 @@ const file_proto_chat_proto_rawDesc = "" +
 	"\r_imageProfile\"8\n" +
 	"\bLashChat\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\x12\n" +
-	"\x04time\x18\x02 \x01(\tR\x04time\"}\n" +
+	"\x04time\x18\x02 \x01(\tR\x04time\"\x93\x01\n" +
 	"\x13ListChatRoomRequest\x12\x16\n" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x18\n" +
-	"\aorderBy\x18\x02 \x01(\tR\aorderBy\x12\x12\n" +
+	"\aorderBy\x18\x02 \x01(\tR\aorderBy\x12\x14\n" +
+	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage2l\n" +
 	"\vChatService\x12]\n" +
