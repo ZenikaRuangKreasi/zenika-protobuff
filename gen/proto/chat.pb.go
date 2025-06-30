@@ -26,7 +26,7 @@ type ChatHistoryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PhoneNumber   string                 `protobuf:"bytes,1,opt,name=phoneNumber,proto3" json:"phoneNumber,omitempty"`
 	Page          uint32                 `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
-	PerPage       uint32                 `protobuf:"varint,3,opt,name=perPage,proto3" json:"perPage,omitempty"`
+	RowsPerPage   uint32                 `protobuf:"varint,3,opt,name=rowsPerPage,proto3" json:"rowsPerPage,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -75,9 +75,9 @@ func (x *ChatHistoryRequest) GetPage() uint32 {
 	return 0
 }
 
-func (x *ChatHistoryRequest) GetPerPage() uint32 {
+func (x *ChatHistoryRequest) GetRowsPerPage() uint32 {
 	if x != nil {
-		return x.PerPage
+		return x.RowsPerPage
 	}
 	return 0
 }
@@ -598,11 +598,11 @@ var File_proto_chat_proto protoreflect.FileDescriptor
 
 const file_proto_chat_proto_rawDesc = "" +
 	"\n" +
-	"\x10proto/chat.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"d\n" +
+	"\x10proto/chat.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"l\n" +
 	"\x12ChatHistoryRequest\x12 \n" +
 	"\vphoneNumber\x18\x01 \x01(\tR\vphoneNumber\x12\x12\n" +
-	"\x04page\x18\x02 \x01(\rR\x04page\x12\x18\n" +
-	"\aperPage\x18\x03 \x01(\rR\aperPage\"[\n" +
+	"\x04page\x18\x02 \x01(\rR\x04page\x12 \n" +
+	"\vrowsPerPage\x18\x03 \x01(\rR\vrowsPerPage\"[\n" +
 	"\x13ChatHistoryResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12*\n" +
 	"\x04data\x18\x02 \x01(\v2\x16.proto.ChatHistoryDataR\x04data\"\x91\x01\n" +
