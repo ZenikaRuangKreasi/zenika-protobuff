@@ -357,9 +357,10 @@ func (x *Product) GetQty() uint32 {
 
 type UpdateProductRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Price         uint64                 `protobuf:"varint,2,opt,name=price,proto3" json:"price,omitempty"`
-	Qty           uint32                 `protobuf:"varint,3,opt,name=qty,proto3" json:"qty,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Price         uint64                 `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
+	Qty           uint32                 `protobuf:"varint,4,opt,name=qty,proto3" json:"qty,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -392,6 +393,13 @@ func (x *UpdateProductRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateProductRequest.ProtoReflect.Descriptor instead.
 func (*UpdateProductRequest) Descriptor() ([]byte, []int) {
 	return file_proto_product_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateProductRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *UpdateProductRequest) GetName() string {
@@ -573,11 +581,12 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x04R\x05price\x12\x10\n" +
-	"\x03qty\x18\x04 \x01(\rR\x03qty\"R\n" +
-	"\x14UpdateProductRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
-	"\x05price\x18\x02 \x01(\x04R\x05price\x12\x10\n" +
-	"\x03qty\x18\x03 \x01(\rR\x03qty\"#\n" +
+	"\x03qty\x18\x04 \x01(\rR\x03qty\"b\n" +
+	"\x14UpdateProductRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
+	"\x05price\x18\x03 \x01(\x04R\x05price\x12\x10\n" +
+	"\x03qty\x18\x04 \x01(\rR\x03qty\"#\n" +
 	"\x11GetProductRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\xa7\x01\n" +
 	"\x13ListProductsRequest\x12\x16\n" +
@@ -586,14 +595,15 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
-	"\x04date\x18\x06 \x01(\tR\x04date2\x92\x03\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date2\xef\x03\n" +
 	"\x0eProductService\x12]\n" +
 	"\n" +
 	"GetProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/api/v1/products/{id}\x12a\n" +
-	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12c\n" +
-	"\rUpdateProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}\x12Y\n" +
+	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12f\n" +
+	"\rUpdateProduct\x12\x1b.proto.UpdateProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}\x12Q\n" +
 	"\n" +
-	"AddProduct\x12\x16.google.protobuf.Empty\x1a\x16.proto.ProductResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/productsB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"AddProduct\x12\x0e.proto.Product\x1a\x16.proto.ProductResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/products\x12`\n" +
+	"\rDeleteProduct\x12\x18.proto.GetProductRequest\x1a\x16.google.protobuf.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/api/v1/products/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_product_proto_rawDescOnce sync.Once
@@ -625,14 +635,16 @@ var file_proto_product_proto_depIdxs = []int32{
 	4, // 2: proto.ProductResponse.data:type_name -> proto.Product
 	6, // 3: proto.ProductService.GetProduct:input_type -> proto.GetProductRequest
 	7, // 4: proto.ProductService.ListProducts:input_type -> proto.ListProductsRequest
-	6, // 5: proto.ProductService.UpdateProduct:input_type -> proto.GetProductRequest
-	8, // 6: proto.ProductService.AddProduct:input_type -> google.protobuf.Empty
-	3, // 7: proto.ProductService.GetProduct:output_type -> proto.ProductResponse
-	0, // 8: proto.ProductService.ListProducts:output_type -> proto.ListProductsResponse
-	3, // 9: proto.ProductService.UpdateProduct:output_type -> proto.ProductResponse
-	3, // 10: proto.ProductService.AddProduct:output_type -> proto.ProductResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
+	5, // 5: proto.ProductService.UpdateProduct:input_type -> proto.UpdateProductRequest
+	4, // 6: proto.ProductService.AddProduct:input_type -> proto.Product
+	6, // 7: proto.ProductService.DeleteProduct:input_type -> proto.GetProductRequest
+	3, // 8: proto.ProductService.GetProduct:output_type -> proto.ProductResponse
+	0, // 9: proto.ProductService.ListProducts:output_type -> proto.ListProductsResponse
+	3, // 10: proto.ProductService.UpdateProduct:output_type -> proto.ProductResponse
+	3, // 11: proto.ProductService.AddProduct:output_type -> proto.ProductResponse
+	8, // 12: proto.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name
