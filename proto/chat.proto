@@ -13,8 +13,31 @@ service ChatService {
       get: "/api/v1/chat"
     };
   }
+  rpc ChatHistory(ChatHistoryRequest) returns (ChatHistoryResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/chat/{phoneNumber}"
+    };
+  }
 }
-
+message ChatHistoryRequest {
+  string phoneNumber = 1;
+}
+message ChatHistoryResponse{
+    string message = 1;
+    ChatHistoryData data = 2;
+}
+message ChatHistoryData{
+    uint32 page=1;
+    uint32 perPage=2;
+    uint32 totalItems=3;
+    repeated ChatHistoryDataList items=4;
+}
+message ChatHistoryDataList{
+  string id=1;
+  string message=2;
+  string time=3;
+  string sender=4;
+}
 message ListChatRoomResponse {
   string message = 1;
   ChatData data = 2;
