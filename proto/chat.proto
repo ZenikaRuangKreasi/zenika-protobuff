@@ -20,7 +20,9 @@ service ChatService {
   }
 }
 message ChatHistoryRequest {
-  string phoneNumber = 1;
+    string phoneNumber = 1;
+    uint32 page=2;
+    uint32 perPage=3;
 }
 message ChatHistoryResponse{
     string message = 1;
