@@ -20,16 +20,21 @@ service ProductService {
     };
   }
   
-  rpc UpdateProduct(GetProductRequest) returns (ProductResponse) {
+  rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse) {
     option (google.api.http) = {
       put: "/api/v1/products/{id}"
       body: "*"
     };
   }
-  rpc AddProduct(google.protobuf.Empty) returns (ProductResponse) {
+  rpc AddProduct(Product) returns (ProductResponse) {
     option (google.api.http) = {
       post: "/api/v1/products"
       body: "*"
+    };
+  }
+  rpc DeleteProduct(GetProductRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/api/v1/products/{id}"
     };
   }
 }
@@ -65,9 +70,10 @@ message Product{
     uint32 qty=4;
 }
 message UpdateProductRequest{
-  string name=1;
-  uint64 price=2;
-  uint32 qty=3;
+  string id=1;
+  string name=2;
+  uint64 price=3;
+  uint32 qty=4;
 }
 message GetProductRequest {
   string id = 1;

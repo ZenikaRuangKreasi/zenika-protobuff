@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
+
+import "google/api/annotations.proto";
+
+service DeliveryService {
+  rpc GenerateLinkDelivery(GenerateLinkDeliveryRequest) returns (GenerateLinkDeliveryResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/deliveries/generate-link"
+      body: "*"
+    };
+  }
+}
+
+message GenerateLinkDeliveryRequest {
+  string orderId = 1;
+}
+
+message LinkDelivery {
+  string link = 1;
+}
+
+message GenerateLinkDeliveryResponse {
+  string message = 1;
+  LinkDelivery data = 2;
+} 
