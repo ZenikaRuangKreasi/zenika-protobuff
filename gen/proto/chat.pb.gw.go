@@ -42,7 +42,9 @@ func request_ChatService_ListChatRoom_0(ctx context.Context, marshaler runtime.M
 		protoReq ListChatRoomRequest
 		metadata runtime.ServerMetadata
 	)
-	io.Copy(io.Discard, req.Body)
+	if req.Body != nil {
+		_, _ = io.Copy(io.Discard, req.Body)
+	}
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
@@ -80,7 +82,7 @@ func RegisterChatServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.ChatService/ListChatRoom", runtime.WithHTTPPathPattern("/api/v1/chats"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.ChatService/ListChatRoom", runtime.WithHTTPPathPattern("/api/v1/chat"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -138,7 +140,7 @@ func RegisterChatServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/proto.ChatService/ListChatRoom", runtime.WithHTTPPathPattern("/api/v1/chats"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/proto.ChatService/ListChatRoom", runtime.WithHTTPPathPattern("/api/v1/chat"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -155,7 +157,7 @@ func RegisterChatServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_ChatService_ListChatRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "chats"}, ""))
+	pattern_ChatService_ListChatRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "chat"}, ""))
 )
 
 var (

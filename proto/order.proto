@@ -6,6 +6,7 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 
 import "google/api/annotations.proto";
 
+
 service OrderService {
   rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse) {
     option (google.api.http) = {
@@ -24,6 +25,7 @@ service OrderService {
     };
   }
 }
+
 message GetOrderDetailRequest {
   string id = 1;
 }
@@ -35,6 +37,7 @@ message OrderDetailResponse {
   string message = 1;
   OrderDetail data = 2;
 }
+
 message ConfirmationOrderResponse {
   string message = 1;
 }

@@ -8,8 +8,8 @@ import "google/api/annotations.proto";
 
 service DeliveryService {
   rpc GenerateLinkDelivery(GenerateLinkDeliveryRequest) returns (GenerateLinkDeliveryResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/deliveries/generate-link"
+    option (google.api.http) = {  
+      post: "/api/v1/delivery/link-delivery"
       body: "*"
     };
   }
@@ -18,12 +18,11 @@ service DeliveryService {
 message GenerateLinkDeliveryRequest {
   string orderId = 1;
 }
+message GenerateLinkDeliveryResponse {
+  string message = 1;
+  LinkDelivery data = 2;
+}
 
 message LinkDelivery {
   string link = 1;
 }
-
-message GenerateLinkDeliveryResponse {
-  string message = 1;
-  LinkDelivery data = 2;
-} 

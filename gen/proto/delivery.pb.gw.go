@@ -43,6 +43,9 @@ func request_DeliveryService_GenerateLinkDelivery_0(ctx context.Context, marshal
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && !errors.Is(err, io.EOF) {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
+	if req.Body != nil {
+		_, _ = io.Copy(io.Discard, req.Body)
+	}
 	msg, err := client.GenerateLinkDelivery(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 }
@@ -71,7 +74,7 @@ func RegisterDeliveryServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.DeliveryService/GenerateLinkDelivery", runtime.WithHTTPPathPattern("/api/v1/deliveries/generate-link"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.DeliveryService/GenerateLinkDelivery", runtime.WithHTTPPathPattern("/api/v1/delivery/link-delivery"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -129,7 +132,7 @@ func RegisterDeliveryServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/proto.DeliveryService/GenerateLinkDelivery", runtime.WithHTTPPathPattern("/api/v1/deliveries/generate-link"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/proto.DeliveryService/GenerateLinkDelivery", runtime.WithHTTPPathPattern("/api/v1/delivery/link-delivery"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -146,7 +149,7 @@ func RegisterDeliveryServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_DeliveryService_GenerateLinkDelivery_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "deliveries", "generate-link"}, ""))
+	pattern_DeliveryService_GenerateLinkDelivery_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "delivery", "link-delivery"}, ""))
 )
 
 var (

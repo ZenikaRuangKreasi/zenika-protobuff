@@ -66,50 +66,6 @@ func (x *GenerateLinkDeliveryRequest) GetOrderId() string {
 	return ""
 }
 
-type LinkDelivery struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Link          string                 `protobuf:"bytes,1,opt,name=link,proto3" json:"link,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LinkDelivery) Reset() {
-	*x = LinkDelivery{}
-	mi := &file_proto_delivery_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LinkDelivery) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LinkDelivery) ProtoMessage() {}
-
-func (x *LinkDelivery) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_delivery_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LinkDelivery.ProtoReflect.Descriptor instead.
-func (*LinkDelivery) Descriptor() ([]byte, []int) {
-	return file_proto_delivery_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *LinkDelivery) GetLink() string {
-	if x != nil {
-		return x.Link
-	}
-	return ""
-}
-
 type GenerateLinkDeliveryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
@@ -120,7 +76,7 @@ type GenerateLinkDeliveryResponse struct {
 
 func (x *GenerateLinkDeliveryResponse) Reset() {
 	*x = GenerateLinkDeliveryResponse{}
-	mi := &file_proto_delivery_proto_msgTypes[2]
+	mi := &file_proto_delivery_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -132,7 +88,7 @@ func (x *GenerateLinkDeliveryResponse) String() string {
 func (*GenerateLinkDeliveryResponse) ProtoMessage() {}
 
 func (x *GenerateLinkDeliveryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_delivery_proto_msgTypes[2]
+	mi := &file_proto_delivery_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -145,7 +101,7 @@ func (x *GenerateLinkDeliveryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenerateLinkDeliveryResponse.ProtoReflect.Descriptor instead.
 func (*GenerateLinkDeliveryResponse) Descriptor() ([]byte, []int) {
-	return file_proto_delivery_proto_rawDescGZIP(), []int{2}
+	return file_proto_delivery_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GenerateLinkDeliveryResponse) GetMessage() string {
@@ -162,20 +118,64 @@ func (x *GenerateLinkDeliveryResponse) GetData() *LinkDelivery {
 	return nil
 }
 
+type LinkDelivery struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Link          string                 `protobuf:"bytes,1,opt,name=link,proto3" json:"link,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LinkDelivery) Reset() {
+	*x = LinkDelivery{}
+	mi := &file_proto_delivery_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LinkDelivery) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LinkDelivery) ProtoMessage() {}
+
+func (x *LinkDelivery) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_delivery_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LinkDelivery.ProtoReflect.Descriptor instead.
+func (*LinkDelivery) Descriptor() ([]byte, []int) {
+	return file_proto_delivery_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *LinkDelivery) GetLink() string {
+	if x != nil {
+		return x.Link
+	}
+	return ""
+}
+
 var File_proto_delivery_proto protoreflect.FileDescriptor
 
 const file_proto_delivery_proto_rawDesc = "" +
 	"\n" +
 	"\x14proto/delivery.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"7\n" +
 	"\x1bGenerateLinkDeliveryRequest\x12\x18\n" +
-	"\aorderId\x18\x01 \x01(\tR\aorderId\"\"\n" +
-	"\fLinkDelivery\x12\x12\n" +
-	"\x04link\x18\x01 \x01(\tR\x04link\"a\n" +
+	"\aorderId\x18\x01 \x01(\tR\aorderId\"a\n" +
 	"\x1cGenerateLinkDeliveryResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12'\n" +
-	"\x04data\x18\x02 \x01(\v2\x13.proto.LinkDeliveryR\x04data2\xa0\x01\n" +
-	"\x0fDeliveryService\x12\x8c\x01\n" +
-	"\x14GenerateLinkDelivery\x12\".proto.GenerateLinkDeliveryRequest\x1a#.proto.GenerateLinkDeliveryResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/deliveries/generate-linkB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x04data\x18\x02 \x01(\v2\x13.proto.LinkDeliveryR\x04data\"\"\n" +
+	"\fLinkDelivery\x12\x12\n" +
+	"\x04link\x18\x01 \x01(\tR\x04link2\x9e\x01\n" +
+	"\x0fDeliveryService\x12\x8a\x01\n" +
+	"\x14GenerateLinkDelivery\x12\".proto.GenerateLinkDeliveryRequest\x1a#.proto.GenerateLinkDeliveryResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/v1/delivery/link-deliveryB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_delivery_proto_rawDescOnce sync.Once
@@ -192,13 +192,13 @@ func file_proto_delivery_proto_rawDescGZIP() []byte {
 var file_proto_delivery_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_proto_delivery_proto_goTypes = []any{
 	(*GenerateLinkDeliveryRequest)(nil),  // 0: proto.GenerateLinkDeliveryRequest
-	(*LinkDelivery)(nil),                 // 1: proto.LinkDelivery
-	(*GenerateLinkDeliveryResponse)(nil), // 2: proto.GenerateLinkDeliveryResponse
+	(*GenerateLinkDeliveryResponse)(nil), // 1: proto.GenerateLinkDeliveryResponse
+	(*LinkDelivery)(nil),                 // 2: proto.LinkDelivery
 }
 var file_proto_delivery_proto_depIdxs = []int32{
-	1, // 0: proto.GenerateLinkDeliveryResponse.data:type_name -> proto.LinkDelivery
+	2, // 0: proto.GenerateLinkDeliveryResponse.data:type_name -> proto.LinkDelivery
 	0, // 1: proto.DeliveryService.GenerateLinkDelivery:input_type -> proto.GenerateLinkDeliveryRequest
-	2, // 2: proto.DeliveryService.GenerateLinkDelivery:output_type -> proto.GenerateLinkDeliveryResponse
+	1, // 2: proto.DeliveryService.GenerateLinkDelivery:output_type -> proto.GenerateLinkDeliveryResponse
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

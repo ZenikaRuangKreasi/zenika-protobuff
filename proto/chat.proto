@@ -6,54 +6,40 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 
 import "google/api/annotations.proto";
 
+
 service ChatService {
   rpc ListChatRoom(ListChatRoomRequest) returns (ListChatRoomResponse) {
     option (google.api.http) = {
-      get: "/api/v1/chats"
+      get: "/api/v1/chat"
     };
   }
-}
-
-// ChatData is a placeholder message used by the application domain for chat room list responses.
-// More detailed fields can be added later as needed.
-message ChatData {
-  uint32 page = 1;
-  uint32 perPage = 2;
-  uint32 totalItems = 3;
-  repeated ChatDataList items = 4;
-}
-
-message ChatRoom {
-  string id = 1;
-  string customerId = 2;
-  string merchantId = 3;
-  string message = 4;
-  string sender = 5;
-  string createdAt = 6;
-}
-
-message ListChatRoomRequest {
-  string search = 1;
-  string orderBy = 2;
-  string order = 3;
-  uint32 page = 4;
-  uint32 rowsPerPage = 5;
 }
 
 message ListChatRoomResponse {
   string message = 1;
   ChatData data = 2;
 }
-
-message LashChat {
-  string message = 1;
-  string time = 2;
+message ChatData{
+    uint32 page=1;
+    uint32 perPage=2;
+    uint32 totalItems=3;
+    repeated ChatDataList items=4;
 }
-
-message ChatDataList {
-  string id = 1;
-  string name = 2;
-  string phoneNumber = 3;
-  string imageProfile = 4; // optional
-  LashChat lastChat = 5;
+message ChatDataList{
+  string id=1;
+  string phoneNumber=2;
+  string name=3;
+  LashChat lastChat=4;
+  optional string imageProfile=5;
+}
+message LashChat{
+  string message=1;
+  string time=2;
+}
+message ListChatRoomRequest {
+  string search = 1;
+  string orderBy = 2;
+  string order = 3;
+  uint32 page = 4;
+  uint32 rowsPerPage = 5;
 }
