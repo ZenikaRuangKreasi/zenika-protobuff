@@ -18,6 +18,16 @@ service ChatService {
       get: "/api/v1/chat/{phoneNumber}"
     };
   }
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {
+  }
+}
+message SendMessageRequest{
+    string merchantId = 1;
+    string senderNumber = 2;
+    string message = 3;
+}
+message SendMessageResponse{
+    string message = 1;
 }
 message ChatHistoryRequest {
     string phoneNumber = 1;
