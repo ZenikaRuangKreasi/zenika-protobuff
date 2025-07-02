@@ -30,12 +30,15 @@ type Merchant struct {
 	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
 	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
 	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	Longitude     string                 `protobuf:"bytes,6,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	Latitude      string                 `protobuf:"bytes,7,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedBy     string                 `protobuf:"bytes,10,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
-	UpdatedBy     string                 `protobuf:"bytes,11,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	AddressDetail string                 `protobuf:"bytes,6,opt,name=address_detail,json=addressDetail,proto3" json:"address_detail,omitempty"`
+	PostalCode    string                 `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	Catalog       string                 `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
+	Longitude     string                 `protobuf:"bytes,9,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Latitude      string                 `protobuf:"bytes,10,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedBy     string                 `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	UpdatedBy     string                 `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -101,6 +104,27 @@ func (x *Merchant) GetEmail() string {
 func (x *Merchant) GetAddress() string {
 	if x != nil {
 		return x.Address
+	}
+	return ""
+}
+
+func (x *Merchant) GetAddressDetail() string {
+	if x != nil {
+		return x.AddressDetail
+	}
+	return ""
+}
+
+func (x *Merchant) GetPostalCode() string {
+	if x != nil {
+		return x.PostalCode
+	}
+	return ""
+}
+
+func (x *Merchant) GetCatalog() string {
+	if x != nil {
+		return x.Catalog
 	}
 	return ""
 }
@@ -323,24 +347,28 @@ var File_proto_merchant_proto protoreflect.FileDescriptor
 
 const file_proto_merchant_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xaa\x02\n" +
+	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x8c\x03\n" +
 	"\bMerchant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x14\n" +
 	"\x05email\x18\x04 \x01(\tR\x05email\x12\x18\n" +
-	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1c\n" +
-	"\tlongitude\x18\x06 \x01(\tR\tlongitude\x12\x1a\n" +
-	"\blatitude\x18\a \x01(\tR\blatitude\x12\x1d\n" +
+	"\aaddress\x18\x05 \x01(\tR\aaddress\x12%\n" +
+	"\x0eaddress_detail\x18\x06 \x01(\tR\raddressDetail\x12\x1f\n" +
+	"\vpostal_code\x18\a \x01(\tR\n" +
+	"postalCode\x12\x18\n" +
+	"\acatalog\x18\b \x01(\tR\acatalog\x12\x1c\n" +
+	"\tlongitude\x18\t \x01(\tR\tlongitude\x12\x1a\n" +
+	"\blatitude\x18\n" +
+	" \x01(\tR\blatitude\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\b \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"created_at\x18\v \x01(\tR\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\t \x01(\tR\tupdatedAt\x12\x1d\n" +
+	"updated_at\x18\f \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"created_by\x18\n" +
-	" \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"created_by\x18\r \x01(\tR\tcreatedBy\x12\x1d\n" +
 	"\n" +
-	"updated_by\x18\v \x01(\tR\tupdatedBy\"\x1c\n" +
+	"updated_by\x18\x0e \x01(\tR\tupdatedBy\"\x1c\n" +
 	"\n" +
 	"MerchantId\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"X\n" +

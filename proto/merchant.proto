@@ -13,12 +13,15 @@ message Merchant {
   string phone = 3;
   string email = 4;
   string address = 5;
-  string longitude = 6;
-  string latitude = 7;
-  string created_at = 8;
-  string updated_at = 9;
-  string created_by = 10;
-  string updated_by = 11;
+  string address_detail = 6;
+  string postal_code = 7;
+  string catalog = 8;
+  string longitude = 9;
+  string latitude = 10;
+  string created_at = 11;
+  string updated_at = 12;
+  string created_by = 13;
+  string updated_by = 14;
 }
 
 message MerchantId {
