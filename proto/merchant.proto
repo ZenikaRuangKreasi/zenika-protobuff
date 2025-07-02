@@ -60,7 +60,7 @@ service MerchantService {
   }
   rpc UpdateMerchant(Merchant) returns (Merchant) {
     option (google.api.http) = {
-      put: "/api/v1/merchants/{id}"
+      put: "/api/v1/merchants"
       body: "*"
     };
   }
@@ -69,4 +69,4 @@ service MerchantService {
       delete: "/api/v1/merchants/{id}"
     };
   }
-} 
+}

@@ -380,12 +380,12 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\tmerchants\x18\x01 \x03(\v2\r.api.MerchantR\tmerchants\x12\x14\n" +
 	"\x05total\x18\x02 \x01(\x05R\x05total\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\x05R\x05limit2\xbf\x03\n" +
+	"\x05limit\x18\x04 \x01(\x05R\x05limit2\xba\x03\n" +
 	"\x0fMerchantService\x12L\n" +
 	"\x0eCreateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/merchants\x12M\n" +
 	"\vGetMerchant\x12\x0f.api.MerchantId\x1a\r.api.Merchant\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/v1/merchants/{id}\x12a\n" +
-	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12Q\n" +
-	"\x0eUpdateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\x1a\x16/api/v1/merchants/{id}\x12Y\n" +
+	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12L\n" +
+	"\x0eUpdateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\x1a\x11/api/v1/merchants\x12Y\n" +
 	"\x0eDeleteMerchant\x12\x0f.api.MerchantId\x1a\x16.google.protobuf.Empty\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/api/v1/merchants/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
