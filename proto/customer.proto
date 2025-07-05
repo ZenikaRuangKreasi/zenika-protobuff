@@ -12,8 +12,34 @@ service CustomerService {
       get: "/api/v1/customers"
     };
   }
+   rpc DetailCustomers(DetailCustomersRequest) returns (DetailCustomersResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/customers/{id}"
+    };
+  }
 } 
 
+message DetailCustomersRequest {
+  string id = 1;
+}
+message DetailCustomersResponse {
+  string message = 1;
+  DetailCustomers data = 2;
+}
+message DetailCustomers{
+  string phone=1;
+  string name=2;
+  uint32 orderCount=3;
+  string cratedAt=4;
+  repeated CustomerOrder orders=5;
+}
+message CustomerOrder{
+  string orderId=1;
+  string orderNumber=2;
+  string orderDate=3;
+  string orderStatus=4;
+  double amountItem=5;
+}
 message ListCustomersResponse {
   string message = 1;
   CustomerData data = 2;

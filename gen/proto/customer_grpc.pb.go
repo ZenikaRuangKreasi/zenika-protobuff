@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CustomerService_ListCustomers_FullMethodName = "/api.CustomerService/ListCustomers"
+	CustomerService_ListCustomers_FullMethodName   = "/api.CustomerService/ListCustomers"
+	CustomerService_DetailCustomers_FullMethodName = "/api.CustomerService/DetailCustomers"
 )
 
 // CustomerServiceClient is the client API for CustomerService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CustomerServiceClient interface {
 	ListCustomers(ctx context.Context, in *ListCustomersRequest, opts ...grpc.CallOption) (*ListCustomersResponse, error)
+	DetailCustomers(ctx context.Context, in *DetailCustomersRequest, opts ...grpc.CallOption) (*DetailCustomersResponse, error)
 }
 
 type customerServiceClient struct {
@@ -47,11 +49,22 @@ func (c *customerServiceClient) ListCustomers(ctx context.Context, in *ListCusto
 	return out, nil
 }
 
+func (c *customerServiceClient) DetailCustomers(ctx context.Context, in *DetailCustomersRequest, opts ...grpc.CallOption) (*DetailCustomersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DetailCustomersResponse)
+	err := c.cc.Invoke(ctx, CustomerService_DetailCustomers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CustomerServiceServer is the server API for CustomerService service.
 // All implementations must embed UnimplementedCustomerServiceServer
 // for forward compatibility.
 type CustomerServiceServer interface {
 	ListCustomers(context.Context, *ListCustomersRequest) (*ListCustomersResponse, error)
+	DetailCustomers(context.Context, *DetailCustomersRequest) (*DetailCustomersResponse, error)
 	mustEmbedUnimplementedCustomerServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedCustomerServiceServer struct{}
 
 func (UnimplementedCustomerServiceServer) ListCustomers(context.Context, *ListCustomersRequest) (*ListCustomersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCustomers not implemented")
+}
+func (UnimplementedCustomerServiceServer) DetailCustomers(context.Context, *DetailCustomersRequest) (*DetailCustomersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetailCustomers not implemented")
 }
 func (UnimplementedCustomerServiceServer) mustEmbedUnimplementedCustomerServiceServer() {}
 func (UnimplementedCustomerServiceServer) testEmbeddedByValue()                         {}
@@ -104,6 +120,24 @@ func _CustomerService_ListCustomers_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CustomerService_DetailCustomers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DetailCustomersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CustomerServiceServer).DetailCustomers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CustomerService_DetailCustomers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CustomerServiceServer).DetailCustomers(ctx, req.(*DetailCustomersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CustomerService_ServiceDesc is the grpc.ServiceDesc for CustomerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var CustomerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListCustomers",
 			Handler:    _CustomerService_ListCustomers_Handler,
+		},
+		{
+			MethodName: "DetailCustomers",
+			Handler:    _CustomerService_DetailCustomers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
