@@ -29,16 +29,16 @@ type Merchant struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Phone         string                 `protobuf:"bytes,3,opt,name=phone,proto3" json:"phone,omitempty"`
 	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	AddressDetail string                 `protobuf:"bytes,6,opt,name=address_detail,json=addressDetail,proto3" json:"address_detail,omitempty"`
-	PostalCode    string                 `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
-	Catalog       string                 `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
-	Longitude     string                 `protobuf:"bytes,9,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	Latitude      string                 `protobuf:"bytes,10,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedBy     string                 `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
-	UpdatedBy     string                 `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	Address       *string                `protobuf:"bytes,5,opt,name=address,proto3,oneof" json:"address,omitempty"`
+	AddressDetail *string                `protobuf:"bytes,6,opt,name=address_detail,json=addressDetail,proto3,oneof" json:"address_detail,omitempty"`
+	PostalCode    *string                `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3,oneof" json:"postal_code,omitempty"`
+	Catalog       *string                `protobuf:"bytes,8,opt,name=catalog,proto3,oneof" json:"catalog,omitempty"`
+	Longitude     *string                `protobuf:"bytes,9,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
+	Latitude      *string                `protobuf:"bytes,10,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	CreatedAt     *string                `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
+	UpdatedAt     *string                `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
+	CreatedBy     *string                `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
+	UpdatedBy     *string                `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3,oneof" json:"updated_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,71 +102,71 @@ func (x *Merchant) GetEmail() string {
 }
 
 func (x *Merchant) GetAddress() string {
-	if x != nil {
-		return x.Address
+	if x != nil && x.Address != nil {
+		return *x.Address
 	}
 	return ""
 }
 
 func (x *Merchant) GetAddressDetail() string {
-	if x != nil {
-		return x.AddressDetail
+	if x != nil && x.AddressDetail != nil {
+		return *x.AddressDetail
 	}
 	return ""
 }
 
 func (x *Merchant) GetPostalCode() string {
-	if x != nil {
-		return x.PostalCode
+	if x != nil && x.PostalCode != nil {
+		return *x.PostalCode
 	}
 	return ""
 }
 
 func (x *Merchant) GetCatalog() string {
-	if x != nil {
-		return x.Catalog
+	if x != nil && x.Catalog != nil {
+		return *x.Catalog
 	}
 	return ""
 }
 
 func (x *Merchant) GetLongitude() string {
-	if x != nil {
-		return x.Longitude
+	if x != nil && x.Longitude != nil {
+		return *x.Longitude
 	}
 	return ""
 }
 
 func (x *Merchant) GetLatitude() string {
-	if x != nil {
-		return x.Latitude
+	if x != nil && x.Latitude != nil {
+		return *x.Latitude
 	}
 	return ""
 }
 
 func (x *Merchant) GetCreatedAt() string {
-	if x != nil {
-		return x.CreatedAt
+	if x != nil && x.CreatedAt != nil {
+		return *x.CreatedAt
 	}
 	return ""
 }
 
 func (x *Merchant) GetUpdatedAt() string {
-	if x != nil {
-		return x.UpdatedAt
+	if x != nil && x.UpdatedAt != nil {
+		return *x.UpdatedAt
 	}
 	return ""
 }
 
 func (x *Merchant) GetCreatedBy() string {
-	if x != nil {
-		return x.CreatedBy
+	if x != nil && x.CreatedBy != nil {
+		return *x.CreatedBy
 	}
 	return ""
 }
 
 func (x *Merchant) GetUpdatedBy() string {
-	if x != nil {
-		return x.UpdatedBy
+	if x != nil && x.UpdatedBy != nil {
+		return *x.UpdatedBy
 	}
 	return ""
 }
@@ -347,28 +347,41 @@ var File_proto_merchant_proto protoreflect.FileDescriptor
 
 const file_proto_merchant_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x8c\x03\n" +
+	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xd0\x04\n" +
 	"\bMerchant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05phone\x18\x03 \x01(\tR\x05phone\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\x12\x18\n" +
-	"\aaddress\x18\x05 \x01(\tR\aaddress\x12%\n" +
-	"\x0eaddress_detail\x18\x06 \x01(\tR\raddressDetail\x12\x1f\n" +
-	"\vpostal_code\x18\a \x01(\tR\n" +
-	"postalCode\x12\x18\n" +
-	"\acatalog\x18\b \x01(\tR\acatalog\x12\x1c\n" +
-	"\tlongitude\x18\t \x01(\tR\tlongitude\x12\x1a\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12\x1d\n" +
+	"\aaddress\x18\x05 \x01(\tH\x00R\aaddress\x88\x01\x01\x12*\n" +
+	"\x0eaddress_detail\x18\x06 \x01(\tH\x01R\raddressDetail\x88\x01\x01\x12$\n" +
+	"\vpostal_code\x18\a \x01(\tH\x02R\n" +
+	"postalCode\x88\x01\x01\x12\x1d\n" +
+	"\acatalog\x18\b \x01(\tH\x03R\acatalog\x88\x01\x01\x12!\n" +
+	"\tlongitude\x18\t \x01(\tH\x04R\tlongitude\x88\x01\x01\x12\x1f\n" +
 	"\blatitude\x18\n" +
-	" \x01(\tR\blatitude\x12\x1d\n" +
+	" \x01(\tH\x05R\blatitude\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_at\x18\v \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"created_at\x18\v \x01(\tH\x06R\tcreatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_at\x18\f \x01(\tR\tupdatedAt\x12\x1d\n" +
+	"updated_at\x18\f \x01(\tH\aR\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_by\x18\r \x01(\tR\tcreatedBy\x12\x1d\n" +
+	"created_by\x18\r \x01(\tH\bR\tcreatedBy\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_by\x18\x0e \x01(\tR\tupdatedBy\"\x1c\n" +
+	"updated_by\x18\x0e \x01(\tH\tR\tupdatedBy\x88\x01\x01B\n" +
+	"\n" +
+	"\b_addressB\x11\n" +
+	"\x0f_address_detailB\x0e\n" +
+	"\f_postal_codeB\n" +
+	"\n" +
+	"\b_catalogB\f\n" +
+	"\n" +
+	"_longitudeB\v\n" +
+	"\t_latitudeB\r\n" +
+	"\v_created_atB\r\n" +
+	"\v_updated_atB\r\n" +
+	"\v_created_byB\r\n" +
+	"\v_updated_by\"\x1c\n" +
 	"\n" +
 	"MerchantId\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"X\n" +
@@ -432,6 +445,7 @@ func file_proto_merchant_proto_init() {
 	if File_proto_merchant_proto != nil {
 		return
 	}
+	file_proto_merchant_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
