@@ -123,7 +123,7 @@ type DetailCustomers struct {
 	Phone         string                 `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	OrderCount    uint32                 `protobuf:"varint,3,opt,name=orderCount,proto3" json:"orderCount,omitempty"`
-	OrderDate     string                 `protobuf:"bytes,4,opt,name=orderDate,proto3" json:"orderDate,omitempty"`
+	RegisterDate  string                 `protobuf:"bytes,4,opt,name=registerDate,proto3" json:"registerDate,omitempty"`
 	Orders        []*CustomerOrder       `protobuf:"bytes,5,rep,name=orders,proto3" json:"orders,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -180,9 +180,9 @@ func (x *DetailCustomers) GetOrderCount() uint32 {
 	return 0
 }
 
-func (x *DetailCustomers) GetOrderDate() string {
+func (x *DetailCustomers) GetRegisterDate() string {
 	if x != nil {
-		return x.OrderDate
+		return x.RegisterDate
 	}
 	return ""
 }
@@ -559,14 +559,14 @@ const file_proto_customer_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"]\n" +
 	"\x17DetailCustomersResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12(\n" +
-	"\x04data\x18\x02 \x01(\v2\x14.api.DetailCustomersR\x04data\"\xa5\x01\n" +
+	"\x04data\x18\x02 \x01(\v2\x14.api.DetailCustomersR\x04data\"\xab\x01\n" +
 	"\x0fDetailCustomers\x12\x14\n" +
 	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
 	"orderCount\x18\x03 \x01(\rR\n" +
-	"orderCount\x12\x1c\n" +
-	"\torderDate\x18\x04 \x01(\tR\torderDate\x12*\n" +
+	"orderCount\x12\"\n" +
+	"\fregisterDate\x18\x04 \x01(\tR\fregisterDate\x12*\n" +
 	"\x06orders\x18\x05 \x03(\v2\x12.api.CustomerOrderR\x06orders\"\xab\x01\n" +
 	"\rCustomerOrder\x12\x18\n" +
 	"\aorderId\x18\x01 \x01(\tR\aorderId\x12 \n" +

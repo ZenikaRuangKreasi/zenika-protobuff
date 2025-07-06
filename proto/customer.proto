@@ -30,7 +30,7 @@ message DetailCustomers{
   string phone=1;
   string name=2;
   uint32 orderCount=3;
-  string orderDate=4;
+  string registerDate=4;
   repeated CustomerOrder orders=5;
 }
 message CustomerOrder{
