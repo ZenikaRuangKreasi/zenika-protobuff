@@ -7,7 +7,7 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
-message CatalogMeta {
+  message CatalogMeta {
   int64 size = 1;
   string encoding = 2;
   string mimetype = 3;
