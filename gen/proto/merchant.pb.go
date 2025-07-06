@@ -23,6 +23,142 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type CatalogMeta struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Size          int64                  `protobuf:"varint,1,opt,name=size,proto3" json:"size,omitempty"`
+	Encoding      string                 `protobuf:"bytes,2,opt,name=encoding,proto3" json:"encoding,omitempty"`
+	Mimetype      string                 `protobuf:"bytes,3,opt,name=mimetype,proto3" json:"mimetype,omitempty"`
+	Fieldname     string                 `protobuf:"bytes,4,opt,name=fieldname,proto3" json:"fieldname,omitempty"`
+	Originalname  string                 `protobuf:"bytes,5,opt,name=originalname,proto3" json:"originalname,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CatalogMeta) Reset() {
+	*x = CatalogMeta{}
+	mi := &file_proto_merchant_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogMeta) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogMeta) ProtoMessage() {}
+
+func (x *CatalogMeta) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_merchant_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CatalogMeta.ProtoReflect.Descriptor instead.
+func (*CatalogMeta) Descriptor() ([]byte, []int) {
+	return file_proto_merchant_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CatalogMeta) GetSize() int64 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *CatalogMeta) GetEncoding() string {
+	if x != nil {
+		return x.Encoding
+	}
+	return ""
+}
+
+func (x *CatalogMeta) GetMimetype() string {
+	if x != nil {
+		return x.Mimetype
+	}
+	return ""
+}
+
+func (x *CatalogMeta) GetFieldname() string {
+	if x != nil {
+		return x.Fieldname
+	}
+	return ""
+}
+
+func (x *CatalogMeta) GetOriginalname() string {
+	if x != nil {
+		return x.Originalname
+	}
+	return ""
+}
+
+type CatalogFile struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	Meta          *CatalogMeta           `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
+	Thumbnail     string                 `protobuf:"bytes,3,opt,name=thumbnail,proto3" json:"thumbnail,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CatalogFile) Reset() {
+	*x = CatalogFile{}
+	mi := &file_proto_merchant_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogFile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogFile) ProtoMessage() {}
+
+func (x *CatalogFile) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_merchant_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CatalogFile.ProtoReflect.Descriptor instead.
+func (*CatalogFile) Descriptor() ([]byte, []int) {
+	return file_proto_merchant_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CatalogFile) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *CatalogFile) GetMeta() *CatalogMeta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *CatalogFile) GetThumbnail() string {
+	if x != nil {
+		return x.Thumbnail
+	}
+	return ""
+}
+
 type Merchant struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -32,7 +168,7 @@ type Merchant struct {
 	Address       *string                `protobuf:"bytes,5,opt,name=address,proto3,oneof" json:"address,omitempty"`
 	AddressDetail *string                `protobuf:"bytes,6,opt,name=address_detail,json=addressDetail,proto3,oneof" json:"address_detail,omitempty"`
 	PostalCode    *string                `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3,oneof" json:"postal_code,omitempty"`
-	Catalog       *string                `protobuf:"bytes,8,opt,name=catalog,proto3,oneof" json:"catalog,omitempty"`
+	Catalog       *CatalogFile           `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
 	Longitude     *string                `protobuf:"bytes,9,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	Latitude      *string                `protobuf:"bytes,10,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
 	CreatedAt     *string                `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
@@ -45,7 +181,7 @@ type Merchant struct {
 
 func (x *Merchant) Reset() {
 	*x = Merchant{}
-	mi := &file_proto_merchant_proto_msgTypes[0]
+	mi := &file_proto_merchant_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -57,7 +193,7 @@ func (x *Merchant) String() string {
 func (*Merchant) ProtoMessage() {}
 
 func (x *Merchant) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_merchant_proto_msgTypes[0]
+	mi := &file_proto_merchant_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -70,7 +206,7 @@ func (x *Merchant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Merchant.ProtoReflect.Descriptor instead.
 func (*Merchant) Descriptor() ([]byte, []int) {
-	return file_proto_merchant_proto_rawDescGZIP(), []int{0}
+	return file_proto_merchant_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Merchant) GetId() string {
@@ -122,11 +258,11 @@ func (x *Merchant) GetPostalCode() string {
 	return ""
 }
 
-func (x *Merchant) GetCatalog() string {
-	if x != nil && x.Catalog != nil {
-		return *x.Catalog
+func (x *Merchant) GetCatalog() *CatalogFile {
+	if x != nil {
+		return x.Catalog
 	}
-	return ""
+	return nil
 }
 
 func (x *Merchant) GetLongitude() string {
@@ -180,7 +316,7 @@ type MerchantId struct {
 
 func (x *MerchantId) Reset() {
 	*x = MerchantId{}
-	mi := &file_proto_merchant_proto_msgTypes[1]
+	mi := &file_proto_merchant_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +328,7 @@ func (x *MerchantId) String() string {
 func (*MerchantId) ProtoMessage() {}
 
 func (x *MerchantId) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_merchant_proto_msgTypes[1]
+	mi := &file_proto_merchant_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +341,7 @@ func (x *MerchantId) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MerchantId.ProtoReflect.Descriptor instead.
 func (*MerchantId) Descriptor() ([]byte, []int) {
-	return file_proto_merchant_proto_rawDescGZIP(), []int{1}
+	return file_proto_merchant_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MerchantId) GetId() string {
@@ -226,7 +362,7 @@ type ListMerchantsRequest struct {
 
 func (x *ListMerchantsRequest) Reset() {
 	*x = ListMerchantsRequest{}
-	mi := &file_proto_merchant_proto_msgTypes[2]
+	mi := &file_proto_merchant_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +374,7 @@ func (x *ListMerchantsRequest) String() string {
 func (*ListMerchantsRequest) ProtoMessage() {}
 
 func (x *ListMerchantsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_merchant_proto_msgTypes[2]
+	mi := &file_proto_merchant_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +387,7 @@ func (x *ListMerchantsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMerchantsRequest.ProtoReflect.Descriptor instead.
 func (*ListMerchantsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_merchant_proto_rawDescGZIP(), []int{2}
+	return file_proto_merchant_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListMerchantsRequest) GetSearch() string {
@@ -287,7 +423,7 @@ type ListMerchantsResponse struct {
 
 func (x *ListMerchantsResponse) Reset() {
 	*x = ListMerchantsResponse{}
-	mi := &file_proto_merchant_proto_msgTypes[3]
+	mi := &file_proto_merchant_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -299,7 +435,7 @@ func (x *ListMerchantsResponse) String() string {
 func (*ListMerchantsResponse) ProtoMessage() {}
 
 func (x *ListMerchantsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_merchant_proto_msgTypes[3]
+	mi := &file_proto_merchant_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -312,7 +448,7 @@ func (x *ListMerchantsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMerchantsResponse.ProtoReflect.Descriptor instead.
 func (*ListMerchantsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_merchant_proto_rawDescGZIP(), []int{3}
+	return file_proto_merchant_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListMerchantsResponse) GetMerchants() []*Merchant {
@@ -347,7 +483,17 @@ var File_proto_merchant_proto protoreflect.FileDescriptor
 
 const file_proto_merchant_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xd0\x04\n" +
+	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x9b\x01\n" +
+	"\vCatalogMeta\x12\x12\n" +
+	"\x04size\x18\x01 \x01(\x03R\x04size\x12\x1a\n" +
+	"\bencoding\x18\x02 \x01(\tR\bencoding\x12\x1a\n" +
+	"\bmimetype\x18\x03 \x01(\tR\bmimetype\x12\x1c\n" +
+	"\tfieldname\x18\x04 \x01(\tR\tfieldname\x12\"\n" +
+	"\foriginalname\x18\x05 \x01(\tR\foriginalname\"c\n" +
+	"\vCatalogFile\x12\x10\n" +
+	"\x03url\x18\x01 \x01(\tR\x03url\x12$\n" +
+	"\x04meta\x18\x02 \x01(\v2\x10.api.CatalogMetaR\x04meta\x12\x1c\n" +
+	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\xd1\x04\n" +
 	"\bMerchant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -356,25 +502,23 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\aaddress\x18\x05 \x01(\tH\x00R\aaddress\x88\x01\x01\x12*\n" +
 	"\x0eaddress_detail\x18\x06 \x01(\tH\x01R\raddressDetail\x88\x01\x01\x12$\n" +
 	"\vpostal_code\x18\a \x01(\tH\x02R\n" +
-	"postalCode\x88\x01\x01\x12\x1d\n" +
-	"\acatalog\x18\b \x01(\tH\x03R\acatalog\x88\x01\x01\x12!\n" +
-	"\tlongitude\x18\t \x01(\tH\x04R\tlongitude\x88\x01\x01\x12\x1f\n" +
+	"postalCode\x88\x01\x01\x12*\n" +
+	"\acatalog\x18\b \x01(\v2\x10.api.CatalogFileR\acatalog\x12!\n" +
+	"\tlongitude\x18\t \x01(\tH\x03R\tlongitude\x88\x01\x01\x12\x1f\n" +
 	"\blatitude\x18\n" +
-	" \x01(\tH\x05R\blatitude\x88\x01\x01\x12\"\n" +
+	" \x01(\tH\x04R\blatitude\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_at\x18\v \x01(\tH\x06R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"created_at\x18\v \x01(\tH\x05R\tcreatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_at\x18\f \x01(\tH\aR\tupdatedAt\x88\x01\x01\x12\"\n" +
+	"updated_at\x18\f \x01(\tH\x06R\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_by\x18\r \x01(\tH\bR\tcreatedBy\x88\x01\x01\x12\"\n" +
+	"created_by\x18\r \x01(\tH\aR\tcreatedBy\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_by\x18\x0e \x01(\tH\tR\tupdatedBy\x88\x01\x01B\n" +
+	"updated_by\x18\x0e \x01(\tH\bR\tupdatedBy\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\x11\n" +
 	"\x0f_address_detailB\x0e\n" +
-	"\f_postal_codeB\n" +
-	"\n" +
-	"\b_catalogB\f\n" +
+	"\f_postal_codeB\f\n" +
 	"\n" +
 	"_longitudeB\v\n" +
 	"\t_latitudeB\r\n" +
@@ -413,31 +557,35 @@ func file_proto_merchant_proto_rawDescGZIP() []byte {
 	return file_proto_merchant_proto_rawDescData
 }
 
-var file_proto_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_proto_merchant_proto_goTypes = []any{
-	(*Merchant)(nil),              // 0: api.Merchant
-	(*MerchantId)(nil),            // 1: api.MerchantId
-	(*ListMerchantsRequest)(nil),  // 2: api.ListMerchantsRequest
-	(*ListMerchantsResponse)(nil), // 3: api.ListMerchantsResponse
-	(*emptypb.Empty)(nil),         // 4: google.protobuf.Empty
+	(*CatalogMeta)(nil),           // 0: api.CatalogMeta
+	(*CatalogFile)(nil),           // 1: api.CatalogFile
+	(*Merchant)(nil),              // 2: api.Merchant
+	(*MerchantId)(nil),            // 3: api.MerchantId
+	(*ListMerchantsRequest)(nil),  // 4: api.ListMerchantsRequest
+	(*ListMerchantsResponse)(nil), // 5: api.ListMerchantsResponse
+	(*emptypb.Empty)(nil),         // 6: google.protobuf.Empty
 }
 var file_proto_merchant_proto_depIdxs = []int32{
-	0, // 0: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
-	0, // 1: api.MerchantService.CreateMerchant:input_type -> api.Merchant
-	1, // 2: api.MerchantService.GetMerchant:input_type -> api.MerchantId
-	2, // 3: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
-	0, // 4: api.MerchantService.UpdateMerchant:input_type -> api.Merchant
-	1, // 5: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
-	0, // 6: api.MerchantService.CreateMerchant:output_type -> api.Merchant
-	0, // 7: api.MerchantService.GetMerchant:output_type -> api.Merchant
-	3, // 8: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
-	0, // 9: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
-	4, // 10: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
-	6, // [6:11] is the sub-list for method output_type
-	1, // [1:6] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: api.CatalogFile.meta:type_name -> api.CatalogMeta
+	1, // 1: api.Merchant.catalog:type_name -> api.CatalogFile
+	2, // 2: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
+	2, // 3: api.MerchantService.CreateMerchant:input_type -> api.Merchant
+	3, // 4: api.MerchantService.GetMerchant:input_type -> api.MerchantId
+	4, // 5: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
+	2, // 6: api.MerchantService.UpdateMerchant:input_type -> api.Merchant
+	3, // 7: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
+	2, // 8: api.MerchantService.CreateMerchant:output_type -> api.Merchant
+	2, // 9: api.MerchantService.GetMerchant:output_type -> api.Merchant
+	5, // 10: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
+	2, // 11: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
+	6, // 12: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_proto_merchant_proto_init() }
@@ -445,14 +593,14 @@ func file_proto_merchant_proto_init() {
 	if File_proto_merchant_proto != nil {
 		return
 	}
-	file_proto_merchant_proto_msgTypes[0].OneofWrappers = []any{}
+	file_proto_merchant_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_merchant_proto_rawDesc), len(file_proto_merchant_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
