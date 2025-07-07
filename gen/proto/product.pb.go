@@ -293,6 +293,7 @@ type Product struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Price         uint64                 `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
 	Qty           uint32                 `protobuf:"varint,4,opt,name=qty,proto3" json:"qty,omitempty"`
+	Desc          string                 `protobuf:"bytes,5,opt,name=desc,proto3" json:"desc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -355,12 +356,20 @@ func (x *Product) GetQty() uint32 {
 	return 0
 }
 
+func (x *Product) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
+}
+
 type UpdateProductRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Price         uint64                 `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
 	Qty           uint32                 `protobuf:"varint,4,opt,name=qty,proto3" json:"qty,omitempty"`
+	Desc          string                 `protobuf:"bytes,5,opt,name=desc,proto3" json:"desc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -421,6 +430,13 @@ func (x *UpdateProductRequest) GetQty() uint32 {
 		return x.Qty
 	}
 	return 0
+}
+
+func (x *UpdateProductRequest) GetDesc() string {
+	if x != nil {
+		return x.Desc
+	}
+	return ""
 }
 
 type GetProductRequest struct {
@@ -576,17 +592,19 @@ const file_proto_product_proto_rawDesc = "" +
 	"\tupdatedAt\x18\a \x01(\tR\tupdatedAt\"O\n" +
 	"\x0fProductResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\"\n" +
-	"\x04data\x18\x02 \x01(\v2\x0e.proto.ProductR\x04data\"U\n" +
+	"\x04data\x18\x02 \x01(\v2\x0e.proto.ProductR\x04data\"i\n" +
 	"\aProduct\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x04R\x05price\x12\x10\n" +
-	"\x03qty\x18\x04 \x01(\rR\x03qty\"b\n" +
+	"\x03qty\x18\x04 \x01(\rR\x03qty\x12\x12\n" +
+	"\x04desc\x18\x05 \x01(\tR\x04desc\"v\n" +
 	"\x14UpdateProductRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x04R\x05price\x12\x10\n" +
-	"\x03qty\x18\x04 \x01(\rR\x03qty\"#\n" +
+	"\x03qty\x18\x04 \x01(\rR\x03qty\x12\x12\n" +
+	"\x04desc\x18\x05 \x01(\tR\x04desc\"#\n" +
 	"\x11GetProductRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\xa7\x01\n" +
 	"\x13ListProductsRequest\x12\x16\n" +
