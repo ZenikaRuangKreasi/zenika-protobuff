@@ -7,6 +7,20 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
+  message CatalogMeta {
+  int64 size = 1;
+  string encoding = 2;
+  string mimetype = 3;
+  string fieldname = 4;
+  string originalname = 5;
+}
+
+message CatalogFile {
+  string url = 1;
+  CatalogMeta meta = 2;
+  string thumbnail = 3;
+}
+
 message Merchant {
   string id = 1;
   string name = 2;
@@ -15,7 +29,7 @@ message Merchant {
   optional string address = 5;
   optional string address_detail = 6;
   optional string postal_code = 7;
-  optional string catalog = 8;
+  CatalogFile catalog = 8;
   optional string longitude = 9;
   optional string latitude = 10;
   optional string created_at = 11;
