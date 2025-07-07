@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
+
+import "google/protobuf/empty.proto";
+
+service EventService {
+  rpc EventStream(google.protobuf.Empty) returns (stream EventResponse);
+}
+
+message EventResponse {
+  string eventType = 1;
+  string message = 2;
+  string data = 3;
+}
