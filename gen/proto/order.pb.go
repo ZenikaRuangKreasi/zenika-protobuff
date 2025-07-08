@@ -634,6 +634,7 @@ type ListOrdersRequest struct {
 	Page          uint32                 `protobuf:"varint,4,opt,name=page,proto3" json:"page,omitempty"`
 	RowsPerPage   uint32                 `protobuf:"varint,5,opt,name=rowsPerPage,proto3" json:"rowsPerPage,omitempty"`
 	Date          string                 `protobuf:"bytes,6,opt,name=date,proto3" json:"date,omitempty"`
+	OrderType     string                 `protobuf:"bytes,7,opt,name=orderType,proto3" json:"orderType,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -710,6 +711,13 @@ func (x *ListOrdersRequest) GetDate() string {
 	return ""
 }
 
+func (x *ListOrdersRequest) GetOrderType() string {
+	if x != nil {
+		return x.OrderType
+	}
+	return ""
+}
+
 var File_proto_order_proto protoreflect.FileDescriptor
 
 const file_proto_order_proto_rawDesc = "" +
@@ -765,14 +773,15 @@ const file_proto_order_proto_rawDesc = "" +
 	"\vdeliveryFee\x18\x06 \x01(\x04R\vdeliveryFee\x12$\n" +
 	"\rcustomerPhone\x18\a \x01(\tR\rcustomerPhone\x12\x16\n" +
 	"\x06status\x18\b \x01(\tR\x06status\x12\x1c\n" +
-	"\torderDate\x18\t \x01(\tR\torderDate\"\xa5\x01\n" +
+	"\torderDate\x18\t \x01(\tR\torderDate\"\xc3\x01\n" +
 	"\x11ListOrdersRequest\x12\x16\n" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x18\n" +
 	"\aorderBy\x18\x02 \x01(\tR\aorderBy\x12\x14\n" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
-	"\x04date\x18\x06 \x01(\tR\x04date2\xc2\x02\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date\x12\x1c\n" +
+	"\torderType\x18\a \x01(\tR\torderType2\xc2\x02\n" +
 	"\fOrderService\x12Y\n" +
 	"\n" +
 	"ListOrders\x12\x18.proto.ListOrdersRequest\x1a\x19.proto.ListOrdersResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/orders\x12d\n" +

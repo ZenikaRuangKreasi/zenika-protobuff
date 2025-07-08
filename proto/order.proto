@@ -88,4 +88,5 @@ message ListOrdersRequest {
   uint32 page = 4;
   uint32 rowsPerPage = 5;
   string date = 6;
+  string orderType=7;
 }
