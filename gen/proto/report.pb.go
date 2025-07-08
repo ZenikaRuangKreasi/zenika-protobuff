@@ -124,6 +124,7 @@ type ReportData struct {
 	CountsProduct                []float32              `protobuf:"fixed32,2,rep,packed,name=countsProduct,proto3" json:"countsProduct,omitempty"`
 	AccumulatedCountsProduct     []float32              `protobuf:"fixed32,3,rep,packed,name=accumulatedCountsProduct,proto3" json:"accumulatedCountsProduct,omitempty"`
 	AccumulatedCountsSalesAmount []float32              `protobuf:"fixed32,4,rep,packed,name=accumulatedCountsSalesAmount,proto3" json:"accumulatedCountsSalesAmount,omitempty"`
+	XaxisLabel                   []string               `protobuf:"bytes,5,rep,name=xaxisLabel,proto3" json:"xaxisLabel,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
@@ -186,6 +187,13 @@ func (x *ReportData) GetAccumulatedCountsSalesAmount() []float32 {
 	return nil
 }
 
+func (x *ReportData) GetXaxisLabel() []string {
+	if x != nil {
+		return x.XaxisLabel
+	}
+	return nil
+}
+
 var File_proto_report_proto protoreflect.FileDescriptor
 
 const file_proto_report_proto_rawDesc = "" +
@@ -195,13 +203,16 @@ const file_proto_report_proto_rawDesc = "" +
 	"\tdateRange\x18\x01 \x01(\tR\tdateRange\"c\n" +
 	" MonthlyTransactionReportResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12%\n" +
-	"\x04data\x18\x02 \x01(\v2\x11.proto.ReportDataR\x04data\"\xe0\x01\n" +
+	"\x04data\x18\x02 \x01(\v2\x11.proto.ReportDataR\x04data\"\x80\x02\n" +
 	"\n" +
 	"ReportData\x12,\n" +
 	"\x11countsSalesAmount\x18\x01 \x03(\x02R\x11countsSalesAmount\x12$\n" +
 	"\rcountsProduct\x18\x02 \x03(\x02R\rcountsProduct\x12:\n" +
 	"\x18accumulatedCountsProduct\x18\x03 \x03(\x02R\x18accumulatedCountsProduct\x12B\n" +
-	"\x1caccumulatedCountsSalesAmount\x18\x04 \x03(\x02R\x1caccumulatedCountsSalesAmount2\xac\x01\n" +
+	"\x1caccumulatedCountsSalesAmount\x18\x04 \x03(\x02R\x1caccumulatedCountsSalesAmount\x12\x1e\n" +
+	"\n" +
+	"xaxisLabel\x18\x05 \x03(\tR\n" +
+	"xaxisLabel2\xac\x01\n" +
 	"\rReportService\x12\x9a\x01\n" +
 	"\x18MonthlyTransactionReport\x12&.proto.MonthlyTransactionReportRequest\x1a'.proto.MonthlyTransactionReportResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/api/v1/report/monthly-transactionB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
