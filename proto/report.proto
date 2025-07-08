@@ -17,6 +17,7 @@ service ReportService {
 
 message MonthlyTransactionReportRequest {
   string dateRange=1;
+  
 }
 message MonthlyTransactionReportResponse {
   string message = 1;
