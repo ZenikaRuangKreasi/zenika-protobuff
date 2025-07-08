@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type EventResponse struct {
+type EventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	EventType     string                 `protobuf:"bytes,1,opt,name=eventType,proto3" json:"eventType,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
@@ -31,20 +31,20 @@ type EventResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *EventResponse) Reset() {
-	*x = EventResponse{}
+func (x *EventRequest) Reset() {
+	*x = EventRequest{}
 	mi := &file_proto_event_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EventResponse) String() string {
+func (x *EventRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EventResponse) ProtoMessage() {}
+func (*EventRequest) ProtoMessage() {}
 
-func (x *EventResponse) ProtoReflect() protoreflect.Message {
+func (x *EventRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_event_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,26 +56,26 @@ func (x *EventResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EventResponse.ProtoReflect.Descriptor instead.
-func (*EventResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use EventRequest.ProtoReflect.Descriptor instead.
+func (*EventRequest) Descriptor() ([]byte, []int) {
 	return file_proto_event_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EventResponse) GetEventType() string {
+func (x *EventRequest) GetEventType() string {
 	if x != nil {
 		return x.EventType
 	}
 	return ""
 }
 
-func (x *EventResponse) GetMessage() string {
+func (x *EventRequest) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
 	return ""
 }
 
-func (x *EventResponse) GetData() string {
+func (x *EventRequest) GetData() string {
 	if x != nil {
 		return x.Data
 	}
@@ -86,13 +86,13 @@ var File_proto_event_proto protoreflect.FileDescriptor
 
 const file_proto_event_proto_rawDesc = "" +
 	"\n" +
-	"\x11proto/event.proto\x12\x05proto\x1a\x1bgoogle/protobuf/empty.proto\"[\n" +
-	"\rEventResponse\x12\x1c\n" +
+	"\x11proto/event.proto\x12\x05proto\x1a\x1bgoogle/protobuf/empty.proto\"Z\n" +
+	"\fEventRequest\x12\x1c\n" +
 	"\teventType\x18\x01 \x01(\tR\teventType\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\x12\n" +
-	"\x04data\x18\x03 \x01(\tR\x04data2M\n" +
-	"\fEventService\x12=\n" +
-	"\vEventStream\x12\x16.google.protobuf.Empty\x1a\x14.proto.EventResponse0\x01B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x04data\x18\x03 \x01(\tR\x04data2P\n" +
+	"\fEventService\x12@\n" +
+	"\x11SendEventMerchant\x12\x13.proto.EventRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_event_proto_rawDescOnce sync.Once
@@ -108,12 +108,12 @@ func file_proto_event_proto_rawDescGZIP() []byte {
 
 var file_proto_event_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_proto_event_proto_goTypes = []any{
-	(*EventResponse)(nil), // 0: proto.EventResponse
+	(*EventRequest)(nil),  // 0: proto.EventRequest
 	(*emptypb.Empty)(nil), // 1: google.protobuf.Empty
 }
 var file_proto_event_proto_depIdxs = []int32{
-	1, // 0: proto.EventService.EventStream:input_type -> google.protobuf.Empty
-	0, // 1: proto.EventService.EventStream:output_type -> proto.EventResponse
+	0, // 0: proto.EventService.SendEventMerchant:input_type -> proto.EventRequest
+	1, // 1: proto.EventService.SendEventMerchant:output_type -> google.protobuf.Empty
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

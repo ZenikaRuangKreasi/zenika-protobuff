@@ -7,10 +7,10 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 import "google/protobuf/empty.proto";
 
 service EventService {
-  rpc EventStream(google.protobuf.Empty) returns (stream EventResponse);
+  rpc SendEventMerchant(EventRequest) returns (google.protobuf.Empty);
 }
 
-message EventResponse {
+message EventRequest {
   string eventType = 1;
   string message = 2;
   string data = 3;

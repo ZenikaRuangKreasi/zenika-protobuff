@@ -20,14 +20,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	EventService_EventStream_FullMethodName = "/proto.EventService/EventStream"
+	EventService_SendEventMerchant_FullMethodName = "/proto.EventService/SendEventMerchant"
 )
 
 // EventServiceClient is the client API for EventService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type EventServiceClient interface {
-	EventStream(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[EventResponse], error)
+	SendEventMerchant(ctx context.Context, in *EventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type eventServiceClient struct {
@@ -38,30 +38,21 @@ func NewEventServiceClient(cc grpc.ClientConnInterface) EventServiceClient {
 	return &eventServiceClient{cc}
 }
 
-func (c *eventServiceClient) EventStream(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[EventResponse], error) {
+func (c *eventServiceClient) SendEventMerchant(ctx context.Context, in *EventRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &EventService_ServiceDesc.Streams[0], EventService_EventStream_FullMethodName, cOpts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, EventService_SendEventMerchant_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[emptypb.Empty, EventResponse]{ClientStream: stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
+	return out, nil
 }
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type EventService_EventStreamClient = grpc.ServerStreamingClient[EventResponse]
 
 // EventServiceServer is the server API for EventService service.
 // All implementations must embed UnimplementedEventServiceServer
 // for forward compatibility.
 type EventServiceServer interface {
-	EventStream(*emptypb.Empty, grpc.ServerStreamingServer[EventResponse]) error
+	SendEventMerchant(context.Context, *EventRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedEventServiceServer()
 }
 
@@ -72,8 +63,8 @@ type EventServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedEventServiceServer struct{}
 
-func (UnimplementedEventServiceServer) EventStream(*emptypb.Empty, grpc.ServerStreamingServer[EventResponse]) error {
-	return status.Errorf(codes.Unimplemented, "method EventStream not implemented")
+func (UnimplementedEventServiceServer) SendEventMerchant(context.Context, *EventRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendEventMerchant not implemented")
 }
 func (UnimplementedEventServiceServer) mustEmbedUnimplementedEventServiceServer() {}
 func (UnimplementedEventServiceServer) testEmbeddedByValue()                      {}
@@ -96,16 +87,23 @@ func RegisterEventServiceServer(s grpc.ServiceRegistrar, srv EventServiceServer)
 	s.RegisterService(&EventService_ServiceDesc, srv)
 }
 
-func _EventService_EventStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(emptypb.Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
+func _EventService_SendEventMerchant_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventRequest)
+	if err := dec(in); err != nil {
+		return nil, err
 	}
-	return srv.(EventServiceServer).EventStream(m, &grpc.GenericServerStream[emptypb.Empty, EventResponse]{ServerStream: stream})
+	if interceptor == nil {
+		return srv.(EventServiceServer).SendEventMerchant(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EventService_SendEventMerchant_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EventServiceServer).SendEventMerchant(ctx, req.(*EventRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type EventService_EventStreamServer = grpc.ServerStreamingServer[EventResponse]
 
 // EventService_ServiceDesc is the grpc.ServiceDesc for EventService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -113,13 +111,12 @@ type EventService_EventStreamServer = grpc.ServerStreamingServer[EventResponse]
 var EventService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.EventService",
 	HandlerType: (*EventServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams: []grpc.StreamDesc{
+	Methods: []grpc.MethodDesc{
 		{
-			StreamName:    "EventStream",
-			Handler:       _EventService_EventStream_Handler,
-			ServerStreams: true,
+			MethodName: "SendEventMerchant",
+			Handler:    _EventService_SendEventMerchant_Handler,
 		},
 	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "proto/event.proto",
 }
