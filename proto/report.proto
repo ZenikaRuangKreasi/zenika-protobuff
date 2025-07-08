@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
+
+import "google/api/annotations.proto";
+
+service ReportService {
+  rpc MonthlyTransactionReport(MonthlyTransactionReportRequest) returns (MonthlyTransactionReportResponse) {
+    option (google.api.http) = {  
+      post: "/api/v1/report/monthly-transaction"
+      body: "*"
+    };
+  }
+}
+
+message MonthlyTransactionReportRequest {
+  string dateRange=1;
+}
+message MonthlyTransactionReportResponse {
+  string message = 1;
+  ReportData data = 2;
+}
+
+message ReportData {
+  repeated float countsSalesAmount = 1;
+  repeated float countsProduct = 2;
+  repeated float accumulatedCountsProduct = 3;
+  repeated float accumulatedCountsSalesAmount = 4;
+
+}
