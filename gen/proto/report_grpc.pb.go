@@ -32,7 +32,7 @@ type ReportServiceClient interface {
 	MonthlyTransactionReport(ctx context.Context, in *MonthlyTransactionReportRequest, opts ...grpc.CallOption) (*MonthlyTransactionReportResponse, error)
 	TransactionDateTimeReport(ctx context.Context, in *TransactionDateTimeReportRequest, opts ...grpc.CallOption) (*TransactionDateTimeReportResponse, error)
 	CompareOrderTransaction(ctx context.Context, in *CompareOrderTransactionRequest, opts ...grpc.CallOption) (*CompareOrderTransactionResponse, error)
-	RecapOrderTransaction(ctx context.Context, in *ListOrdersRequest, opts ...grpc.CallOption) (*RecapOrderTransactionResponse, error)
+	RecapOrderTransaction(ctx context.Context, in *RecapOrderTransactionRequest, opts ...grpc.CallOption) (*RecapOrderTransactionResponse, error)
 }
 
 type reportServiceClient struct {
@@ -73,7 +73,7 @@ func (c *reportServiceClient) CompareOrderTransaction(ctx context.Context, in *C
 	return out, nil
 }
 
-func (c *reportServiceClient) RecapOrderTransaction(ctx context.Context, in *ListOrdersRequest, opts ...grpc.CallOption) (*RecapOrderTransactionResponse, error) {
+func (c *reportServiceClient) RecapOrderTransaction(ctx context.Context, in *RecapOrderTransactionRequest, opts ...grpc.CallOption) (*RecapOrderTransactionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RecapOrderTransactionResponse)
 	err := c.cc.Invoke(ctx, ReportService_RecapOrderTransaction_FullMethodName, in, out, cOpts...)
@@ -90,7 +90,7 @@ type ReportServiceServer interface {
 	MonthlyTransactionReport(context.Context, *MonthlyTransactionReportRequest) (*MonthlyTransactionReportResponse, error)
 	TransactionDateTimeReport(context.Context, *TransactionDateTimeReportRequest) (*TransactionDateTimeReportResponse, error)
 	CompareOrderTransaction(context.Context, *CompareOrderTransactionRequest) (*CompareOrderTransactionResponse, error)
-	RecapOrderTransaction(context.Context, *ListOrdersRequest) (*RecapOrderTransactionResponse, error)
+	RecapOrderTransaction(context.Context, *RecapOrderTransactionRequest) (*RecapOrderTransactionResponse, error)
 	mustEmbedUnimplementedReportServiceServer()
 }
 
@@ -110,7 +110,7 @@ func (UnimplementedReportServiceServer) TransactionDateTimeReport(context.Contex
 func (UnimplementedReportServiceServer) CompareOrderTransaction(context.Context, *CompareOrderTransactionRequest) (*CompareOrderTransactionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompareOrderTransaction not implemented")
 }
-func (UnimplementedReportServiceServer) RecapOrderTransaction(context.Context, *ListOrdersRequest) (*RecapOrderTransactionResponse, error) {
+func (UnimplementedReportServiceServer) RecapOrderTransaction(context.Context, *RecapOrderTransactionRequest) (*RecapOrderTransactionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecapOrderTransaction not implemented")
 }
 func (UnimplementedReportServiceServer) mustEmbedUnimplementedReportServiceServer() {}
@@ -189,7 +189,7 @@ func _ReportService_CompareOrderTransaction_Handler(srv interface{}, ctx context
 }
 
 func _ReportService_RecapOrderTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListOrdersRequest)
+	in := new(RecapOrderTransactionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -201,7 +201,7 @@ func _ReportService_RecapOrderTransaction_Handler(srv interface{}, ctx context.C
 		FullMethod: ReportService_RecapOrderTransaction_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ReportServiceServer).RecapOrderTransaction(ctx, req.(*ListOrdersRequest))
+		return srv.(ReportServiceServer).RecapOrderTransaction(ctx, req.(*RecapOrderTransactionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

@@ -144,7 +144,7 @@ var filter_ReportService_RecapOrderTransaction_0 = &utilities.DoubleArray{Encodi
 
 func request_ReportService_RecapOrderTransaction_0(ctx context.Context, marshaler runtime.Marshaler, client ReportServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq ListOrdersRequest
+		protoReq RecapOrderTransactionRequest
 		metadata runtime.ServerMetadata
 	)
 	if req.Body != nil {
@@ -162,7 +162,7 @@ func request_ReportService_RecapOrderTransaction_0(ctx context.Context, marshale
 
 func local_request_ReportService_RecapOrderTransaction_0(ctx context.Context, marshaler runtime.Marshaler, server ReportServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var (
-		protoReq ListOrdersRequest
+		protoReq RecapOrderTransactionRequest
 		metadata runtime.ServerMetadata
 	)
 	if err := req.ParseForm(); err != nil {
