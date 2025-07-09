@@ -21,14 +21,14 @@ message MonthlyTransactionReportRequest {
 }
 message MonthlyTransactionReportResponse {
   string message = 1;
-  ReportData data = 2;
-  
+  ReportDataMonthly data = 2;
+
 }
 
-message ReportData {
+message ReportDataMonthly {
   repeated float countsSalesAmount = 1;
-  repeated float countsProduct = 2;
-  repeated float accumulatedCountsProduct = 3;
+  repeated float countsOrder = 2;
+  repeated float accumulatedCountsOrder = 3;
   repeated float accumulatedCountsSalesAmount = 4;
   repeated string xaxisLabel = 5;
 

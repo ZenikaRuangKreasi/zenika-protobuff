@@ -69,7 +69,7 @@ func (x *MonthlyTransactionReportRequest) GetDateRange() string {
 type MonthlyTransactionReportResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Data          *ReportData            `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Data          *ReportDataMonthly     `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,38 +111,38 @@ func (x *MonthlyTransactionReportResponse) GetMessage() string {
 	return ""
 }
 
-func (x *MonthlyTransactionReportResponse) GetData() *ReportData {
+func (x *MonthlyTransactionReportResponse) GetData() *ReportDataMonthly {
 	if x != nil {
 		return x.Data
 	}
 	return nil
 }
 
-type ReportData struct {
+type ReportDataMonthly struct {
 	state                        protoimpl.MessageState `protogen:"open.v1"`
 	CountsSalesAmount            []float32              `protobuf:"fixed32,1,rep,packed,name=countsSalesAmount,proto3" json:"countsSalesAmount,omitempty"`
-	CountsProduct                []float32              `protobuf:"fixed32,2,rep,packed,name=countsProduct,proto3" json:"countsProduct,omitempty"`
-	AccumulatedCountsProduct     []float32              `protobuf:"fixed32,3,rep,packed,name=accumulatedCountsProduct,proto3" json:"accumulatedCountsProduct,omitempty"`
+	CountsOrder                  []float32              `protobuf:"fixed32,2,rep,packed,name=countsOrder,proto3" json:"countsOrder,omitempty"`
+	AccumulatedCountsOrder       []float32              `protobuf:"fixed32,3,rep,packed,name=accumulatedCountsOrder,proto3" json:"accumulatedCountsOrder,omitempty"`
 	AccumulatedCountsSalesAmount []float32              `protobuf:"fixed32,4,rep,packed,name=accumulatedCountsSalesAmount,proto3" json:"accumulatedCountsSalesAmount,omitempty"`
 	XaxisLabel                   []string               `protobuf:"bytes,5,rep,name=xaxisLabel,proto3" json:"xaxisLabel,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
 
-func (x *ReportData) Reset() {
-	*x = ReportData{}
+func (x *ReportDataMonthly) Reset() {
+	*x = ReportDataMonthly{}
 	mi := &file_proto_report_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReportData) String() string {
+func (x *ReportDataMonthly) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReportData) ProtoMessage() {}
+func (*ReportDataMonthly) ProtoMessage() {}
 
-func (x *ReportData) ProtoReflect() protoreflect.Message {
+func (x *ReportDataMonthly) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_report_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -154,40 +154,40 @@ func (x *ReportData) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReportData.ProtoReflect.Descriptor instead.
-func (*ReportData) Descriptor() ([]byte, []int) {
+// Deprecated: Use ReportDataMonthly.ProtoReflect.Descriptor instead.
+func (*ReportDataMonthly) Descriptor() ([]byte, []int) {
 	return file_proto_report_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ReportData) GetCountsSalesAmount() []float32 {
+func (x *ReportDataMonthly) GetCountsSalesAmount() []float32 {
 	if x != nil {
 		return x.CountsSalesAmount
 	}
 	return nil
 }
 
-func (x *ReportData) GetCountsProduct() []float32 {
+func (x *ReportDataMonthly) GetCountsOrder() []float32 {
 	if x != nil {
-		return x.CountsProduct
+		return x.CountsOrder
 	}
 	return nil
 }
 
-func (x *ReportData) GetAccumulatedCountsProduct() []float32 {
+func (x *ReportDataMonthly) GetAccumulatedCountsOrder() []float32 {
 	if x != nil {
-		return x.AccumulatedCountsProduct
+		return x.AccumulatedCountsOrder
 	}
 	return nil
 }
 
-func (x *ReportData) GetAccumulatedCountsSalesAmount() []float32 {
+func (x *ReportDataMonthly) GetAccumulatedCountsSalesAmount() []float32 {
 	if x != nil {
 		return x.AccumulatedCountsSalesAmount
 	}
 	return nil
 }
 
-func (x *ReportData) GetXaxisLabel() []string {
+func (x *ReportDataMonthly) GetXaxisLabel() []string {
 	if x != nil {
 		return x.XaxisLabel
 	}
@@ -200,15 +200,14 @@ const file_proto_report_proto_rawDesc = "" +
 	"\n" +
 	"\x12proto/report.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"?\n" +
 	"\x1fMonthlyTransactionReportRequest\x12\x1c\n" +
-	"\tdateRange\x18\x01 \x01(\tR\tdateRange\"c\n" +
+	"\tdateRange\x18\x01 \x01(\tR\tdateRange\"j\n" +
 	" MonthlyTransactionReportResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\x12%\n" +
-	"\x04data\x18\x02 \x01(\v2\x11.proto.ReportDataR\x04data\"\x80\x02\n" +
-	"\n" +
-	"ReportData\x12,\n" +
-	"\x11countsSalesAmount\x18\x01 \x03(\x02R\x11countsSalesAmount\x12$\n" +
-	"\rcountsProduct\x18\x02 \x03(\x02R\rcountsProduct\x12:\n" +
-	"\x18accumulatedCountsProduct\x18\x03 \x03(\x02R\x18accumulatedCountsProduct\x12B\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12,\n" +
+	"\x04data\x18\x02 \x01(\v2\x18.proto.ReportDataMonthlyR\x04data\"\xff\x01\n" +
+	"\x11ReportDataMonthly\x12,\n" +
+	"\x11countsSalesAmount\x18\x01 \x03(\x02R\x11countsSalesAmount\x12 \n" +
+	"\vcountsOrder\x18\x02 \x03(\x02R\vcountsOrder\x126\n" +
+	"\x16accumulatedCountsOrder\x18\x03 \x03(\x02R\x16accumulatedCountsOrder\x12B\n" +
 	"\x1caccumulatedCountsSalesAmount\x18\x04 \x03(\x02R\x1caccumulatedCountsSalesAmount\x12\x1e\n" +
 	"\n" +
 	"xaxisLabel\x18\x05 \x03(\tR\n" +
@@ -232,10 +231,10 @@ var file_proto_report_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_proto_report_proto_goTypes = []any{
 	(*MonthlyTransactionReportRequest)(nil),  // 0: proto.MonthlyTransactionReportRequest
 	(*MonthlyTransactionReportResponse)(nil), // 1: proto.MonthlyTransactionReportResponse
-	(*ReportData)(nil),                       // 2: proto.ReportData
+	(*ReportDataMonthly)(nil),                // 2: proto.ReportDataMonthly
 }
 var file_proto_report_proto_depIdxs = []int32{
-	2, // 0: proto.MonthlyTransactionReportResponse.data:type_name -> proto.ReportData
+	2, // 0: proto.MonthlyTransactionReportResponse.data:type_name -> proto.ReportDataMonthly
 	0, // 1: proto.ReportService.MonthlyTransactionReport:input_type -> proto.MonthlyTransactionReportRequest
 	1, // 2: proto.ReportService.MonthlyTransactionReport:output_type -> proto.MonthlyTransactionReportResponse
 	2, // [2:3] is the sub-list for method output_type
