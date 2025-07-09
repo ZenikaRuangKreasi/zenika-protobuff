@@ -5,6 +5,7 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/api/annotations.proto";
+import "proto/order.proto";
 
 service ReportService {
   rpc MonthlyTransactionReport(MonthlyTransactionReportRequest) returns (MonthlyTransactionReportResponse) {
@@ -22,7 +23,22 @@ service ReportService {
       get: "/api/v1/report/compare-order-transaction"
     };
   }
+  rpc RecapOrderTransaction(ListOrdersRequest) returns (RecapOrderTransactionResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/recap-order-transaction"
+    };
+  }
 }
+message RecapOrderTransactionResponse {
+  string message = 1;
+  RecapOrderTransactionData data = 2;
+}
+message RecapOrderTransactionData {
+  float totalSalesAmount = 1;
+  float totalOrder = 2;
+  float productCount = 3;
+  float transactionVoid = 4;
+}   
 message CompareOrderTransactionRequest {
   string dateRangeOne = 1;
   string dateRangeTwo = 2;
