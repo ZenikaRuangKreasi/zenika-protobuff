@@ -31,12 +31,10 @@ message TransactionDateTimeReportData {
 
 message MonthlyTransactionReportRequest {
   string dateRange=1;
-
 }
 message MonthlyTransactionReportResponse {
   string message = 1;
   ReportDataMonthly data = 2;
-
 }
 
 message ReportDataMonthly {
