@@ -20,12 +20,10 @@ service ReportService {
 }
 message TransactionDateTimeReportRequest {
   string date=1;
-
 }
 message TransactionDateTimeReportResponse {
   string message = 1;
   TransactionDateTimeReportData data = 2;
-
 }
 message TransactionDateTimeReportData {
   repeated float amounts = 1;
