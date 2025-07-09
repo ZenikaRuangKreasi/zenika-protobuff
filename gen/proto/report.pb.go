@@ -211,9 +211,9 @@ const file_proto_report_proto_rawDesc = "" +
 	"\x1caccumulatedCountsSalesAmount\x18\x04 \x03(\x02R\x1caccumulatedCountsSalesAmount\x12\x1e\n" +
 	"\n" +
 	"xaxisLabel\x18\x05 \x03(\tR\n" +
-	"xaxisLabel2\xac\x01\n" +
-	"\rReportService\x12\x9a\x01\n" +
-	"\x18MonthlyTransactionReport\x12&.proto.MonthlyTransactionReportRequest\x1a'.proto.MonthlyTransactionReportResponse\"-\x82\xd3\xe4\x93\x02':\x01*\"\"/api/v1/report/monthly-transactionB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"xaxisLabel2\xa9\x01\n" +
+	"\rReportService\x12\x97\x01\n" +
+	"\x18MonthlyTransactionReport\x12&.proto.MonthlyTransactionReportRequest\x1a'.proto.MonthlyTransactionReportResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/report/monthly-transactionB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_report_proto_rawDescOnce sync.Once

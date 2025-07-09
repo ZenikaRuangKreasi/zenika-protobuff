@@ -9,8 +9,7 @@ import "google/api/annotations.proto";
 service ReportService {
   rpc MonthlyTransactionReport(MonthlyTransactionReportRequest) returns (MonthlyTransactionReportResponse) {
     option (google.api.http) = {  
-      post: "/api/v1/report/monthly-transaction"
-      body: "*"
+      get: "/api/v1/report/monthly-transaction"
     };
   }
 }
