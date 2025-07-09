@@ -12,6 +12,23 @@ service ReportService {
       get: "/api/v1/report/monthly-transaction"
     };
   }
+  rpc TransactionDateTimeReport(TransactionDateTimeReportRequest) returns (TransactionDateTimeReportResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/transaction-datetime"
+    };
+  }
+}
+message TransactionDateTimeReportRequest {
+  string date=1;
+
+}
+message TransactionDateTimeReportResponse {
+  string message = 1;
+  TransactionDateTimeReportData data = 2;
+
+}
+message TransactionDateTimeReportData {
+  repeated float amounts = 1;
 }
 
 message MonthlyTransactionReportRequest {
