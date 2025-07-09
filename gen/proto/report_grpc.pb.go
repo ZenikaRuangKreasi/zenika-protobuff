@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	ReportService_MonthlyTransactionReport_FullMethodName  = "/proto.ReportService/MonthlyTransactionReport"
 	ReportService_TransactionDateTimeReport_FullMethodName = "/proto.ReportService/TransactionDateTimeReport"
+	ReportService_CompareOrderTransaction_FullMethodName   = "/proto.ReportService/CompareOrderTransaction"
 )
 
 // ReportServiceClient is the client API for ReportService service.
@@ -29,6 +30,7 @@ const (
 type ReportServiceClient interface {
 	MonthlyTransactionReport(ctx context.Context, in *MonthlyTransactionReportRequest, opts ...grpc.CallOption) (*MonthlyTransactionReportResponse, error)
 	TransactionDateTimeReport(ctx context.Context, in *TransactionDateTimeReportRequest, opts ...grpc.CallOption) (*TransactionDateTimeReportResponse, error)
+	CompareOrderTransaction(ctx context.Context, in *CompareOrderTransactionRequest, opts ...grpc.CallOption) (*CompareOrderTransactionResponse, error)
 }
 
 type reportServiceClient struct {
@@ -59,12 +61,23 @@ func (c *reportServiceClient) TransactionDateTimeReport(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *reportServiceClient) CompareOrderTransaction(ctx context.Context, in *CompareOrderTransactionRequest, opts ...grpc.CallOption) (*CompareOrderTransactionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CompareOrderTransactionResponse)
+	err := c.cc.Invoke(ctx, ReportService_CompareOrderTransaction_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReportServiceServer is the server API for ReportService service.
 // All implementations must embed UnimplementedReportServiceServer
 // for forward compatibility.
 type ReportServiceServer interface {
 	MonthlyTransactionReport(context.Context, *MonthlyTransactionReportRequest) (*MonthlyTransactionReportResponse, error)
 	TransactionDateTimeReport(context.Context, *TransactionDateTimeReportRequest) (*TransactionDateTimeReportResponse, error)
+	CompareOrderTransaction(context.Context, *CompareOrderTransactionRequest) (*CompareOrderTransactionResponse, error)
 	mustEmbedUnimplementedReportServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedReportServiceServer) MonthlyTransactionReport(context.Context
 }
 func (UnimplementedReportServiceServer) TransactionDateTimeReport(context.Context, *TransactionDateTimeReportRequest) (*TransactionDateTimeReportResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransactionDateTimeReport not implemented")
+}
+func (UnimplementedReportServiceServer) CompareOrderTransaction(context.Context, *CompareOrderTransactionRequest) (*CompareOrderTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompareOrderTransaction not implemented")
 }
 func (UnimplementedReportServiceServer) mustEmbedUnimplementedReportServiceServer() {}
 func (UnimplementedReportServiceServer) testEmbeddedByValue()                       {}
@@ -138,6 +154,24 @@ func _ReportService_TransactionDateTimeReport_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ReportService_CompareOrderTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompareOrderTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReportServiceServer).CompareOrderTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ReportService_CompareOrderTransaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReportServiceServer).CompareOrderTransaction(ctx, req.(*CompareOrderTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ReportService_ServiceDesc is the grpc.ServiceDesc for ReportService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var ReportService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TransactionDateTimeReport",
 			Handler:    _ReportService_TransactionDateTimeReport_Handler,
+		},
+		{
+			MethodName: "CompareOrderTransaction",
+			Handler:    _ReportService_CompareOrderTransaction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

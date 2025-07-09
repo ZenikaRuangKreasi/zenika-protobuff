@@ -17,7 +17,33 @@ service ReportService {
       get: "/api/v1/report/transaction-datetime"
     };
   }
+  rpc CompareOrderTransaction(CompareOrderTransactionRequest) returns (CompareOrderTransactionResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/compare-order-transaction"
+    };
+  }
 }
+message CompareOrderTransactionRequest {
+  string dateRangeOne = 1;
+  string dateRangeTwo = 2;
+}
+
+message CompareOrderTransactionResponse {
+  string message = 1;
+  CompareOrderTransactionData data = 2;
+}
+
+message CompareOrderTransactionData {
+  RangeData rangeOne = 1;
+  RangeData rangeTwo = 2;
+  repeated string xaxisLabel = 3;
+}
+
+message RangeData {
+  repeated float countsSalesAmount = 1;
+  repeated float countsOrder = 2;
+}
+
 message TransactionDateTimeReportRequest {
   string date=1;
 }
