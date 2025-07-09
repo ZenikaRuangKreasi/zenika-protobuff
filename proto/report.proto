@@ -37,6 +37,7 @@ message CompareOrderTransactionData {
   RangeData rangeOne = 1;
   RangeData rangeTwo = 2;
   repeated string xaxisLabel = 3;
+  repeated string xaxisLabelView = 4;
 }
 
 message RangeData {

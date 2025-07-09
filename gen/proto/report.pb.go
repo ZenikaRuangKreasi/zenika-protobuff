@@ -127,12 +127,13 @@ func (x *CompareOrderTransactionResponse) GetData() *CompareOrderTransactionData
 }
 
 type CompareOrderTransactionData struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	RangeOne      *RangeData             `protobuf:"bytes,1,opt,name=rangeOne,proto3" json:"rangeOne,omitempty"`
-	RangeTwo      *RangeData             `protobuf:"bytes,2,opt,name=rangeTwo,proto3" json:"rangeTwo,omitempty"`
-	XaxisLabel    []string               `protobuf:"bytes,3,rep,name=xaxisLabel,proto3" json:"xaxisLabel,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	RangeOne       *RangeData             `protobuf:"bytes,1,opt,name=rangeOne,proto3" json:"rangeOne,omitempty"`
+	RangeTwo       *RangeData             `protobuf:"bytes,2,opt,name=rangeTwo,proto3" json:"rangeTwo,omitempty"`
+	XaxisLabel     []string               `protobuf:"bytes,3,rep,name=xaxisLabel,proto3" json:"xaxisLabel,omitempty"`
+	XaxisLabelView []string               `protobuf:"bytes,4,rep,name=xaxisLabelView,proto3" json:"xaxisLabelView,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *CompareOrderTransactionData) Reset() {
@@ -182,6 +183,13 @@ func (x *CompareOrderTransactionData) GetRangeTwo() *RangeData {
 func (x *CompareOrderTransactionData) GetXaxisLabel() []string {
 	if x != nil {
 		return x.XaxisLabel
+	}
+	return nil
+}
+
+func (x *CompareOrderTransactionData) GetXaxisLabelView() []string {
+	if x != nil {
+		return x.XaxisLabelView
 	}
 	return nil
 }
@@ -560,13 +568,14 @@ const file_proto_report_proto_rawDesc = "" +
 	"\fdateRangeTwo\x18\x02 \x01(\tR\fdateRangeTwo\"s\n" +
 	"\x1fCompareOrderTransactionResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x126\n" +
-	"\x04data\x18\x02 \x01(\v2\".proto.CompareOrderTransactionDataR\x04data\"\x99\x01\n" +
+	"\x04data\x18\x02 \x01(\v2\".proto.CompareOrderTransactionDataR\x04data\"\xc1\x01\n" +
 	"\x1bCompareOrderTransactionData\x12,\n" +
 	"\brangeOne\x18\x01 \x01(\v2\x10.proto.RangeDataR\brangeOne\x12,\n" +
 	"\brangeTwo\x18\x02 \x01(\v2\x10.proto.RangeDataR\brangeTwo\x12\x1e\n" +
 	"\n" +
 	"xaxisLabel\x18\x03 \x03(\tR\n" +
-	"xaxisLabel\"[\n" +
+	"xaxisLabel\x12&\n" +
+	"\x0exaxisLabelView\x18\x04 \x03(\tR\x0exaxisLabelView\"[\n" +
 	"\tRangeData\x12,\n" +
 	"\x11countsSalesAmount\x18\x01 \x03(\x02R\x11countsSalesAmount\x12 \n" +
 	"\vcountsOrder\x18\x02 \x03(\x02R\vcountsOrder\"6\n" +
