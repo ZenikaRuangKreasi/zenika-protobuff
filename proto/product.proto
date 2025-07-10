@@ -56,7 +56,13 @@ message OrderProductsListRequest {
 }
 message OrderProductsListResponse {
   string message = 1;
-  repeated OrderProduct data = 2;
+  OrderProductData data = 2;
+}
+message OrderProductData{
+    uint32 page=1;
+    uint32 perPage=2;
+    uint32 totalItems=3;
+    repeated OrderProduct items=4;
 }
 message OrderProduct {
   string productName = 1;
