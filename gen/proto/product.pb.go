@@ -954,12 +954,12 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
-	"\x04date\x18\x06 \x01(\tR\x04date2\xf0\x04\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date2\xf7\x04\n" +
 	"\x0eProductService\x12\x7f\n" +
 	"\x11OrderProductsList\x12\x1f.proto.OrderProductsListRequest\x1a .proto.OrderProductsListResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/products/order-products\x12a\n" +
-	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12]\n" +
+	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12d\n" +
 	"\n" +
-	"GetProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/api/v1/products/{id}\x12f\n" +
+	"GetProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/api/v1/products/detail/{id}\x12f\n" +
 	"\rUpdateProduct\x12\x1b.proto.UpdateProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}\x12Q\n" +
 	"\n" +
 	"AddProduct\x12\x0e.proto.Product\x1a\x16.proto.ProductResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/products\x12`\n" +

@@ -307,7 +307,7 @@ func RegisterProductServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.ProductService/GetProduct", runtime.WithHTTPPathPattern("/api/v1/products/{id}"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/proto.ProductService/GetProduct", runtime.WithHTTPPathPattern("/api/v1/products/detail/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -459,7 +459,7 @@ func RegisterProductServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/proto.ProductService/GetProduct", runtime.WithHTTPPathPattern("/api/v1/products/{id}"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/proto.ProductService/GetProduct", runtime.WithHTTPPathPattern("/api/v1/products/detail/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -529,7 +529,7 @@ func RegisterProductServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 var (
 	pattern_ProductService_OrderProductsList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "products", "order-products"}, ""))
 	pattern_ProductService_ListProducts_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "products"}, ""))
-	pattern_ProductService_GetProduct_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "products", "id"}, ""))
+	pattern_ProductService_GetProduct_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"api", "v1", "products", "detail", "id"}, ""))
 	pattern_ProductService_UpdateProduct_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "products", "id"}, ""))
 	pattern_ProductService_AddProduct_0        = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "products"}, ""))
 	pattern_ProductService_DeleteProduct_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "products", "id"}, ""))
