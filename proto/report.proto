@@ -40,7 +40,7 @@ message MonthlyProductReportRequest {
 
 message MonthlyProductReportResponse {
   string message = 1;
-  string data = 2;
+  MonthlyProductReportData data = 2;
 }
 message MonthlyProductReportData {
   repeated string xaxisLabel = 1;

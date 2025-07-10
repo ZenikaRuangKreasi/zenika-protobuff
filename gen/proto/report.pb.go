@@ -75,9 +75,9 @@ func (x *MonthlyProductReportRequest) GetProductIds() string {
 }
 
 type MonthlyProductReportResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Data          string                 `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	Message       string                    `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Data          *MonthlyProductReportData `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,11 +119,11 @@ func (x *MonthlyProductReportResponse) GetMessage() string {
 	return ""
 }
 
-func (x *MonthlyProductReportResponse) GetData() string {
+func (x *MonthlyProductReportResponse) GetData() *MonthlyProductReportData {
 	if x != nil {
 		return x.Data
 	}
-	return ""
+	return nil
 }
 
 type MonthlyProductReportData struct {
@@ -955,10 +955,10 @@ const file_proto_report_proto_rawDesc = "" +
 	"\x04date\x18\x01 \x01(\tR\x04date\x12\x1e\n" +
 	"\n" +
 	"productIds\x18\x02 \x01(\tR\n" +
-	"productIds\"L\n" +
+	"productIds\"m\n" +
 	"\x1cMonthlyProductReportResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\x12\x12\n" +
-	"\x04data\x18\x02 \x01(\tR\x04data\"\x82\x01\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
+	"\x04data\x18\x02 \x01(\v2\x1f.proto.MonthlyProductReportDataR\x04data\"\x82\x01\n" +
 	"\x18MonthlyProductReportData\x12\x1e\n" +
 	"\n" +
 	"xaxisLabel\x18\x01 \x03(\tR\n" +
@@ -1057,28 +1057,29 @@ var file_proto_report_proto_goTypes = []any{
 	(*ReportDataMonthly)(nil),                 // 16: proto.ReportDataMonthly
 }
 var file_proto_report_proto_depIdxs = []int32{
-	3,  // 0: proto.MonthlyProductReportData.productReportData:type_name -> proto.ProductReportData
-	6,  // 1: proto.RecapOrderTransactionResponse.data:type_name -> proto.RecapOrderTransactionData
-	9,  // 2: proto.CompareOrderTransactionResponse.data:type_name -> proto.CompareOrderTransactionData
-	10, // 3: proto.CompareOrderTransactionData.rangeOne:type_name -> proto.RangeData
-	10, // 4: proto.CompareOrderTransactionData.rangeTwo:type_name -> proto.RangeData
-	13, // 5: proto.TransactionDateTimeReportResponse.data:type_name -> proto.TransactionDateTimeReportData
-	16, // 6: proto.MonthlyTransactionReportResponse.data:type_name -> proto.ReportDataMonthly
-	14, // 7: proto.ReportService.MonthlyTransactionReport:input_type -> proto.MonthlyTransactionReportRequest
-	11, // 8: proto.ReportService.TransactionDateTimeReport:input_type -> proto.TransactionDateTimeReportRequest
-	7,  // 9: proto.ReportService.CompareOrderTransaction:input_type -> proto.CompareOrderTransactionRequest
-	4,  // 10: proto.ReportService.RecapOrderTransaction:input_type -> proto.RecapOrderTransactionRequest
-	0,  // 11: proto.ReportService.MonthlyProductReport:input_type -> proto.MonthlyProductReportRequest
-	15, // 12: proto.ReportService.MonthlyTransactionReport:output_type -> proto.MonthlyTransactionReportResponse
-	12, // 13: proto.ReportService.TransactionDateTimeReport:output_type -> proto.TransactionDateTimeReportResponse
-	8,  // 14: proto.ReportService.CompareOrderTransaction:output_type -> proto.CompareOrderTransactionResponse
-	5,  // 15: proto.ReportService.RecapOrderTransaction:output_type -> proto.RecapOrderTransactionResponse
-	1,  // 16: proto.ReportService.MonthlyProductReport:output_type -> proto.MonthlyProductReportResponse
-	12, // [12:17] is the sub-list for method output_type
-	7,  // [7:12] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	2,  // 0: proto.MonthlyProductReportResponse.data:type_name -> proto.MonthlyProductReportData
+	3,  // 1: proto.MonthlyProductReportData.productReportData:type_name -> proto.ProductReportData
+	6,  // 2: proto.RecapOrderTransactionResponse.data:type_name -> proto.RecapOrderTransactionData
+	9,  // 3: proto.CompareOrderTransactionResponse.data:type_name -> proto.CompareOrderTransactionData
+	10, // 4: proto.CompareOrderTransactionData.rangeOne:type_name -> proto.RangeData
+	10, // 5: proto.CompareOrderTransactionData.rangeTwo:type_name -> proto.RangeData
+	13, // 6: proto.TransactionDateTimeReportResponse.data:type_name -> proto.TransactionDateTimeReportData
+	16, // 7: proto.MonthlyTransactionReportResponse.data:type_name -> proto.ReportDataMonthly
+	14, // 8: proto.ReportService.MonthlyTransactionReport:input_type -> proto.MonthlyTransactionReportRequest
+	11, // 9: proto.ReportService.TransactionDateTimeReport:input_type -> proto.TransactionDateTimeReportRequest
+	7,  // 10: proto.ReportService.CompareOrderTransaction:input_type -> proto.CompareOrderTransactionRequest
+	4,  // 11: proto.ReportService.RecapOrderTransaction:input_type -> proto.RecapOrderTransactionRequest
+	0,  // 12: proto.ReportService.MonthlyProductReport:input_type -> proto.MonthlyProductReportRequest
+	15, // 13: proto.ReportService.MonthlyTransactionReport:output_type -> proto.MonthlyTransactionReportResponse
+	12, // 14: proto.ReportService.TransactionDateTimeReport:output_type -> proto.TransactionDateTimeReportResponse
+	8,  // 15: proto.ReportService.CompareOrderTransaction:output_type -> proto.CompareOrderTransactionResponse
+	5,  // 16: proto.ReportService.RecapOrderTransaction:output_type -> proto.RecapOrderTransactionResponse
+	1,  // 17: proto.ReportService.MonthlyProductReport:output_type -> proto.MonthlyProductReportResponse
+	13, // [13:18] is the sub-list for method output_type
+	8,  // [8:13] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_proto_report_proto_init() }
