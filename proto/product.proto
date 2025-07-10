@@ -72,6 +72,7 @@ message OrderProduct {
   int32 qty = 5;
   int32 price = 6;
   int64 itemsPrice = 7; 
+  string orderDate = 8;
 }
 message ListProductsResponse {
   string message = 1;

@@ -244,6 +244,7 @@ type OrderProduct struct {
 	Qty           int32                  `protobuf:"varint,5,opt,name=qty,proto3" json:"qty,omitempty"`
 	Price         int32                  `protobuf:"varint,6,opt,name=price,proto3" json:"price,omitempty"`
 	ItemsPrice    int64                  `protobuf:"varint,7,opt,name=itemsPrice,proto3" json:"itemsPrice,omitempty"`
+	OrderDate     string                 `protobuf:"bytes,8,opt,name=orderDate,proto3" json:"orderDate,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -325,6 +326,13 @@ func (x *OrderProduct) GetItemsPrice() int64 {
 		return x.ItemsPrice
 	}
 	return 0
+}
+
+func (x *OrderProduct) GetOrderDate() string {
+	if x != nil {
+		return x.OrderDate
+	}
+	return ""
 }
 
 type ListProductsResponse struct {
@@ -893,7 +901,7 @@ const file_proto_product_proto_rawDesc = "" +
 	"\n" +
 	"totalItems\x18\x03 \x01(\rR\n" +
 	"totalItems\x12)\n" +
-	"\x05items\x18\x04 \x03(\v2\x13.proto.OrderProductR\x05items\"\xd6\x01\n" +
+	"\x05items\x18\x04 \x03(\v2\x13.proto.OrderProductR\x05items\"\xf4\x01\n" +
 	"\fOrderProduct\x12 \n" +
 	"\vproductName\x18\x01 \x01(\tR\vproductName\x12\x18\n" +
 	"\aorderId\x18\x02 \x01(\tR\aorderId\x12 \n" +
@@ -903,7 +911,8 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x05price\x18\x06 \x01(\x05R\x05price\x12\x1e\n" +
 	"\n" +
 	"itemsPrice\x18\a \x01(\x03R\n" +
-	"itemsPrice\"X\n" +
+	"itemsPrice\x12\x1c\n" +
+	"\torderDate\x18\b \x01(\tR\torderDate\"X\n" +
 	"\x14ListProductsResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12&\n" +
 	"\x04data\x18\x02 \x01(\v2\x12.proto.ProductDataR\x04data\"\x8a\x01\n" +
