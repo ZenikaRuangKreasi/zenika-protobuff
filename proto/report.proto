@@ -27,6 +27,28 @@ service ReportService {
       get: "/api/v1/report/recap-order-transaction"
     };
   }
+  rpc MonthlyProductReport(MonthlyProductReportRequest) returns (MonthlyProductReportResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/monthly-product-report"
+    };
+  }
+}
+message MonthlyProductReportRequest {
+  string date = 1;
+  string productIds = 2;
+}
+
+message MonthlyProductReportResponse {
+  string message = 1;
+  string data = 2;
+}
+message MonthlyProductReportData {
+  repeated string xaxisLabel = 1;
+  repeated ProductReportData productReportData = 2;
+}
+message ProductReportData {
+  string name = 1;
+  repeated string data = 2;
 }
 message RecapOrderTransactionRequest {
   string search = 1;
