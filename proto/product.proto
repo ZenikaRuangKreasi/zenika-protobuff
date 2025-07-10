@@ -20,6 +20,7 @@ service ProductService {
     };
   }
   
+  
   rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse) {
     option (google.api.http) = {
       put: "/api/v1/products/{id}"
@@ -37,8 +38,35 @@ service ProductService {
       delete: "/api/v1/products/{id}"
     };
   }
+  rpc OrderProductsList(OrderProductsListRequest) returns (OrderProductsListResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/order-products"
+    };
+  }
 }
 
+message OrderProductsListRequest {
+  string search = 1;
+  string orderBy = 2;
+  string order = 3;
+  uint32 page = 4;
+  uint32 rowsPerPage = 5;
+  string date = 6;
+  string orderType=7;
+}
+message OrderProductsListResponse {
+  string message = 1;
+  repeated OrderProduct data = 2;
+}
+message OrderProduct {
+  string productName = 1;
+  string orderId = 2;
+  string orderNumber = 3;
+  string orderStatus = 4;
+  int32 qty = 5;
+  int32 price = 6;
+  int64 itemsPrice = 7; 
+}
 message ListProductsResponse {
   string message = 1;
   ProductData data = 2;
