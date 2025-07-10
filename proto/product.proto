@@ -8,18 +8,21 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
 service ProductService {
-  rpc GetProduct(GetProductRequest) returns (ProductResponse) {
+  rpc OrderProductsList(OrderProductsListRequest) returns (OrderProductsListResponse) {
     option (google.api.http) = {
-      get: "/api/v1/products/{id}"
+      get: "/api/v1/products/order-products"
     };
   }
-  
   rpc ListProducts(ListProductsRequest) returns (ListProductsResponse) {
     option (google.api.http) = {
       get: "/api/v1/products"
     };
   }
-  
+  rpc GetProduct(GetProductRequest) returns (ProductResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/products/{id}"
+    };
+  }
   
   rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse) {
     option (google.api.http) = {
@@ -38,11 +41,7 @@ service ProductService {
       delete: "/api/v1/products/{id}"
     };
   }
-  rpc OrderProductsList(OrderProductsListRequest) returns (OrderProductsListResponse) {
-    option (google.api.http) = {
-      get: "/api/v1/order-products"
-    };
-  }
+
 }
 
 message OrderProductsListRequest {

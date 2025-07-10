@@ -954,16 +954,16 @@ const file_proto_product_proto_rawDesc = "" +
 	"\x05order\x18\x03 \x01(\tR\x05order\x12\x12\n" +
 	"\x04page\x18\x04 \x01(\rR\x04page\x12 \n" +
 	"\vrowsPerPage\x18\x05 \x01(\rR\vrowsPerPage\x12\x12\n" +
-	"\x04date\x18\x06 \x01(\tR\x04date2\xe7\x04\n" +
-	"\x0eProductService\x12]\n" +
+	"\x04date\x18\x06 \x01(\tR\x04date2\xf0\x04\n" +
+	"\x0eProductService\x12\x7f\n" +
+	"\x11OrderProductsList\x12\x1f.proto.OrderProductsListRequest\x1a .proto.OrderProductsListResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/products/order-products\x12a\n" +
+	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12]\n" +
 	"\n" +
-	"GetProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/api/v1/products/{id}\x12a\n" +
-	"\fListProducts\x12\x1a.proto.ListProductsRequest\x1a\x1b.proto.ListProductsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/products\x12f\n" +
+	"GetProduct\x12\x18.proto.GetProductRequest\x1a\x16.proto.ProductResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/api/v1/products/{id}\x12f\n" +
 	"\rUpdateProduct\x12\x1b.proto.UpdateProductRequest\x1a\x16.proto.ProductResponse\" \x82\xd3\xe4\x93\x02\x1a:\x01*\x1a\x15/api/v1/products/{id}\x12Q\n" +
 	"\n" +
 	"AddProduct\x12\x0e.proto.Product\x1a\x16.proto.ProductResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/products\x12`\n" +
-	"\rDeleteProduct\x12\x18.proto.GetProductRequest\x1a\x16.google.protobuf.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/api/v1/products/{id}\x12v\n" +
-	"\x11OrderProductsList\x12\x1f.proto.OrderProductsListRequest\x1a .proto.OrderProductsListResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/v1/order-productsB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\rDeleteProduct\x12\x18.proto.GetProductRequest\x1a\x16.google.protobuf.Empty\"\x1d\x82\xd3\xe4\x93\x02\x17*\x15/api/v1/products/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_product_proto_rawDescOnce sync.Once
@@ -999,18 +999,18 @@ var file_proto_product_proto_depIdxs = []int32{
 	5,  // 2: proto.ListProductsResponse.data:type_name -> proto.ProductData
 	6,  // 3: proto.ProductData.items:type_name -> proto.ProductTableData
 	8,  // 4: proto.ProductResponse.data:type_name -> proto.Product
-	10, // 5: proto.ProductService.GetProduct:input_type -> proto.GetProductRequest
+	0,  // 5: proto.ProductService.OrderProductsList:input_type -> proto.OrderProductsListRequest
 	11, // 6: proto.ProductService.ListProducts:input_type -> proto.ListProductsRequest
-	9,  // 7: proto.ProductService.UpdateProduct:input_type -> proto.UpdateProductRequest
-	8,  // 8: proto.ProductService.AddProduct:input_type -> proto.Product
-	10, // 9: proto.ProductService.DeleteProduct:input_type -> proto.GetProductRequest
-	0,  // 10: proto.ProductService.OrderProductsList:input_type -> proto.OrderProductsListRequest
-	7,  // 11: proto.ProductService.GetProduct:output_type -> proto.ProductResponse
+	10, // 7: proto.ProductService.GetProduct:input_type -> proto.GetProductRequest
+	9,  // 8: proto.ProductService.UpdateProduct:input_type -> proto.UpdateProductRequest
+	8,  // 9: proto.ProductService.AddProduct:input_type -> proto.Product
+	10, // 10: proto.ProductService.DeleteProduct:input_type -> proto.GetProductRequest
+	1,  // 11: proto.ProductService.OrderProductsList:output_type -> proto.OrderProductsListResponse
 	4,  // 12: proto.ProductService.ListProducts:output_type -> proto.ListProductsResponse
-	7,  // 13: proto.ProductService.UpdateProduct:output_type -> proto.ProductResponse
-	7,  // 14: proto.ProductService.AddProduct:output_type -> proto.ProductResponse
-	12, // 15: proto.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
-	1,  // 16: proto.ProductService.OrderProductsList:output_type -> proto.OrderProductsListResponse
+	7,  // 13: proto.ProductService.GetProduct:output_type -> proto.ProductResponse
+	7,  // 14: proto.ProductService.UpdateProduct:output_type -> proto.ProductResponse
+	7,  // 15: proto.ProductService.AddProduct:output_type -> proto.ProductResponse
+	12, // 16: proto.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
 	11, // [11:17] is the sub-list for method output_type
 	5,  // [5:11] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
