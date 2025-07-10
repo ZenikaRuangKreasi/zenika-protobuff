@@ -22,6 +22,154 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ProductFilterListRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Date          string                 `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProductFilterListRequest) Reset() {
+	*x = ProductFilterListRequest{}
+	mi := &file_proto_report_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProductFilterListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProductFilterListRequest) ProtoMessage() {}
+
+func (x *ProductFilterListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_report_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProductFilterListRequest.ProtoReflect.Descriptor instead.
+func (*ProductFilterListRequest) Descriptor() ([]byte, []int) {
+	return file_proto_report_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ProductFilterListRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type ProductFilterListResponse struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Message       string                   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Data          []*ProductFilterListData `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProductFilterListResponse) Reset() {
+	*x = ProductFilterListResponse{}
+	mi := &file_proto_report_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProductFilterListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProductFilterListResponse) ProtoMessage() {}
+
+func (x *ProductFilterListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_report_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProductFilterListResponse.ProtoReflect.Descriptor instead.
+func (*ProductFilterListResponse) Descriptor() ([]byte, []int) {
+	return file_proto_report_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ProductFilterListResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *ProductFilterListResponse) GetData() []*ProductFilterListData {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type ProductFilterListData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Label         string                 `protobuf:"bytes,1,opt,name=label,proto3" json:"label,omitempty"`
+	Value         string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProductFilterListData) Reset() {
+	*x = ProductFilterListData{}
+	mi := &file_proto_report_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProductFilterListData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProductFilterListData) ProtoMessage() {}
+
+func (x *ProductFilterListData) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_report_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProductFilterListData.ProtoReflect.Descriptor instead.
+func (*ProductFilterListData) Descriptor() ([]byte, []int) {
+	return file_proto_report_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ProductFilterListData) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
+}
+
+func (x *ProductFilterListData) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
 type MonthlyProductReportRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Date          string                 `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
@@ -33,7 +181,7 @@ type MonthlyProductReportRequest struct {
 
 func (x *MonthlyProductReportRequest) Reset() {
 	*x = MonthlyProductReportRequest{}
-	mi := &file_proto_report_proto_msgTypes[0]
+	mi := &file_proto_report_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +193,7 @@ func (x *MonthlyProductReportRequest) String() string {
 func (*MonthlyProductReportRequest) ProtoMessage() {}
 
 func (x *MonthlyProductReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[0]
+	mi := &file_proto_report_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +206,7 @@ func (x *MonthlyProductReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MonthlyProductReportRequest.ProtoReflect.Descriptor instead.
 func (*MonthlyProductReportRequest) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{0}
+	return file_proto_report_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MonthlyProductReportRequest) GetDate() string {
@@ -92,7 +240,7 @@ type MonthlyProductReportResponse struct {
 
 func (x *MonthlyProductReportResponse) Reset() {
 	*x = MonthlyProductReportResponse{}
-	mi := &file_proto_report_proto_msgTypes[1]
+	mi := &file_proto_report_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -104,7 +252,7 @@ func (x *MonthlyProductReportResponse) String() string {
 func (*MonthlyProductReportResponse) ProtoMessage() {}
 
 func (x *MonthlyProductReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[1]
+	mi := &file_proto_report_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -117,7 +265,7 @@ func (x *MonthlyProductReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MonthlyProductReportResponse.ProtoReflect.Descriptor instead.
 func (*MonthlyProductReportResponse) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{1}
+	return file_proto_report_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MonthlyProductReportResponse) GetMessage() string {
@@ -144,7 +292,7 @@ type MonthlyProductReportData struct {
 
 func (x *MonthlyProductReportData) Reset() {
 	*x = MonthlyProductReportData{}
-	mi := &file_proto_report_proto_msgTypes[2]
+	mi := &file_proto_report_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -156,7 +304,7 @@ func (x *MonthlyProductReportData) String() string {
 func (*MonthlyProductReportData) ProtoMessage() {}
 
 func (x *MonthlyProductReportData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[2]
+	mi := &file_proto_report_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -169,7 +317,7 @@ func (x *MonthlyProductReportData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MonthlyProductReportData.ProtoReflect.Descriptor instead.
 func (*MonthlyProductReportData) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{2}
+	return file_proto_report_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *MonthlyProductReportData) GetXaxisLabel() []string {
@@ -196,7 +344,7 @@ type ProductReportData struct {
 
 func (x *ProductReportData) Reset() {
 	*x = ProductReportData{}
-	mi := &file_proto_report_proto_msgTypes[3]
+	mi := &file_proto_report_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -208,7 +356,7 @@ func (x *ProductReportData) String() string {
 func (*ProductReportData) ProtoMessage() {}
 
 func (x *ProductReportData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[3]
+	mi := &file_proto_report_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -221,7 +369,7 @@ func (x *ProductReportData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProductReportData.ProtoReflect.Descriptor instead.
 func (*ProductReportData) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{3}
+	return file_proto_report_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ProductReportData) GetName() string {
@@ -249,7 +397,7 @@ type RecapOrderTransactionRequest struct {
 
 func (x *RecapOrderTransactionRequest) Reset() {
 	*x = RecapOrderTransactionRequest{}
-	mi := &file_proto_report_proto_msgTypes[4]
+	mi := &file_proto_report_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -261,7 +409,7 @@ func (x *RecapOrderTransactionRequest) String() string {
 func (*RecapOrderTransactionRequest) ProtoMessage() {}
 
 func (x *RecapOrderTransactionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[4]
+	mi := &file_proto_report_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -274,7 +422,7 @@ func (x *RecapOrderTransactionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecapOrderTransactionRequest.ProtoReflect.Descriptor instead.
 func (*RecapOrderTransactionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{4}
+	return file_proto_report_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *RecapOrderTransactionRequest) GetSearch() string {
@@ -308,7 +456,7 @@ type RecapOrderTransactionResponse struct {
 
 func (x *RecapOrderTransactionResponse) Reset() {
 	*x = RecapOrderTransactionResponse{}
-	mi := &file_proto_report_proto_msgTypes[5]
+	mi := &file_proto_report_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -320,7 +468,7 @@ func (x *RecapOrderTransactionResponse) String() string {
 func (*RecapOrderTransactionResponse) ProtoMessage() {}
 
 func (x *RecapOrderTransactionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[5]
+	mi := &file_proto_report_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -333,7 +481,7 @@ func (x *RecapOrderTransactionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecapOrderTransactionResponse.ProtoReflect.Descriptor instead.
 func (*RecapOrderTransactionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{5}
+	return file_proto_report_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RecapOrderTransactionResponse) GetMessage() string {
@@ -362,7 +510,7 @@ type RecapOrderTransactionData struct {
 
 func (x *RecapOrderTransactionData) Reset() {
 	*x = RecapOrderTransactionData{}
-	mi := &file_proto_report_proto_msgTypes[6]
+	mi := &file_proto_report_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -374,7 +522,7 @@ func (x *RecapOrderTransactionData) String() string {
 func (*RecapOrderTransactionData) ProtoMessage() {}
 
 func (x *RecapOrderTransactionData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[6]
+	mi := &file_proto_report_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +535,7 @@ func (x *RecapOrderTransactionData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecapOrderTransactionData.ProtoReflect.Descriptor instead.
 func (*RecapOrderTransactionData) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{6}
+	return file_proto_report_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RecapOrderTransactionData) GetTotalSalesAmount() float32 {
@@ -428,7 +576,7 @@ type CompareOrderTransactionRequest struct {
 
 func (x *CompareOrderTransactionRequest) Reset() {
 	*x = CompareOrderTransactionRequest{}
-	mi := &file_proto_report_proto_msgTypes[7]
+	mi := &file_proto_report_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -440,7 +588,7 @@ func (x *CompareOrderTransactionRequest) String() string {
 func (*CompareOrderTransactionRequest) ProtoMessage() {}
 
 func (x *CompareOrderTransactionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[7]
+	mi := &file_proto_report_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -453,7 +601,7 @@ func (x *CompareOrderTransactionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompareOrderTransactionRequest.ProtoReflect.Descriptor instead.
 func (*CompareOrderTransactionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{7}
+	return file_proto_report_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CompareOrderTransactionRequest) GetDateRangeOne() string {
@@ -480,7 +628,7 @@ type CompareOrderTransactionResponse struct {
 
 func (x *CompareOrderTransactionResponse) Reset() {
 	*x = CompareOrderTransactionResponse{}
-	mi := &file_proto_report_proto_msgTypes[8]
+	mi := &file_proto_report_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -492,7 +640,7 @@ func (x *CompareOrderTransactionResponse) String() string {
 func (*CompareOrderTransactionResponse) ProtoMessage() {}
 
 func (x *CompareOrderTransactionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[8]
+	mi := &file_proto_report_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -505,7 +653,7 @@ func (x *CompareOrderTransactionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompareOrderTransactionResponse.ProtoReflect.Descriptor instead.
 func (*CompareOrderTransactionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{8}
+	return file_proto_report_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CompareOrderTransactionResponse) GetMessage() string {
@@ -534,7 +682,7 @@ type CompareOrderTransactionData struct {
 
 func (x *CompareOrderTransactionData) Reset() {
 	*x = CompareOrderTransactionData{}
-	mi := &file_proto_report_proto_msgTypes[9]
+	mi := &file_proto_report_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -546,7 +694,7 @@ func (x *CompareOrderTransactionData) String() string {
 func (*CompareOrderTransactionData) ProtoMessage() {}
 
 func (x *CompareOrderTransactionData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[9]
+	mi := &file_proto_report_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -559,7 +707,7 @@ func (x *CompareOrderTransactionData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompareOrderTransactionData.ProtoReflect.Descriptor instead.
 func (*CompareOrderTransactionData) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{9}
+	return file_proto_report_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CompareOrderTransactionData) GetRangeOne() *RangeData {
@@ -600,7 +748,7 @@ type RangeData struct {
 
 func (x *RangeData) Reset() {
 	*x = RangeData{}
-	mi := &file_proto_report_proto_msgTypes[10]
+	mi := &file_proto_report_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -612,7 +760,7 @@ func (x *RangeData) String() string {
 func (*RangeData) ProtoMessage() {}
 
 func (x *RangeData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[10]
+	mi := &file_proto_report_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -625,7 +773,7 @@ func (x *RangeData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RangeData.ProtoReflect.Descriptor instead.
 func (*RangeData) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{10}
+	return file_proto_report_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RangeData) GetCountsSalesAmount() []float32 {
@@ -651,7 +799,7 @@ type TransactionDateTimeReportRequest struct {
 
 func (x *TransactionDateTimeReportRequest) Reset() {
 	*x = TransactionDateTimeReportRequest{}
-	mi := &file_proto_report_proto_msgTypes[11]
+	mi := &file_proto_report_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -663,7 +811,7 @@ func (x *TransactionDateTimeReportRequest) String() string {
 func (*TransactionDateTimeReportRequest) ProtoMessage() {}
 
 func (x *TransactionDateTimeReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[11]
+	mi := &file_proto_report_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -676,7 +824,7 @@ func (x *TransactionDateTimeReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransactionDateTimeReportRequest.ProtoReflect.Descriptor instead.
 func (*TransactionDateTimeReportRequest) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{11}
+	return file_proto_report_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *TransactionDateTimeReportRequest) GetDate() string {
@@ -696,7 +844,7 @@ type TransactionDateTimeReportResponse struct {
 
 func (x *TransactionDateTimeReportResponse) Reset() {
 	*x = TransactionDateTimeReportResponse{}
-	mi := &file_proto_report_proto_msgTypes[12]
+	mi := &file_proto_report_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -708,7 +856,7 @@ func (x *TransactionDateTimeReportResponse) String() string {
 func (*TransactionDateTimeReportResponse) ProtoMessage() {}
 
 func (x *TransactionDateTimeReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[12]
+	mi := &file_proto_report_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -721,7 +869,7 @@ func (x *TransactionDateTimeReportResponse) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use TransactionDateTimeReportResponse.ProtoReflect.Descriptor instead.
 func (*TransactionDateTimeReportResponse) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{12}
+	return file_proto_report_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *TransactionDateTimeReportResponse) GetMessage() string {
@@ -747,7 +895,7 @@ type TransactionDateTimeReportData struct {
 
 func (x *TransactionDateTimeReportData) Reset() {
 	*x = TransactionDateTimeReportData{}
-	mi := &file_proto_report_proto_msgTypes[13]
+	mi := &file_proto_report_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -759,7 +907,7 @@ func (x *TransactionDateTimeReportData) String() string {
 func (*TransactionDateTimeReportData) ProtoMessage() {}
 
 func (x *TransactionDateTimeReportData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[13]
+	mi := &file_proto_report_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -772,7 +920,7 @@ func (x *TransactionDateTimeReportData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransactionDateTimeReportData.ProtoReflect.Descriptor instead.
 func (*TransactionDateTimeReportData) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{13}
+	return file_proto_report_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *TransactionDateTimeReportData) GetAmounts() []float32 {
@@ -791,7 +939,7 @@ type MonthlyTransactionReportRequest struct {
 
 func (x *MonthlyTransactionReportRequest) Reset() {
 	*x = MonthlyTransactionReportRequest{}
-	mi := &file_proto_report_proto_msgTypes[14]
+	mi := &file_proto_report_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -803,7 +951,7 @@ func (x *MonthlyTransactionReportRequest) String() string {
 func (*MonthlyTransactionReportRequest) ProtoMessage() {}
 
 func (x *MonthlyTransactionReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[14]
+	mi := &file_proto_report_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -816,7 +964,7 @@ func (x *MonthlyTransactionReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MonthlyTransactionReportRequest.ProtoReflect.Descriptor instead.
 func (*MonthlyTransactionReportRequest) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{14}
+	return file_proto_report_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *MonthlyTransactionReportRequest) GetDateRange() string {
@@ -836,7 +984,7 @@ type MonthlyTransactionReportResponse struct {
 
 func (x *MonthlyTransactionReportResponse) Reset() {
 	*x = MonthlyTransactionReportResponse{}
-	mi := &file_proto_report_proto_msgTypes[15]
+	mi := &file_proto_report_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -848,7 +996,7 @@ func (x *MonthlyTransactionReportResponse) String() string {
 func (*MonthlyTransactionReportResponse) ProtoMessage() {}
 
 func (x *MonthlyTransactionReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[15]
+	mi := &file_proto_report_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -861,7 +1009,7 @@ func (x *MonthlyTransactionReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MonthlyTransactionReportResponse.ProtoReflect.Descriptor instead.
 func (*MonthlyTransactionReportResponse) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{15}
+	return file_proto_report_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *MonthlyTransactionReportResponse) GetMessage() string {
@@ -891,7 +1039,7 @@ type ReportDataMonthly struct {
 
 func (x *ReportDataMonthly) Reset() {
 	*x = ReportDataMonthly{}
-	mi := &file_proto_report_proto_msgTypes[16]
+	mi := &file_proto_report_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -903,7 +1051,7 @@ func (x *ReportDataMonthly) String() string {
 func (*ReportDataMonthly) ProtoMessage() {}
 
 func (x *ReportDataMonthly) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_report_proto_msgTypes[16]
+	mi := &file_proto_report_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -916,7 +1064,7 @@ func (x *ReportDataMonthly) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReportDataMonthly.ProtoReflect.Descriptor instead.
 func (*ReportDataMonthly) Descriptor() ([]byte, []int) {
-	return file_proto_report_proto_rawDescGZIP(), []int{16}
+	return file_proto_report_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ReportDataMonthly) GetCountsSalesAmount() []float32 {
@@ -958,7 +1106,15 @@ var File_proto_report_proto protoreflect.FileDescriptor
 
 const file_proto_report_proto_rawDesc = "" +
 	"\n" +
-	"\x12proto/report.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"g\n" +
+	"\x12proto/report.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\".\n" +
+	"\x18ProductFilterListRequest\x12\x12\n" +
+	"\x04date\x18\x01 \x01(\tR\x04date\"g\n" +
+	"\x19ProductFilterListResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x120\n" +
+	"\x04data\x18\x02 \x03(\v2\x1c.proto.ProductFilterListDataR\x04data\"C\n" +
+	"\x15ProductFilterListData\x12\x14\n" +
+	"\x05label\x18\x01 \x01(\tR\x05label\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\"g\n" +
 	"\x1bMonthlyProductReportRequest\x12\x12\n" +
 	"\x04date\x18\x01 \x01(\tR\x04date\x12\x1e\n" +
 	"\n" +
@@ -1025,13 +1181,14 @@ const file_proto_report_proto_rawDesc = "" +
 	"\x1caccumulatedCountsSalesAmount\x18\x04 \x03(\x02R\x1caccumulatedCountsSalesAmount\x12\x1e\n" +
 	"\n" +
 	"xaxisLabel\x18\x05 \x03(\tR\n" +
-	"xaxisLabel2\x8a\x06\n" +
+	"xaxisLabel2\x8f\a\n" +
 	"\rReportService\x12\x97\x01\n" +
 	"\x18MonthlyTransactionReport\x12&.proto.MonthlyTransactionReportRequest\x1a'.proto.MonthlyTransactionReportResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/report/monthly-transaction\x12\x9b\x01\n" +
 	"\x19TransactionDateTimeReport\x12'.proto.TransactionDateTimeReportRequest\x1a(.proto.TransactionDateTimeReportResponse\"+\x82\xd3\xe4\x93\x02%\x12#/api/v1/report/transaction-datetime\x12\x9a\x01\n" +
 	"\x17CompareOrderTransaction\x12%.proto.CompareOrderTransactionRequest\x1a&.proto.CompareOrderTransactionResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/report/compare-order-transaction\x12\x92\x01\n" +
 	"\x15RecapOrderTransaction\x12#.proto.RecapOrderTransactionRequest\x1a$.proto.RecapOrderTransactionResponse\".\x82\xd3\xe4\x93\x02(\x12&/api/v1/report/recap-order-transaction\x12\x8e\x01\n" +
-	"\x14MonthlyProductReport\x12\".proto.MonthlyProductReportRequest\x1a#.proto.MonthlyProductReportResponse\"-\x82\xd3\xe4\x93\x02'\x12%/api/v1/report/monthly-product-reportB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x14MonthlyProductReport\x12\".proto.MonthlyProductReportRequest\x1a#.proto.MonthlyProductReportResponse\"-\x82\xd3\xe4\x93\x02'\x12%/api/v1/report/monthly-product-report\x12\x82\x01\n" +
+	"\x11ProductFilterList\x12\x1f.proto.ProductFilterListRequest\x1a .proto.ProductFilterListResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/report/product-filter-listB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_report_proto_rawDescOnce sync.Once
@@ -1045,50 +1202,56 @@ func file_proto_report_proto_rawDescGZIP() []byte {
 	return file_proto_report_proto_rawDescData
 }
 
-var file_proto_report_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_proto_report_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_proto_report_proto_goTypes = []any{
-	(*MonthlyProductReportRequest)(nil),       // 0: proto.MonthlyProductReportRequest
-	(*MonthlyProductReportResponse)(nil),      // 1: proto.MonthlyProductReportResponse
-	(*MonthlyProductReportData)(nil),          // 2: proto.MonthlyProductReportData
-	(*ProductReportData)(nil),                 // 3: proto.ProductReportData
-	(*RecapOrderTransactionRequest)(nil),      // 4: proto.RecapOrderTransactionRequest
-	(*RecapOrderTransactionResponse)(nil),     // 5: proto.RecapOrderTransactionResponse
-	(*RecapOrderTransactionData)(nil),         // 6: proto.RecapOrderTransactionData
-	(*CompareOrderTransactionRequest)(nil),    // 7: proto.CompareOrderTransactionRequest
-	(*CompareOrderTransactionResponse)(nil),   // 8: proto.CompareOrderTransactionResponse
-	(*CompareOrderTransactionData)(nil),       // 9: proto.CompareOrderTransactionData
-	(*RangeData)(nil),                         // 10: proto.RangeData
-	(*TransactionDateTimeReportRequest)(nil),  // 11: proto.TransactionDateTimeReportRequest
-	(*TransactionDateTimeReportResponse)(nil), // 12: proto.TransactionDateTimeReportResponse
-	(*TransactionDateTimeReportData)(nil),     // 13: proto.TransactionDateTimeReportData
-	(*MonthlyTransactionReportRequest)(nil),   // 14: proto.MonthlyTransactionReportRequest
-	(*MonthlyTransactionReportResponse)(nil),  // 15: proto.MonthlyTransactionReportResponse
-	(*ReportDataMonthly)(nil),                 // 16: proto.ReportDataMonthly
+	(*ProductFilterListRequest)(nil),          // 0: proto.ProductFilterListRequest
+	(*ProductFilterListResponse)(nil),         // 1: proto.ProductFilterListResponse
+	(*ProductFilterListData)(nil),             // 2: proto.ProductFilterListData
+	(*MonthlyProductReportRequest)(nil),       // 3: proto.MonthlyProductReportRequest
+	(*MonthlyProductReportResponse)(nil),      // 4: proto.MonthlyProductReportResponse
+	(*MonthlyProductReportData)(nil),          // 5: proto.MonthlyProductReportData
+	(*ProductReportData)(nil),                 // 6: proto.ProductReportData
+	(*RecapOrderTransactionRequest)(nil),      // 7: proto.RecapOrderTransactionRequest
+	(*RecapOrderTransactionResponse)(nil),     // 8: proto.RecapOrderTransactionResponse
+	(*RecapOrderTransactionData)(nil),         // 9: proto.RecapOrderTransactionData
+	(*CompareOrderTransactionRequest)(nil),    // 10: proto.CompareOrderTransactionRequest
+	(*CompareOrderTransactionResponse)(nil),   // 11: proto.CompareOrderTransactionResponse
+	(*CompareOrderTransactionData)(nil),       // 12: proto.CompareOrderTransactionData
+	(*RangeData)(nil),                         // 13: proto.RangeData
+	(*TransactionDateTimeReportRequest)(nil),  // 14: proto.TransactionDateTimeReportRequest
+	(*TransactionDateTimeReportResponse)(nil), // 15: proto.TransactionDateTimeReportResponse
+	(*TransactionDateTimeReportData)(nil),     // 16: proto.TransactionDateTimeReportData
+	(*MonthlyTransactionReportRequest)(nil),   // 17: proto.MonthlyTransactionReportRequest
+	(*MonthlyTransactionReportResponse)(nil),  // 18: proto.MonthlyTransactionReportResponse
+	(*ReportDataMonthly)(nil),                 // 19: proto.ReportDataMonthly
 }
 var file_proto_report_proto_depIdxs = []int32{
-	2,  // 0: proto.MonthlyProductReportResponse.data:type_name -> proto.MonthlyProductReportData
-	3,  // 1: proto.MonthlyProductReportData.productReportData:type_name -> proto.ProductReportData
-	6,  // 2: proto.RecapOrderTransactionResponse.data:type_name -> proto.RecapOrderTransactionData
-	9,  // 3: proto.CompareOrderTransactionResponse.data:type_name -> proto.CompareOrderTransactionData
-	10, // 4: proto.CompareOrderTransactionData.rangeOne:type_name -> proto.RangeData
-	10, // 5: proto.CompareOrderTransactionData.rangeTwo:type_name -> proto.RangeData
-	13, // 6: proto.TransactionDateTimeReportResponse.data:type_name -> proto.TransactionDateTimeReportData
-	16, // 7: proto.MonthlyTransactionReportResponse.data:type_name -> proto.ReportDataMonthly
-	14, // 8: proto.ReportService.MonthlyTransactionReport:input_type -> proto.MonthlyTransactionReportRequest
-	11, // 9: proto.ReportService.TransactionDateTimeReport:input_type -> proto.TransactionDateTimeReportRequest
-	7,  // 10: proto.ReportService.CompareOrderTransaction:input_type -> proto.CompareOrderTransactionRequest
-	4,  // 11: proto.ReportService.RecapOrderTransaction:input_type -> proto.RecapOrderTransactionRequest
-	0,  // 12: proto.ReportService.MonthlyProductReport:input_type -> proto.MonthlyProductReportRequest
-	15, // 13: proto.ReportService.MonthlyTransactionReport:output_type -> proto.MonthlyTransactionReportResponse
-	12, // 14: proto.ReportService.TransactionDateTimeReport:output_type -> proto.TransactionDateTimeReportResponse
-	8,  // 15: proto.ReportService.CompareOrderTransaction:output_type -> proto.CompareOrderTransactionResponse
-	5,  // 16: proto.ReportService.RecapOrderTransaction:output_type -> proto.RecapOrderTransactionResponse
-	1,  // 17: proto.ReportService.MonthlyProductReport:output_type -> proto.MonthlyProductReportResponse
-	13, // [13:18] is the sub-list for method output_type
-	8,  // [8:13] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	2,  // 0: proto.ProductFilterListResponse.data:type_name -> proto.ProductFilterListData
+	5,  // 1: proto.MonthlyProductReportResponse.data:type_name -> proto.MonthlyProductReportData
+	6,  // 2: proto.MonthlyProductReportData.productReportData:type_name -> proto.ProductReportData
+	9,  // 3: proto.RecapOrderTransactionResponse.data:type_name -> proto.RecapOrderTransactionData
+	12, // 4: proto.CompareOrderTransactionResponse.data:type_name -> proto.CompareOrderTransactionData
+	13, // 5: proto.CompareOrderTransactionData.rangeOne:type_name -> proto.RangeData
+	13, // 6: proto.CompareOrderTransactionData.rangeTwo:type_name -> proto.RangeData
+	16, // 7: proto.TransactionDateTimeReportResponse.data:type_name -> proto.TransactionDateTimeReportData
+	19, // 8: proto.MonthlyTransactionReportResponse.data:type_name -> proto.ReportDataMonthly
+	17, // 9: proto.ReportService.MonthlyTransactionReport:input_type -> proto.MonthlyTransactionReportRequest
+	14, // 10: proto.ReportService.TransactionDateTimeReport:input_type -> proto.TransactionDateTimeReportRequest
+	10, // 11: proto.ReportService.CompareOrderTransaction:input_type -> proto.CompareOrderTransactionRequest
+	7,  // 12: proto.ReportService.RecapOrderTransaction:input_type -> proto.RecapOrderTransactionRequest
+	3,  // 13: proto.ReportService.MonthlyProductReport:input_type -> proto.MonthlyProductReportRequest
+	0,  // 14: proto.ReportService.ProductFilterList:input_type -> proto.ProductFilterListRequest
+	18, // 15: proto.ReportService.MonthlyTransactionReport:output_type -> proto.MonthlyTransactionReportResponse
+	15, // 16: proto.ReportService.TransactionDateTimeReport:output_type -> proto.TransactionDateTimeReportResponse
+	11, // 17: proto.ReportService.CompareOrderTransaction:output_type -> proto.CompareOrderTransactionResponse
+	8,  // 18: proto.ReportService.RecapOrderTransaction:output_type -> proto.RecapOrderTransactionResponse
+	4,  // 19: proto.ReportService.MonthlyProductReport:output_type -> proto.MonthlyProductReportResponse
+	1,  // 20: proto.ReportService.ProductFilterList:output_type -> proto.ProductFilterListResponse
+	15, // [15:21] is the sub-list for method output_type
+	9,  // [9:15] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_proto_report_proto_init() }
@@ -1102,7 +1265,7 @@ func file_proto_report_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_report_proto_rawDesc), len(file_proto_report_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

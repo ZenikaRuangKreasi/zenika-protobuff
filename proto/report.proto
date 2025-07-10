@@ -32,6 +32,22 @@ service ReportService {
       get: "/api/v1/report/monthly-product-report"
     };
   }
+  rpc ProductFilterList(ProductFilterListRequest) returns (ProductFilterListResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/product-filter-list"
+    };
+  }
+}
+message ProductFilterListRequest {
+  string date = 1;
+}
+message ProductFilterListResponse {
+  string message = 1;
+  repeated ProductFilterListData data = 2;
+}
+message ProductFilterListData {
+  string label = 1;
+  string value = 2;
 }
 message MonthlyProductReportRequest {
   string date = 1;
