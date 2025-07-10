@@ -36,6 +36,7 @@ service ReportService {
 message MonthlyProductReportRequest {
   string date = 1;
   string productIds = 2;
+  uint32 limit = 3;
 }
 
 message MonthlyProductReportResponse {

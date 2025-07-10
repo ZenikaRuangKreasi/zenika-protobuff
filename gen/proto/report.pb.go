@@ -26,6 +26,7 @@ type MonthlyProductReportRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Date          string                 `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
 	ProductIds    string                 `protobuf:"bytes,2,opt,name=productIds,proto3" json:"productIds,omitempty"`
+	Limit         uint32                 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -72,6 +73,13 @@ func (x *MonthlyProductReportRequest) GetProductIds() string {
 		return x.ProductIds
 	}
 	return ""
+}
+
+func (x *MonthlyProductReportRequest) GetLimit() uint32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
 }
 
 type MonthlyProductReportResponse struct {
@@ -950,12 +958,13 @@ var File_proto_report_proto protoreflect.FileDescriptor
 
 const file_proto_report_proto_rawDesc = "" +
 	"\n" +
-	"\x12proto/report.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"Q\n" +
+	"\x12proto/report.proto\x12\x05proto\x1a\x1cgoogle/api/annotations.proto\"g\n" +
 	"\x1bMonthlyProductReportRequest\x12\x12\n" +
 	"\x04date\x18\x01 \x01(\tR\x04date\x12\x1e\n" +
 	"\n" +
 	"productIds\x18\x02 \x01(\tR\n" +
-	"productIds\"m\n" +
+	"productIds\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\rR\x05limit\"m\n" +
 	"\x1cMonthlyProductReportResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
 	"\x04data\x18\x02 \x01(\v2\x1f.proto.MonthlyProductReportDataR\x04data\"\x82\x01\n" +
