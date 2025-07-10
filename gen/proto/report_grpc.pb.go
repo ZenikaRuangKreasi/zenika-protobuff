@@ -25,6 +25,7 @@ const (
 	ReportService_RecapOrderTransaction_FullMethodName     = "/proto.ReportService/RecapOrderTransaction"
 	ReportService_MonthlyProductReport_FullMethodName      = "/proto.ReportService/MonthlyProductReport"
 	ReportService_ProductFilterList_FullMethodName         = "/proto.ReportService/ProductFilterList"
+	ReportService_CompareProduct_FullMethodName            = "/proto.ReportService/CompareProduct"
 )
 
 // ReportServiceClient is the client API for ReportService service.
@@ -37,6 +38,7 @@ type ReportServiceClient interface {
 	RecapOrderTransaction(ctx context.Context, in *RecapOrderTransactionRequest, opts ...grpc.CallOption) (*RecapOrderTransactionResponse, error)
 	MonthlyProductReport(ctx context.Context, in *MonthlyProductReportRequest, opts ...grpc.CallOption) (*MonthlyProductReportResponse, error)
 	ProductFilterList(ctx context.Context, in *ProductFilterListRequest, opts ...grpc.CallOption) (*ProductFilterListResponse, error)
+	CompareProduct(ctx context.Context, in *CompareProductRequest, opts ...grpc.CallOption) (*CompareProductResponse, error)
 }
 
 type reportServiceClient struct {
@@ -107,6 +109,16 @@ func (c *reportServiceClient) ProductFilterList(ctx context.Context, in *Product
 	return out, nil
 }
 
+func (c *reportServiceClient) CompareProduct(ctx context.Context, in *CompareProductRequest, opts ...grpc.CallOption) (*CompareProductResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CompareProductResponse)
+	err := c.cc.Invoke(ctx, ReportService_CompareProduct_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReportServiceServer is the server API for ReportService service.
 // All implementations must embed UnimplementedReportServiceServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type ReportServiceServer interface {
 	RecapOrderTransaction(context.Context, *RecapOrderTransactionRequest) (*RecapOrderTransactionResponse, error)
 	MonthlyProductReport(context.Context, *MonthlyProductReportRequest) (*MonthlyProductReportResponse, error)
 	ProductFilterList(context.Context, *ProductFilterListRequest) (*ProductFilterListResponse, error)
+	CompareProduct(context.Context, *CompareProductRequest) (*CompareProductResponse, error)
 	mustEmbedUnimplementedReportServiceServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedReportServiceServer) MonthlyProductReport(context.Context, *M
 }
 func (UnimplementedReportServiceServer) ProductFilterList(context.Context, *ProductFilterListRequest) (*ProductFilterListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProductFilterList not implemented")
+}
+func (UnimplementedReportServiceServer) CompareProduct(context.Context, *CompareProductRequest) (*CompareProductResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CompareProduct not implemented")
 }
 func (UnimplementedReportServiceServer) mustEmbedUnimplementedReportServiceServer() {}
 func (UnimplementedReportServiceServer) testEmbeddedByValue()                       {}
@@ -274,6 +290,24 @@ func _ReportService_ProductFilterList_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ReportService_CompareProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CompareProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReportServiceServer).CompareProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ReportService_CompareProduct_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReportServiceServer).CompareProduct(ctx, req.(*CompareProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ReportService_ServiceDesc is the grpc.ServiceDesc for ReportService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +338,10 @@ var ReportService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ProductFilterList",
 			Handler:    _ReportService_ProductFilterList_Handler,
+		},
+		{
+			MethodName: "CompareProduct",
+			Handler:    _ReportService_CompareProduct_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

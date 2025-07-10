@@ -37,7 +37,30 @@ service ReportService {
       get: "/api/v1/report/product-filter-list"
     };
   }
+  rpc CompareProduct(CompareProductRequest) returns (CompareProductResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/compare-product"
+    };
+  }
 }
+message CompareProductRequest {
+  string date = 1;
+  string products = 2;
+}
+message CompareProductResponse {
+  string message = 1;
+  repeated DataProduct data = 2;
+}
+message DataProduct {
+  string name = 1;
+  repeated DataPoin data = 2;
+}
+
+message DataPoin {
+  string x = 1;
+  uint32 y = 2;
+}
+
 message ProductFilterListRequest {
   string date = 1;
 }
