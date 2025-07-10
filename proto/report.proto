@@ -49,7 +49,7 @@ message MonthlyProductReportData {
 }
 message ProductReportData {
   string name = 1;
-  repeated string data = 2;
+  repeated uint32 data = 2;
 }
 message RecapOrderTransactionRequest {
   string search = 1;

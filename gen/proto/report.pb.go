@@ -189,7 +189,7 @@ func (x *MonthlyProductReportData) GetProductReportData() []*ProductReportData {
 type ProductReportData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Data          []string               `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"`
+	Data          []uint32               `protobuf:"varint,2,rep,packed,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -231,7 +231,7 @@ func (x *ProductReportData) GetName() string {
 	return ""
 }
 
-func (x *ProductReportData) GetData() []string {
+func (x *ProductReportData) GetData() []uint32 {
 	if x != nil {
 		return x.Data
 	}
@@ -975,7 +975,7 @@ const file_proto_report_proto_rawDesc = "" +
 	"\x11productReportData\x18\x02 \x03(\v2\x18.proto.ProductReportDataR\x11productReportData\";\n" +
 	"\x11ProductReportData\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
-	"\x04data\x18\x02 \x03(\tR\x04data\"h\n" +
+	"\x04data\x18\x02 \x03(\rR\x04data\"h\n" +
 	"\x1cRecapOrderTransactionRequest\x12\x16\n" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x12\n" +
 	"\x04date\x18\x02 \x01(\tR\x04date\x12\x1c\n" +
