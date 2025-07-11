@@ -20,9 +20,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthService_Login_FullMethodName        = "/proto.AuthService/Login"
-	AuthService_Logout_FullMethodName       = "/proto.AuthService/Logout"
-	AuthService_RefreshToken_FullMethodName = "/proto.AuthService/RefreshToken"
+	AuthService_Login_FullMethodName           = "/proto.AuthService/Login"
+	AuthService_Logout_FullMethodName          = "/proto.AuthService/Logout"
+	AuthService_RefreshToken_FullMethodName    = "/proto.AuthService/RefreshToken"
+	AuthService_UserInformation_FullMethodName = "/proto.AuthService/UserInformation"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -32,6 +33,7 @@ type AuthServiceClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Logout(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*LogoutResponse, error)
 	RefreshToken(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
+	UserInformation(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UserInformationResponse, error)
 }
 
 type authServiceClient struct {
@@ -72,6 +74,16 @@ func (c *authServiceClient) RefreshToken(ctx context.Context, in *emptypb.Empty,
 	return out, nil
 }
 
+func (c *authServiceClient) UserInformation(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UserInformationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UserInformationResponse)
+	err := c.cc.Invoke(ctx, AuthService_UserInformation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -79,6 +91,7 @@ type AuthServiceServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Logout(context.Context, *emptypb.Empty) (*LogoutResponse, error)
 	RefreshToken(context.Context, *emptypb.Empty) (*RefreshTokenResponse, error)
+	UserInformation(context.Context, *emptypb.Empty) (*UserInformationResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -97,6 +110,9 @@ func (UnimplementedAuthServiceServer) Logout(context.Context, *emptypb.Empty) (*
 }
 func (UnimplementedAuthServiceServer) RefreshToken(context.Context, *emptypb.Empty) (*RefreshTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
+}
+func (UnimplementedAuthServiceServer) UserInformation(context.Context, *emptypb.Empty) (*UserInformationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserInformation not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -173,6 +189,24 @@ func _AuthService_RefreshToken_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_UserInformation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).UserInformation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_UserInformation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).UserInformation(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -191,6 +225,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RefreshToken",
 			Handler:    _AuthService_RefreshToken_Handler,
+		},
+		{
+			MethodName: "UserInformation",
+			Handler:    _AuthService_UserInformation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
