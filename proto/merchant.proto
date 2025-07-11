@@ -54,6 +54,16 @@ message ListMerchantsResponse {
   int32 page = 3;
   int32 limit = 4;
 }
+message MerchantInformationResponse{
+  string message =1;
+  MerchantInformation data = 2;
+}
+message MerchantInformation{
+  string merchantId=1;
+  string name=2;
+  string email=3;
+  string phone=4;
+}
 
 service MerchantService {
   rpc CreateMerchant(Merchant) returns (Merchant) {
@@ -81,6 +91,11 @@ service MerchantService {
   rpc DeleteMerchant(MerchantId) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete: "/api/v1/merchants/{id}"
+    };
+  }
+  rpc MerchantInformation(google.protobuf.Empty) returns (MerchantInformationResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/merchants/user-information"
     };
   }
 }
