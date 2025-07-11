@@ -35,6 +35,10 @@ service AuthService {
 }
 
 message UserInformationResponse{
+  string message =1;
+  UserInformation data = 2;
+}
+message UserInformation{
   string merchantId=1;
   string name=2;
   string email=3;
