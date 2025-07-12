@@ -5,19 +5,13 @@ package proto;
 option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
 
 import "google/protobuf/empty.proto";
-
+import "google/protobuf/struct.proto"; 
 service EventService {
   rpc SendEventMerchant(EventRequest) returns (google.protobuf.Empty);
-}
-
-message EventData {
-  string message = 1;
-  string eventType = 2;
-  string data = 3;
 }
 
 message EventRequest {
   string merchantId = 1;
   string event = 2;
-  EventData data = 3;  
+  google.protobuf.Struct data = 3;  
 }
