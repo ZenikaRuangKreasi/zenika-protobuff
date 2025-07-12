@@ -24,7 +24,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CatalogMeta struct {
+type FileMeta struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Size          int64                  `protobuf:"varint,1,opt,name=size,proto3" json:"size,omitempty"`
 	Encoding      string                 `protobuf:"bytes,2,opt,name=encoding,proto3" json:"encoding,omitempty"`
@@ -35,20 +35,20 @@ type CatalogMeta struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CatalogMeta) Reset() {
-	*x = CatalogMeta{}
+func (x *FileMeta) Reset() {
+	*x = FileMeta{}
 	mi := &file_proto_merchant_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CatalogMeta) String() string {
+func (x *FileMeta) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CatalogMeta) ProtoMessage() {}
+func (*FileMeta) ProtoMessage() {}
 
-func (x *CatalogMeta) ProtoReflect() protoreflect.Message {
+func (x *FileMeta) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_merchant_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -60,69 +60,69 @@ func (x *CatalogMeta) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CatalogMeta.ProtoReflect.Descriptor instead.
-func (*CatalogMeta) Descriptor() ([]byte, []int) {
+// Deprecated: Use FileMeta.ProtoReflect.Descriptor instead.
+func (*FileMeta) Descriptor() ([]byte, []int) {
 	return file_proto_merchant_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CatalogMeta) GetSize() int64 {
+func (x *FileMeta) GetSize() int64 {
 	if x != nil {
 		return x.Size
 	}
 	return 0
 }
 
-func (x *CatalogMeta) GetEncoding() string {
+func (x *FileMeta) GetEncoding() string {
 	if x != nil {
 		return x.Encoding
 	}
 	return ""
 }
 
-func (x *CatalogMeta) GetMimetype() string {
+func (x *FileMeta) GetMimetype() string {
 	if x != nil {
 		return x.Mimetype
 	}
 	return ""
 }
 
-func (x *CatalogMeta) GetFieldname() string {
+func (x *FileMeta) GetFieldname() string {
 	if x != nil {
 		return x.Fieldname
 	}
 	return ""
 }
 
-func (x *CatalogMeta) GetOriginalname() string {
+func (x *FileMeta) GetOriginalname() string {
 	if x != nil {
 		return x.Originalname
 	}
 	return ""
 }
 
-type CatalogFile struct {
+type File struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
-	Meta          *CatalogMeta           `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
+	Meta          *FileMeta              `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	Thumbnail     string                 `protobuf:"bytes,3,opt,name=thumbnail,proto3" json:"thumbnail,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *CatalogFile) Reset() {
-	*x = CatalogFile{}
+func (x *File) Reset() {
+	*x = File{}
 	mi := &file_proto_merchant_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *CatalogFile) String() string {
+func (x *File) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*CatalogFile) ProtoMessage() {}
+func (*File) ProtoMessage() {}
 
-func (x *CatalogFile) ProtoReflect() protoreflect.Message {
+func (x *File) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_merchant_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -134,26 +134,26 @@ func (x *CatalogFile) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use CatalogFile.ProtoReflect.Descriptor instead.
-func (*CatalogFile) Descriptor() ([]byte, []int) {
+// Deprecated: Use File.ProtoReflect.Descriptor instead.
+func (*File) Descriptor() ([]byte, []int) {
 	return file_proto_merchant_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CatalogFile) GetUrl() string {
+func (x *File) GetUrl() string {
 	if x != nil {
 		return x.Url
 	}
 	return ""
 }
 
-func (x *CatalogFile) GetMeta() *CatalogMeta {
+func (x *File) GetMeta() *FileMeta {
 	if x != nil {
 		return x.Meta
 	}
 	return nil
 }
 
-func (x *CatalogFile) GetThumbnail() string {
+func (x *File) GetThumbnail() string {
 	if x != nil {
 		return x.Thumbnail
 	}
@@ -169,13 +169,14 @@ type Merchant struct {
 	Address       *string                `protobuf:"bytes,5,opt,name=address,proto3,oneof" json:"address,omitempty"`
 	AddressDetail *string                `protobuf:"bytes,6,opt,name=address_detail,json=addressDetail,proto3,oneof" json:"address_detail,omitempty"`
 	PostalCode    *string                `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3,oneof" json:"postal_code,omitempty"`
-	Catalog       *CatalogFile           `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
-	Longitude     *string                `protobuf:"bytes,9,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
-	Latitude      *string                `protobuf:"bytes,10,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
-	CreatedAt     *string                `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
-	UpdatedAt     *string                `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
-	CreatedBy     *string                `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
-	UpdatedBy     *string                `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3,oneof" json:"updated_by,omitempty"`
+	Catalog       *File                  `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
+	Logo          *File                  `protobuf:"bytes,9,opt,name=logo,proto3" json:"logo,omitempty"`
+	Longitude     *string                `protobuf:"bytes,10,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
+	Latitude      *string                `protobuf:"bytes,11,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	CreatedAt     *string                `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
+	UpdatedAt     *string                `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
+	CreatedBy     *string                `protobuf:"bytes,14,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
+	UpdatedBy     *string                `protobuf:"bytes,15,opt,name=updated_by,json=updatedBy,proto3,oneof" json:"updated_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -259,9 +260,16 @@ func (x *Merchant) GetPostalCode() string {
 	return ""
 }
 
-func (x *Merchant) GetCatalog() *CatalogFile {
+func (x *Merchant) GetCatalog() *File {
 	if x != nil {
 		return x.Catalog
+	}
+	return nil
+}
+
+func (x *Merchant) GetLogo() *File {
+	if x != nil {
+		return x.Logo
 	}
 	return nil
 }
@@ -604,17 +612,17 @@ var File_proto_merchant_proto protoreflect.FileDescriptor
 
 const file_proto_merchant_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x19google/api/httpbody.proto\"\x9b\x01\n" +
-	"\vCatalogMeta\x12\x12\n" +
+	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x19google/api/httpbody.proto\"\x98\x01\n" +
+	"\bFileMeta\x12\x12\n" +
 	"\x04size\x18\x01 \x01(\x03R\x04size\x12\x1a\n" +
 	"\bencoding\x18\x02 \x01(\tR\bencoding\x12\x1a\n" +
 	"\bmimetype\x18\x03 \x01(\tR\bmimetype\x12\x1c\n" +
 	"\tfieldname\x18\x04 \x01(\tR\tfieldname\x12\"\n" +
-	"\foriginalname\x18\x05 \x01(\tR\foriginalname\"c\n" +
-	"\vCatalogFile\x12\x10\n" +
-	"\x03url\x18\x01 \x01(\tR\x03url\x12$\n" +
-	"\x04meta\x18\x02 \x01(\v2\x10.api.CatalogMetaR\x04meta\x12\x1c\n" +
-	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\xd1\x04\n" +
+	"\foriginalname\x18\x05 \x01(\tR\foriginalname\"Y\n" +
+	"\x04File\x12\x10\n" +
+	"\x03url\x18\x01 \x01(\tR\x03url\x12!\n" +
+	"\x04meta\x18\x02 \x01(\v2\r.api.FileMetaR\x04meta\x12\x1c\n" +
+	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\xe9\x04\n" +
 	"\bMerchant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -623,19 +631,20 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\aaddress\x18\x05 \x01(\tH\x00R\aaddress\x88\x01\x01\x12*\n" +
 	"\x0eaddress_detail\x18\x06 \x01(\tH\x01R\raddressDetail\x88\x01\x01\x12$\n" +
 	"\vpostal_code\x18\a \x01(\tH\x02R\n" +
-	"postalCode\x88\x01\x01\x12*\n" +
-	"\acatalog\x18\b \x01(\v2\x10.api.CatalogFileR\acatalog\x12!\n" +
-	"\tlongitude\x18\t \x01(\tH\x03R\tlongitude\x88\x01\x01\x12\x1f\n" +
-	"\blatitude\x18\n" +
-	" \x01(\tH\x04R\blatitude\x88\x01\x01\x12\"\n" +
+	"postalCode\x88\x01\x01\x12#\n" +
+	"\acatalog\x18\b \x01(\v2\t.api.FileR\acatalog\x12\x1d\n" +
+	"\x04logo\x18\t \x01(\v2\t.api.FileR\x04logo\x12!\n" +
+	"\tlongitude\x18\n" +
+	" \x01(\tH\x03R\tlongitude\x88\x01\x01\x12\x1f\n" +
+	"\blatitude\x18\v \x01(\tH\x04R\blatitude\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_at\x18\v \x01(\tH\x05R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"created_at\x18\f \x01(\tH\x05R\tcreatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_at\x18\f \x01(\tH\x06R\tupdatedAt\x88\x01\x01\x12\"\n" +
+	"updated_at\x18\r \x01(\tH\x06R\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_by\x18\r \x01(\tH\aR\tcreatedBy\x88\x01\x01\x12\"\n" +
+	"created_by\x18\x0e \x01(\tH\aR\tcreatedBy\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_by\x18\x0e \x01(\tH\bR\tupdatedBy\x88\x01\x01B\n" +
+	"updated_by\x18\x0f \x01(\tH\bR\tupdatedBy\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\x11\n" +
 	"\x0f_address_detailB\x0e\n" +
@@ -691,8 +700,8 @@ func file_proto_merchant_proto_rawDescGZIP() []byte {
 
 var file_proto_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_proto_merchant_proto_goTypes = []any{
-	(*CatalogMeta)(nil),                 // 0: api.CatalogMeta
-	(*CatalogFile)(nil),                 // 1: api.CatalogFile
+	(*FileMeta)(nil),                    // 0: api.FileMeta
+	(*File)(nil),                        // 1: api.File
 	(*Merchant)(nil),                    // 2: api.Merchant
 	(*MerchantId)(nil),                  // 3: api.MerchantId
 	(*ListMerchantsRequest)(nil),        // 4: api.ListMerchantsRequest
@@ -703,27 +712,28 @@ var file_proto_merchant_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),               // 9: google.protobuf.Empty
 }
 var file_proto_merchant_proto_depIdxs = []int32{
-	0,  // 0: api.CatalogFile.meta:type_name -> api.CatalogMeta
-	1,  // 1: api.Merchant.catalog:type_name -> api.CatalogFile
-	2,  // 2: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
-	7,  // 3: api.MerchantInformationResponse.data:type_name -> api.MerchantInformation
-	2,  // 4: api.MerchantService.CreateMerchant:input_type -> api.Merchant
-	3,  // 5: api.MerchantService.GetMerchant:input_type -> api.MerchantId
-	4,  // 6: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
-	8,  // 7: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
-	3,  // 8: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
-	9,  // 9: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
-	2,  // 10: api.MerchantService.CreateMerchant:output_type -> api.Merchant
-	2,  // 11: api.MerchantService.GetMerchant:output_type -> api.Merchant
-	5,  // 12: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
-	2,  // 13: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
-	9,  // 14: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
-	6,  // 15: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	0,  // 0: api.File.meta:type_name -> api.FileMeta
+	1,  // 1: api.Merchant.catalog:type_name -> api.File
+	1,  // 2: api.Merchant.logo:type_name -> api.File
+	2,  // 3: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
+	7,  // 4: api.MerchantInformationResponse.data:type_name -> api.MerchantInformation
+	2,  // 5: api.MerchantService.CreateMerchant:input_type -> api.Merchant
+	3,  // 6: api.MerchantService.GetMerchant:input_type -> api.MerchantId
+	4,  // 7: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
+	8,  // 8: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
+	3,  // 9: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
+	9,  // 10: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
+	2,  // 11: api.MerchantService.CreateMerchant:output_type -> api.Merchant
+	2,  // 12: api.MerchantService.GetMerchant:output_type -> api.Merchant
+	5,  // 13: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
+	2,  // 14: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
+	9,  // 15: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
+	6,  // 16: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_proto_merchant_proto_init() }
