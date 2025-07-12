@@ -10,8 +10,14 @@ service EventService {
   rpc SendEventMerchant(EventRequest) returns (google.protobuf.Empty);
 }
 
-message EventRequest {
-  string eventType = 1;
-  string message = 2;
+message EventData {
+  string message = 1;
+  string eventType = 2;
   string data = 3;
+}
+
+message EventRequest {
+  string merchantId = 1;
+  string event = 2;
+  EventData data = 3;  
 }

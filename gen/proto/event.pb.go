@@ -22,18 +22,78 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type EventData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	EventType     string                 `protobuf:"bytes,2,opt,name=eventType,proto3" json:"eventType,omitempty"`
+	Data          string                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventData) Reset() {
+	*x = EventData{}
+	mi := &file_proto_event_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventData) ProtoMessage() {}
+
+func (x *EventData) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_event_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventData.ProtoReflect.Descriptor instead.
+func (*EventData) Descriptor() ([]byte, []int) {
+	return file_proto_event_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *EventData) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *EventData) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *EventData) GetData() string {
+	if x != nil {
+		return x.Data
+	}
+	return ""
+}
+
 type EventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	EventType     string                 `protobuf:"bytes,1,opt,name=eventType,proto3" json:"eventType,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Data          string                 `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	MerchantId    string                 `protobuf:"bytes,1,opt,name=merchantId,proto3" json:"merchantId,omitempty"`
+	Event         string                 `protobuf:"bytes,2,opt,name=event,proto3" json:"event,omitempty"`
+	Data          *EventData             `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *EventRequest) Reset() {
 	*x = EventRequest{}
-	mi := &file_proto_event_proto_msgTypes[0]
+	mi := &file_proto_event_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +105,7 @@ func (x *EventRequest) String() string {
 func (*EventRequest) ProtoMessage() {}
 
 func (x *EventRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_event_proto_msgTypes[0]
+	mi := &file_proto_event_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,39 +118,45 @@ func (x *EventRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventRequest.ProtoReflect.Descriptor instead.
 func (*EventRequest) Descriptor() ([]byte, []int) {
-	return file_proto_event_proto_rawDescGZIP(), []int{0}
+	return file_proto_event_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *EventRequest) GetEventType() string {
+func (x *EventRequest) GetMerchantId() string {
 	if x != nil {
-		return x.EventType
+		return x.MerchantId
 	}
 	return ""
 }
 
-func (x *EventRequest) GetMessage() string {
+func (x *EventRequest) GetEvent() string {
 	if x != nil {
-		return x.Message
+		return x.Event
 	}
 	return ""
 }
 
-func (x *EventRequest) GetData() string {
+func (x *EventRequest) GetData() *EventData {
 	if x != nil {
 		return x.Data
 	}
-	return ""
+	return nil
 }
 
 var File_proto_event_proto protoreflect.FileDescriptor
 
 const file_proto_event_proto_rawDesc = "" +
 	"\n" +
-	"\x11proto/event.proto\x12\x05proto\x1a\x1bgoogle/protobuf/empty.proto\"Z\n" +
-	"\fEventRequest\x12\x1c\n" +
-	"\teventType\x18\x01 \x01(\tR\teventType\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12\x12\n" +
-	"\x04data\x18\x03 \x01(\tR\x04data2P\n" +
+	"\x11proto/event.proto\x12\x05proto\x1a\x1bgoogle/protobuf/empty.proto\"W\n" +
+	"\tEventData\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x12\x1c\n" +
+	"\teventType\x18\x02 \x01(\tR\teventType\x12\x12\n" +
+	"\x04data\x18\x03 \x01(\tR\x04data\"j\n" +
+	"\fEventRequest\x12\x1e\n" +
+	"\n" +
+	"merchantId\x18\x01 \x01(\tR\n" +
+	"merchantId\x12\x14\n" +
+	"\x05event\x18\x02 \x01(\tR\x05event\x12$\n" +
+	"\x04data\x18\x03 \x01(\v2\x10.proto.EventDataR\x04data2P\n" +
 	"\fEventService\x12@\n" +
 	"\x11SendEventMerchant\x12\x13.proto.EventRequest\x1a\x16.google.protobuf.EmptyB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
@@ -106,19 +172,21 @@ func file_proto_event_proto_rawDescGZIP() []byte {
 	return file_proto_event_proto_rawDescData
 }
 
-var file_proto_event_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_proto_event_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_event_proto_goTypes = []any{
-	(*EventRequest)(nil),  // 0: proto.EventRequest
-	(*emptypb.Empty)(nil), // 1: google.protobuf.Empty
+	(*EventData)(nil),     // 0: proto.EventData
+	(*EventRequest)(nil),  // 1: proto.EventRequest
+	(*emptypb.Empty)(nil), // 2: google.protobuf.Empty
 }
 var file_proto_event_proto_depIdxs = []int32{
-	0, // 0: proto.EventService.SendEventMerchant:input_type -> proto.EventRequest
-	1, // 1: proto.EventService.SendEventMerchant:output_type -> google.protobuf.Empty
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: proto.EventRequest.data:type_name -> proto.EventData
+	1, // 1: proto.EventService.SendEventMerchant:input_type -> proto.EventRequest
+	2, // 2: proto.EventService.SendEventMerchant:output_type -> google.protobuf.Empty
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_proto_event_proto_init() }
@@ -132,7 +200,7 @@ func file_proto_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_event_proto_rawDesc), len(file_proto_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
