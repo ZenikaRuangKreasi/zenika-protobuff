@@ -6,6 +6,7 @@ option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;pro
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "google/api/httpbody.proto";
 
   message CatalogMeta {
   int64 size = 1;
@@ -82,7 +83,7 @@ service MerchantService {
       get: "/api/v1/merchants"
     };
   }
-  rpc UpdateMerchant(Merchant) returns (Merchant) {
+  rpc UpdateMerchant(google.api.HttpBody) returns (Merchant) {
     option (google.api.http) = {
       put: "/api/v1/merchants"
       body: "*"

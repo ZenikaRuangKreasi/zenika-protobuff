@@ -8,6 +8,7 @@ package proto
 
 import (
 	context "context"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -35,7 +36,7 @@ type MerchantServiceClient interface {
 	CreateMerchant(ctx context.Context, in *Merchant, opts ...grpc.CallOption) (*Merchant, error)
 	GetMerchant(ctx context.Context, in *MerchantId, opts ...grpc.CallOption) (*Merchant, error)
 	ListMerchants(ctx context.Context, in *ListMerchantsRequest, opts ...grpc.CallOption) (*ListMerchantsResponse, error)
-	UpdateMerchant(ctx context.Context, in *Merchant, opts ...grpc.CallOption) (*Merchant, error)
+	UpdateMerchant(ctx context.Context, in *httpbody.HttpBody, opts ...grpc.CallOption) (*Merchant, error)
 	DeleteMerchant(ctx context.Context, in *MerchantId, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	MerchantInformation(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*MerchantInformationResponse, error)
 }
@@ -78,7 +79,7 @@ func (c *merchantServiceClient) ListMerchants(ctx context.Context, in *ListMerch
 	return out, nil
 }
 
-func (c *merchantServiceClient) UpdateMerchant(ctx context.Context, in *Merchant, opts ...grpc.CallOption) (*Merchant, error) {
+func (c *merchantServiceClient) UpdateMerchant(ctx context.Context, in *httpbody.HttpBody, opts ...grpc.CallOption) (*Merchant, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Merchant)
 	err := c.cc.Invoke(ctx, MerchantService_UpdateMerchant_FullMethodName, in, out, cOpts...)
@@ -115,7 +116,7 @@ type MerchantServiceServer interface {
 	CreateMerchant(context.Context, *Merchant) (*Merchant, error)
 	GetMerchant(context.Context, *MerchantId) (*Merchant, error)
 	ListMerchants(context.Context, *ListMerchantsRequest) (*ListMerchantsResponse, error)
-	UpdateMerchant(context.Context, *Merchant) (*Merchant, error)
+	UpdateMerchant(context.Context, *httpbody.HttpBody) (*Merchant, error)
 	DeleteMerchant(context.Context, *MerchantId) (*emptypb.Empty, error)
 	MerchantInformation(context.Context, *emptypb.Empty) (*MerchantInformationResponse, error)
 	mustEmbedUnimplementedMerchantServiceServer()
@@ -137,7 +138,7 @@ func (UnimplementedMerchantServiceServer) GetMerchant(context.Context, *Merchant
 func (UnimplementedMerchantServiceServer) ListMerchants(context.Context, *ListMerchantsRequest) (*ListMerchantsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListMerchants not implemented")
 }
-func (UnimplementedMerchantServiceServer) UpdateMerchant(context.Context, *Merchant) (*Merchant, error) {
+func (UnimplementedMerchantServiceServer) UpdateMerchant(context.Context, *httpbody.HttpBody) (*Merchant, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateMerchant not implemented")
 }
 func (UnimplementedMerchantServiceServer) DeleteMerchant(context.Context, *MerchantId) (*emptypb.Empty, error) {
@@ -222,7 +223,7 @@ func _MerchantService_ListMerchants_Handler(srv interface{}, ctx context.Context
 }
 
 func _MerchantService_UpdateMerchant_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Merchant)
+	in := new(httpbody.HttpBody)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -234,7 +235,7 @@ func _MerchantService_UpdateMerchant_Handler(srv interface{}, ctx context.Contex
 		FullMethod: MerchantService_UpdateMerchant_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MerchantServiceServer).UpdateMerchant(ctx, req.(*Merchant))
+		return srv.(MerchantServiceServer).UpdateMerchant(ctx, req.(*httpbody.HttpBody))
 	}
 	return interceptor(ctx, in, info, handler)
 }

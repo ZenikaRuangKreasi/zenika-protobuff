@@ -8,6 +8,7 @@ package proto
 
 import (
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -603,7 +604,7 @@ var File_proto_merchant_proto protoreflect.FileDescriptor
 
 const file_proto_merchant_proto_rawDesc = "" +
 	"\n" +
-	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x9b\x01\n" +
+	"\x14proto/merchant.proto\x12\x03api\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x19google/api/httpbody.proto\"\x9b\x01\n" +
 	"\vCatalogMeta\x12\x12\n" +
 	"\x04size\x18\x01 \x01(\x03R\x04size\x12\x1a\n" +
 	"\bencoding\x18\x02 \x01(\tR\bencoding\x12\x1a\n" +
@@ -667,12 +668,12 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"merchantId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone2\xb7\x04\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone2\xbe\x04\n" +
 	"\x0fMerchantService\x12L\n" +
 	"\x0eCreateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/merchants\x12M\n" +
 	"\vGetMerchant\x12\x0f.api.MerchantId\x1a\r.api.Merchant\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/v1/merchants/{id}\x12a\n" +
-	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12L\n" +
-	"\x0eUpdateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\x1a\x11/api/v1/merchants\x12Y\n" +
+	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12S\n" +
+	"\x0eUpdateMerchant\x12\x14.google.api.HttpBody\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\x1a\x11/api/v1/merchants\x12Y\n" +
 	"\x0eDeleteMerchant\x12\x0f.api.MerchantId\x1a\x16.google.protobuf.Empty\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/api/v1/merchants/{id}\x12{\n" +
 	"\x13MerchantInformation\x12\x16.google.protobuf.Empty\x1a .api.MerchantInformationResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/merchants/user-informationB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
@@ -698,7 +699,8 @@ var file_proto_merchant_proto_goTypes = []any{
 	(*ListMerchantsResponse)(nil),       // 5: api.ListMerchantsResponse
 	(*MerchantInformationResponse)(nil), // 6: api.MerchantInformationResponse
 	(*MerchantInformation)(nil),         // 7: api.MerchantInformation
-	(*emptypb.Empty)(nil),               // 8: google.protobuf.Empty
+	(*httpbody.HttpBody)(nil),           // 8: google.api.HttpBody
+	(*emptypb.Empty)(nil),               // 9: google.protobuf.Empty
 }
 var file_proto_merchant_proto_depIdxs = []int32{
 	0,  // 0: api.CatalogFile.meta:type_name -> api.CatalogMeta
@@ -708,14 +710,14 @@ var file_proto_merchant_proto_depIdxs = []int32{
 	2,  // 4: api.MerchantService.CreateMerchant:input_type -> api.Merchant
 	3,  // 5: api.MerchantService.GetMerchant:input_type -> api.MerchantId
 	4,  // 6: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
-	2,  // 7: api.MerchantService.UpdateMerchant:input_type -> api.Merchant
+	8,  // 7: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
 	3,  // 8: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
-	8,  // 9: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
+	9,  // 9: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
 	2,  // 10: api.MerchantService.CreateMerchant:output_type -> api.Merchant
 	2,  // 11: api.MerchantService.GetMerchant:output_type -> api.Merchant
 	5,  // 12: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
 	2,  // 13: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
-	8,  // 14: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
+	9,  // 14: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
 	6,  // 15: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
 	10, // [10:16] is the sub-list for method output_type
 	4,  // [4:10] is the sub-list for method input_type
