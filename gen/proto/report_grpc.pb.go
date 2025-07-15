@@ -26,6 +26,8 @@ const (
 	ReportService_MonthlyProductReport_FullMethodName      = "/proto.ReportService/MonthlyProductReport"
 	ReportService_ProductFilterList_FullMethodName         = "/proto.ReportService/ProductFilterList"
 	ReportService_CompareProduct_FullMethodName            = "/proto.ReportService/CompareProduct"
+	ReportService_DeliveryDataDateRange_FullMethodName     = "/proto.ReportService/DeliveryDataDateRange"
+	ReportService_DeliveryReportDetail_FullMethodName      = "/proto.ReportService/DeliveryReportDetail"
 )
 
 // ReportServiceClient is the client API for ReportService service.
@@ -39,6 +41,8 @@ type ReportServiceClient interface {
 	MonthlyProductReport(ctx context.Context, in *MonthlyProductReportRequest, opts ...grpc.CallOption) (*MonthlyProductReportResponse, error)
 	ProductFilterList(ctx context.Context, in *ProductFilterListRequest, opts ...grpc.CallOption) (*ProductFilterListResponse, error)
 	CompareProduct(ctx context.Context, in *CompareProductRequest, opts ...grpc.CallOption) (*CompareProductResponse, error)
+	DeliveryDataDateRange(ctx context.Context, in *DeliveryDataDateRangeRequest, opts ...grpc.CallOption) (*DeliveryDataDateRangeResponse, error)
+	DeliveryReportDetail(ctx context.Context, in *DeliveryReportDetailRequest, opts ...grpc.CallOption) (*DeliveryReportDetailResponse, error)
 }
 
 type reportServiceClient struct {
@@ -119,6 +123,26 @@ func (c *reportServiceClient) CompareProduct(ctx context.Context, in *ComparePro
 	return out, nil
 }
 
+func (c *reportServiceClient) DeliveryDataDateRange(ctx context.Context, in *DeliveryDataDateRangeRequest, opts ...grpc.CallOption) (*DeliveryDataDateRangeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeliveryDataDateRangeResponse)
+	err := c.cc.Invoke(ctx, ReportService_DeliveryDataDateRange_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *reportServiceClient) DeliveryReportDetail(ctx context.Context, in *DeliveryReportDetailRequest, opts ...grpc.CallOption) (*DeliveryReportDetailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeliveryReportDetailResponse)
+	err := c.cc.Invoke(ctx, ReportService_DeliveryReportDetail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ReportServiceServer is the server API for ReportService service.
 // All implementations must embed UnimplementedReportServiceServer
 // for forward compatibility.
@@ -130,6 +154,8 @@ type ReportServiceServer interface {
 	MonthlyProductReport(context.Context, *MonthlyProductReportRequest) (*MonthlyProductReportResponse, error)
 	ProductFilterList(context.Context, *ProductFilterListRequest) (*ProductFilterListResponse, error)
 	CompareProduct(context.Context, *CompareProductRequest) (*CompareProductResponse, error)
+	DeliveryDataDateRange(context.Context, *DeliveryDataDateRangeRequest) (*DeliveryDataDateRangeResponse, error)
+	DeliveryReportDetail(context.Context, *DeliveryReportDetailRequest) (*DeliveryReportDetailResponse, error)
 	mustEmbedUnimplementedReportServiceServer()
 }
 
@@ -160,6 +186,12 @@ func (UnimplementedReportServiceServer) ProductFilterList(context.Context, *Prod
 }
 func (UnimplementedReportServiceServer) CompareProduct(context.Context, *CompareProductRequest) (*CompareProductResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CompareProduct not implemented")
+}
+func (UnimplementedReportServiceServer) DeliveryDataDateRange(context.Context, *DeliveryDataDateRangeRequest) (*DeliveryDataDateRangeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeliveryDataDateRange not implemented")
+}
+func (UnimplementedReportServiceServer) DeliveryReportDetail(context.Context, *DeliveryReportDetailRequest) (*DeliveryReportDetailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeliveryReportDetail not implemented")
 }
 func (UnimplementedReportServiceServer) mustEmbedUnimplementedReportServiceServer() {}
 func (UnimplementedReportServiceServer) testEmbeddedByValue()                       {}
@@ -308,6 +340,42 @@ func _ReportService_CompareProduct_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ReportService_DeliveryDataDateRange_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeliveryDataDateRangeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReportServiceServer).DeliveryDataDateRange(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ReportService_DeliveryDataDateRange_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReportServiceServer).DeliveryDataDateRange(ctx, req.(*DeliveryDataDateRangeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ReportService_DeliveryReportDetail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeliveryReportDetailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ReportServiceServer).DeliveryReportDetail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ReportService_DeliveryReportDetail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ReportServiceServer).DeliveryReportDetail(ctx, req.(*DeliveryReportDetailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ReportService_ServiceDesc is the grpc.ServiceDesc for ReportService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +410,14 @@ var ReportService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CompareProduct",
 			Handler:    _ReportService_CompareProduct_Handler,
+		},
+		{
+			MethodName: "DeliveryDataDateRange",
+			Handler:    _ReportService_DeliveryDataDateRange_Handler,
+		},
+		{
+			MethodName: "DeliveryReportDetail",
+			Handler:    _ReportService_DeliveryReportDetail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

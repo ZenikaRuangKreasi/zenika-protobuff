@@ -42,6 +42,51 @@ service ReportService {
       get: "/api/v1/report/compare-product"
     };
   }
+  rpc DeliveryDataDateRange(DeliveryDataDateRangeRequest) returns (DeliveryDataDateRangeResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/delivery-data"
+    };
+  }
+  rpc DeliveryReportDetail(DeliveryReportDetailRequest) returns (DeliveryReportDetailResponse) {
+    option (google.api.http) = {  
+      get: "/api/v1/report/delivery-report-detail"
+    };
+  }
+}
+message DeliveryReportDetailResponse {
+  string message = 1;
+  DeliveryReportData data = 2;
+}
+message DeliveryReportData{
+  uint32 page=1;
+  uint32 perPage=2;
+  uint32 totalItems=3;
+  repeated DeliveryReport items=4;
+}
+message DeliveryReport{
+  string orderId=1;
+  string orderNumber=2;
+  string status=3;
+  double price=4;
+  string deliveryStatus=5;
+  string courier=6;
+  string orderDate=7;
+}
+
+message DeliveryReportDetailRequest {
+  string search = 1;
+  string orderBy = 2;
+  string order = 3;
+  uint32 page = 4;
+  uint32 rowsPerPage = 5;
+  string date = 6;
+}
+message DeliveryDataDateRangeResponse {
+  string message = 1;
+  repeated DataPoin data = 2;
+}
+message DeliveryDataDateRangeRequest {
+  string date = 1;
 }
 message CompareProductRequest {
   string date = 1;
