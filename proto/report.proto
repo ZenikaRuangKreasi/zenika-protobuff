@@ -87,6 +87,7 @@ message DeliveryDataDateRangeResponse {
 }
 message DeliveryDataDateRangeRequest {
   string date = 1;
+  int32 limit=2;
 }
 message CompareProductRequest {
   string date = 1;

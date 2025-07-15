@@ -373,6 +373,7 @@ func (x *DeliveryDataDateRangeResponse) GetData() []*DataPoin {
 type DeliveryDataDateRangeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Date          string                 `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -412,6 +413,13 @@ func (x *DeliveryDataDateRangeRequest) GetDate() string {
 		return x.Date
 	}
 	return ""
+}
+
+func (x *DeliveryDataDateRangeRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
 }
 
 type CompareProductRequest struct {
@@ -1734,9 +1742,10 @@ const file_proto_report_proto_rawDesc = "" +
 	"\x04date\x18\x06 \x01(\tR\x04date\"^\n" +
 	"\x1dDeliveryDataDateRangeResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12#\n" +
-	"\x04data\x18\x02 \x03(\v2\x0f.proto.DataPoinR\x04data\"2\n" +
+	"\x04data\x18\x02 \x03(\v2\x0f.proto.DataPoinR\x04data\"H\n" +
 	"\x1cDeliveryDataDateRangeRequest\x12\x12\n" +
-	"\x04date\x18\x01 \x01(\tR\x04date\"G\n" +
+	"\x04date\x18\x01 \x01(\tR\x04date\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\"G\n" +
 	"\x15CompareProductRequest\x12\x12\n" +
 	"\x04date\x18\x01 \x01(\tR\x04date\x12\x1a\n" +
 	"\bproducts\x18\x02 \x01(\tR\bproducts\"Z\n" +
