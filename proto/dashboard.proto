@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;proto";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+
+service DashboardService {
+ rpc ChartData(google.protobuf.Empty) returns (ChartDataResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/dahsboard/chart-data"
+    };
+  }
+ rpc RecapData(google.protobuf.Empty) returns (RecapDataResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/dahsboard/recap-data"
+    };
+  }
+}
+
+message ChartDataResponse {
+  string message = 1;
+  repeated ChartData data = 2;
+}
+message ChartData {
+  string name = 1;
+  repeated float data = 2;
+}
+message RecapDataResponse {
+  string message = 1;
+  RecapData data = 2;
+}
+message RecapData {
+  float totalSalesAmount = 1;
+  float totalOrder = 2;
+  float productCount = 3;
+  float transactionVoid = 4;
+  float inbox = 5;
+}
