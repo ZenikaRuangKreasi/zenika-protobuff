@@ -71,6 +71,7 @@ message DeliveryReport{
   string deliveryStatus=5;
   string courier=6;
   string orderDate=7;
+  string area=8;
 }
 
 message DeliveryReportDetailRequest {

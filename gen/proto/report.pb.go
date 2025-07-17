@@ -151,6 +151,7 @@ type DeliveryReport struct {
 	DeliveryStatus string                 `protobuf:"bytes,5,opt,name=deliveryStatus,proto3" json:"deliveryStatus,omitempty"`
 	Courier        string                 `protobuf:"bytes,6,opt,name=courier,proto3" json:"courier,omitempty"`
 	OrderDate      string                 `protobuf:"bytes,7,opt,name=orderDate,proto3" json:"orderDate,omitempty"`
+	Area           string                 `protobuf:"bytes,8,opt,name=area,proto3" json:"area,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -230,6 +231,13 @@ func (x *DeliveryReport) GetCourier() string {
 func (x *DeliveryReport) GetOrderDate() string {
 	if x != nil {
 		return x.OrderDate
+	}
+	return ""
+}
+
+func (x *DeliveryReport) GetArea() string {
+	if x != nil {
+		return x.Area
 	}
 	return ""
 }
@@ -1724,7 +1732,7 @@ const file_proto_report_proto_rawDesc = "" +
 	"\n" +
 	"totalItems\x18\x03 \x01(\rR\n" +
 	"totalItems\x12+\n" +
-	"\x05items\x18\x04 \x03(\v2\x15.proto.DeliveryReportR\x05items\"\xda\x01\n" +
+	"\x05items\x18\x04 \x03(\v2\x15.proto.DeliveryReportR\x05items\"\xee\x01\n" +
 	"\x0eDeliveryReport\x12\x18\n" +
 	"\aorderId\x18\x01 \x01(\tR\aorderId\x12 \n" +
 	"\vorderNumber\x18\x02 \x01(\tR\vorderNumber\x12\x16\n" +
@@ -1732,7 +1740,8 @@ const file_proto_report_proto_rawDesc = "" +
 	"\x05price\x18\x04 \x01(\x01R\x05price\x12&\n" +
 	"\x0edeliveryStatus\x18\x05 \x01(\tR\x0edeliveryStatus\x12\x18\n" +
 	"\acourier\x18\x06 \x01(\tR\acourier\x12\x1c\n" +
-	"\torderDate\x18\a \x01(\tR\torderDate\"\xaf\x01\n" +
+	"\torderDate\x18\a \x01(\tR\torderDate\x12\x12\n" +
+	"\x04area\x18\b \x01(\tR\x04area\"\xaf\x01\n" +
 	"\x1bDeliveryReportDetailRequest\x12\x16\n" +
 	"\x06search\x18\x01 \x01(\tR\x06search\x12\x18\n" +
 	"\aorderBy\x18\x02 \x01(\tR\aorderBy\x12\x14\n" +
