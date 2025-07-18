@@ -40,7 +40,7 @@ type MerchantServiceClient interface {
 	UpdateMerchant(ctx context.Context, in *httpbody.HttpBody, opts ...grpc.CallOption) (*Merchant, error)
 	DeleteMerchant(ctx context.Context, in *MerchantId, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	MerchantInformation(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*MerchantInformationResponse, error)
-	GenerateMerchantDescription(ctx context.Context, in *Merchant, opts ...grpc.CallOption) (*GenerateMerchantDescriptionResponse, error)
+	GenerateMerchantDescription(ctx context.Context, in *httpbody.HttpBody, opts ...grpc.CallOption) (*GenerateMerchantDescriptionResponse, error)
 }
 
 type merchantServiceClient struct {
@@ -111,7 +111,7 @@ func (c *merchantServiceClient) MerchantInformation(ctx context.Context, in *emp
 	return out, nil
 }
 
-func (c *merchantServiceClient) GenerateMerchantDescription(ctx context.Context, in *Merchant, opts ...grpc.CallOption) (*GenerateMerchantDescriptionResponse, error) {
+func (c *merchantServiceClient) GenerateMerchantDescription(ctx context.Context, in *httpbody.HttpBody, opts ...grpc.CallOption) (*GenerateMerchantDescriptionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateMerchantDescriptionResponse)
 	err := c.cc.Invoke(ctx, MerchantService_GenerateMerchantDescription_FullMethodName, in, out, cOpts...)
@@ -131,7 +131,7 @@ type MerchantServiceServer interface {
 	UpdateMerchant(context.Context, *httpbody.HttpBody) (*Merchant, error)
 	DeleteMerchant(context.Context, *MerchantId) (*emptypb.Empty, error)
 	MerchantInformation(context.Context, *emptypb.Empty) (*MerchantInformationResponse, error)
-	GenerateMerchantDescription(context.Context, *Merchant) (*GenerateMerchantDescriptionResponse, error)
+	GenerateMerchantDescription(context.Context, *httpbody.HttpBody) (*GenerateMerchantDescriptionResponse, error)
 	mustEmbedUnimplementedMerchantServiceServer()
 }
 
@@ -160,7 +160,7 @@ func (UnimplementedMerchantServiceServer) DeleteMerchant(context.Context, *Merch
 func (UnimplementedMerchantServiceServer) MerchantInformation(context.Context, *emptypb.Empty) (*MerchantInformationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MerchantInformation not implemented")
 }
-func (UnimplementedMerchantServiceServer) GenerateMerchantDescription(context.Context, *Merchant) (*GenerateMerchantDescriptionResponse, error) {
+func (UnimplementedMerchantServiceServer) GenerateMerchantDescription(context.Context, *httpbody.HttpBody) (*GenerateMerchantDescriptionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateMerchantDescription not implemented")
 }
 func (UnimplementedMerchantServiceServer) mustEmbedUnimplementedMerchantServiceServer() {}
@@ -293,7 +293,7 @@ func _MerchantService_MerchantInformation_Handler(srv interface{}, ctx context.C
 }
 
 func _MerchantService_GenerateMerchantDescription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Merchant)
+	in := new(httpbody.HttpBody)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -305,7 +305,7 @@ func _MerchantService_GenerateMerchantDescription_Handler(srv interface{}, ctx c
 		FullMethod: MerchantService_GenerateMerchantDescription_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MerchantServiceServer).GenerateMerchantDescription(ctx, req.(*Merchant))
+		return srv.(MerchantServiceServer).GenerateMerchantDescription(ctx, req.(*httpbody.HttpBody))
 	}
 	return interceptor(ctx, in, info, handler)
 }

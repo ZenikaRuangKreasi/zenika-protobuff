@@ -779,15 +779,15 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x128\n" +
 	"\x04data\x18\x02 \x01(\v2$.api.GenerateMerchantDescriptionDataR\x04data\"C\n" +
 	"\x1fGenerateMerchantDescriptionData\x12 \n" +
-	"\vdescription\x18\x01 \x01(\tR\vdescription2\xcf\x05\n" +
+	"\vdescription\x18\x01 \x01(\tR\vdescription2\xd1\x05\n" +
 	"\x0fMerchantService\x12L\n" +
 	"\x0eCreateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/merchants\x12M\n" +
 	"\vGetMerchant\x12\x0f.api.MerchantId\x1a\r.api.Merchant\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/v1/merchants/{id}\x12a\n" +
 	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12S\n" +
 	"\x0eUpdateMerchant\x12\x14.google.api.HttpBody\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\x1a\x11/api/v1/merchants\x12Y\n" +
 	"\x0eDeleteMerchant\x12\x0f.api.MerchantId\x1a\x16.google.protobuf.Empty\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/api/v1/merchants/{id}\x12{\n" +
-	"\x13MerchantInformation\x12\x16.google.protobuf.Empty\x1a .api.MerchantInformationResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/merchants/user-information\x12\x8e\x01\n" +
-	"\x1bGenerateMerchantDescription\x12\r.api.Merchant\x1a(.api.GenerateMerchantDescriptionResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/api/v1/merchants/generate-description/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x13MerchantInformation\x12\x16.google.protobuf.Empty\x1a .api.MerchantInformationResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/merchants/user-information\x12\x90\x01\n" +
+	"\x1bGenerateMerchantDescription\x12\x14.google.api.HttpBody\x1a(.api.GenerateMerchantDescriptionResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/api/v1/merchants/generate-descriptionB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_merchant_proto_rawDescOnce sync.Once
@@ -828,7 +828,7 @@ var file_proto_merchant_proto_depIdxs = []int32{
 	10, // 8: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
 	3,  // 9: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
 	11, // 10: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
-	2,  // 11: api.MerchantService.GenerateMerchantDescription:input_type -> api.Merchant
+	10, // 11: api.MerchantService.GenerateMerchantDescription:input_type -> google.api.HttpBody
 	2,  // 12: api.MerchantService.CreateMerchant:output_type -> api.Merchant
 	2,  // 13: api.MerchantService.GetMerchant:output_type -> api.Merchant
 	5,  // 14: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse

@@ -106,9 +106,9 @@ service MerchantService {
       get: "/api/v1/merchants/user-information"
     };
   }
-  rpc GenerateMerchantDescription(Merchant) returns (GenerateMerchantDescriptionResponse) {
+  rpc GenerateMerchantDescription(google.api.HttpBody) returns (GenerateMerchantDescriptionResponse) {
     option (google.api.http) = {
-      post: "/api/v1/merchants/generate-description/{id}"
+      post: "/api/v1/merchants/generate-description"
       body: "*"
     };
   }
