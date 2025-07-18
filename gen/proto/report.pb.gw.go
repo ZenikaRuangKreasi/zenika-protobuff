@@ -273,9 +273,7 @@ func request_ReportService_DeliveryDataDateRange_0(ctx context.Context, marshale
 		protoReq DeliveryDataDateRangeRequest
 		metadata runtime.ServerMetadata
 	)
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
+	io.Copy(io.Discard, req.Body)
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
@@ -308,9 +306,7 @@ func request_ReportService_DeliveryReportDetail_0(ctx context.Context, marshaler
 		protoReq DeliveryReportDetailRequest
 		metadata runtime.ServerMetadata
 	)
-	if req.Body != nil {
-		_, _ = io.Copy(io.Discard, req.Body)
-	}
+	io.Copy(io.Discard, req.Body)
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}

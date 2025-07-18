@@ -172,10 +172,11 @@ type Merchant struct {
 	Catalog       *File                  `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
 	Longitude     *string                `protobuf:"bytes,9,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
 	Latitude      *string                `protobuf:"bytes,10,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
-	CreatedAt     *string                `protobuf:"bytes,11,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
-	UpdatedAt     *string                `protobuf:"bytes,12,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
-	CreatedBy     *string                `protobuf:"bytes,13,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
-	UpdatedBy     *string                `protobuf:"bytes,14,opt,name=updated_by,json=updatedBy,proto3,oneof" json:"updated_by,omitempty"`
+	Description   *string                `protobuf:"bytes,11,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	CreatedAt     *string                `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
+	UpdatedAt     *string                `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
+	CreatedBy     *string                `protobuf:"bytes,14,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
+	UpdatedBy     *string                `protobuf:"bytes,15,opt,name=updated_by,json=updatedBy,proto3,oneof" json:"updated_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -276,6 +277,13 @@ func (x *Merchant) GetLongitude() string {
 func (x *Merchant) GetLatitude() string {
 	if x != nil && x.Latitude != nil {
 		return *x.Latitude
+	}
+	return ""
+}
+
+func (x *Merchant) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -614,7 +622,7 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\x04File\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12!\n" +
 	"\x04meta\x18\x02 \x01(\v2\r.api.FileMetaR\x04meta\x12\x1c\n" +
-	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\xca\x04\n" +
+	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\x81\x05\n" +
 	"\bMerchant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -627,22 +635,24 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\acatalog\x18\b \x01(\v2\t.api.FileR\acatalog\x12!\n" +
 	"\tlongitude\x18\t \x01(\tH\x03R\tlongitude\x88\x01\x01\x12\x1f\n" +
 	"\blatitude\x18\n" +
-	" \x01(\tH\x04R\blatitude\x88\x01\x01\x12\"\n" +
+	" \x01(\tH\x04R\blatitude\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\v \x01(\tH\x05R\vdescription\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_at\x18\v \x01(\tH\x05R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"created_at\x18\f \x01(\tH\x06R\tcreatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_at\x18\f \x01(\tH\x06R\tupdatedAt\x88\x01\x01\x12\"\n" +
+	"updated_at\x18\r \x01(\tH\aR\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_by\x18\r \x01(\tH\aR\tcreatedBy\x88\x01\x01\x12\"\n" +
+	"created_by\x18\x0e \x01(\tH\bR\tcreatedBy\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_by\x18\x0e \x01(\tH\bR\tupdatedBy\x88\x01\x01B\n" +
+	"updated_by\x18\x0f \x01(\tH\tR\tupdatedBy\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\x11\n" +
 	"\x0f_address_detailB\x0e\n" +
 	"\f_postal_codeB\f\n" +
 	"\n" +
 	"_longitudeB\v\n" +
-	"\t_latitudeB\r\n" +
+	"\t_latitudeB\x0e\n" +
+	"\f_descriptionB\r\n" +
 	"\v_created_atB\r\n" +
 	"\v_updated_atB\r\n" +
 	"\v_created_byB\r\n" +
