@@ -170,9 +170,9 @@ type Merchant struct {
 	AddressDetail *string                `protobuf:"bytes,6,opt,name=address_detail,json=addressDetail,proto3,oneof" json:"address_detail,omitempty"`
 	PostalCode    *string                `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3,oneof" json:"postal_code,omitempty"`
 	Catalog       *File                  `protobuf:"bytes,8,opt,name=catalog,proto3" json:"catalog,omitempty"`
-	Logo          *File                  `protobuf:"bytes,9,opt,name=logo,proto3" json:"logo,omitempty"`
-	Longitude     *string                `protobuf:"bytes,10,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
-	Latitude      *string                `protobuf:"bytes,11,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	Longitude     *string                `protobuf:"bytes,9,opt,name=longitude,proto3,oneof" json:"longitude,omitempty"`
+	Latitude      *string                `protobuf:"bytes,10,opt,name=latitude,proto3,oneof" json:"latitude,omitempty"`
+	Description   *string                `protobuf:"bytes,11,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	CreatedAt     *string                `protobuf:"bytes,12,opt,name=created_at,json=createdAt,proto3,oneof" json:"created_at,omitempty"`
 	UpdatedAt     *string                `protobuf:"bytes,13,opt,name=updated_at,json=updatedAt,proto3,oneof" json:"updated_at,omitempty"`
 	CreatedBy     *string                `protobuf:"bytes,14,opt,name=created_by,json=createdBy,proto3,oneof" json:"created_by,omitempty"`
@@ -267,13 +267,6 @@ func (x *Merchant) GetCatalog() *File {
 	return nil
 }
 
-func (x *Merchant) GetLogo() *File {
-	if x != nil {
-		return x.Logo
-	}
-	return nil
-}
-
 func (x *Merchant) GetLongitude() string {
 	if x != nil && x.Longitude != nil {
 		return *x.Longitude
@@ -284,6 +277,13 @@ func (x *Merchant) GetLongitude() string {
 func (x *Merchant) GetLatitude() string {
 	if x != nil && x.Latitude != nil {
 		return *x.Latitude
+	}
+	return ""
+}
+
+func (x *Merchant) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -718,7 +718,7 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\x04File\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\x12!\n" +
 	"\x04meta\x18\x02 \x01(\v2\r.api.FileMetaR\x04meta\x12\x1c\n" +
-	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\xe9\x04\n" +
+	"\tthumbnail\x18\x03 \x01(\tR\tthumbnail\"\x81\x05\n" +
 	"\bMerchant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -728,26 +728,27 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"\x0eaddress_detail\x18\x06 \x01(\tH\x01R\raddressDetail\x88\x01\x01\x12$\n" +
 	"\vpostal_code\x18\a \x01(\tH\x02R\n" +
 	"postalCode\x88\x01\x01\x12#\n" +
-	"\acatalog\x18\b \x01(\v2\t.api.FileR\acatalog\x12\x1d\n" +
-	"\x04logo\x18\t \x01(\v2\t.api.FileR\x04logo\x12!\n" +
-	"\tlongitude\x18\n" +
-	" \x01(\tH\x03R\tlongitude\x88\x01\x01\x12\x1f\n" +
-	"\blatitude\x18\v \x01(\tH\x04R\blatitude\x88\x01\x01\x12\"\n" +
+	"\acatalog\x18\b \x01(\v2\t.api.FileR\acatalog\x12!\n" +
+	"\tlongitude\x18\t \x01(\tH\x03R\tlongitude\x88\x01\x01\x12\x1f\n" +
+	"\blatitude\x18\n" +
+	" \x01(\tH\x04R\blatitude\x88\x01\x01\x12%\n" +
+	"\vdescription\x18\v \x01(\tH\x05R\vdescription\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_at\x18\f \x01(\tH\x05R\tcreatedAt\x88\x01\x01\x12\"\n" +
+	"created_at\x18\f \x01(\tH\x06R\tcreatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_at\x18\r \x01(\tH\x06R\tupdatedAt\x88\x01\x01\x12\"\n" +
+	"updated_at\x18\r \x01(\tH\aR\tupdatedAt\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"created_by\x18\x0e \x01(\tH\aR\tcreatedBy\x88\x01\x01\x12\"\n" +
+	"created_by\x18\x0e \x01(\tH\bR\tcreatedBy\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"updated_by\x18\x0f \x01(\tH\bR\tupdatedBy\x88\x01\x01B\n" +
+	"updated_by\x18\x0f \x01(\tH\tR\tupdatedBy\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\x11\n" +
 	"\x0f_address_detailB\x0e\n" +
 	"\f_postal_codeB\f\n" +
 	"\n" +
 	"_longitudeB\v\n" +
-	"\t_latitudeB\r\n" +
+	"\t_latitudeB\x0e\n" +
+	"\f_descriptionB\r\n" +
 	"\v_created_atB\r\n" +
 	"\v_updated_atB\r\n" +
 	"\v_created_byB\r\n" +
@@ -818,29 +819,28 @@ var file_proto_merchant_proto_goTypes = []any{
 var file_proto_merchant_proto_depIdxs = []int32{
 	0,  // 0: api.File.meta:type_name -> api.FileMeta
 	1,  // 1: api.Merchant.catalog:type_name -> api.File
-	1,  // 2: api.Merchant.logo:type_name -> api.File
-	2,  // 3: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
-	7,  // 4: api.MerchantInformationResponse.data:type_name -> api.MerchantInformation
-	9,  // 5: api.GenerateMerchantDescriptionResponse.data:type_name -> api.GenerateMerchantDescriptionData
-	2,  // 6: api.MerchantService.CreateMerchant:input_type -> api.Merchant
-	3,  // 7: api.MerchantService.GetMerchant:input_type -> api.MerchantId
-	4,  // 8: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
-	10, // 9: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
-	3,  // 10: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
-	11, // 11: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
-	2,  // 12: api.MerchantService.GenerateMerchantDescription:input_type -> api.Merchant
-	2,  // 13: api.MerchantService.CreateMerchant:output_type -> api.Merchant
-	2,  // 14: api.MerchantService.GetMerchant:output_type -> api.Merchant
-	5,  // 15: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
-	2,  // 16: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
-	11, // 17: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
-	6,  // 18: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
-	8,  // 19: api.MerchantService.GenerateMerchantDescription:output_type -> api.GenerateMerchantDescriptionResponse
-	13, // [13:20] is the sub-list for method output_type
-	6,  // [6:13] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	2,  // 2: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
+	7,  // 3: api.MerchantInformationResponse.data:type_name -> api.MerchantInformation
+	9,  // 4: api.GenerateMerchantDescriptionResponse.data:type_name -> api.GenerateMerchantDescriptionData
+	2,  // 5: api.MerchantService.CreateMerchant:input_type -> api.Merchant
+	3,  // 6: api.MerchantService.GetMerchant:input_type -> api.MerchantId
+	4,  // 7: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
+	10, // 8: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
+	3,  // 9: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
+	11, // 10: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
+	2,  // 11: api.MerchantService.GenerateMerchantDescription:input_type -> api.Merchant
+	2,  // 12: api.MerchantService.CreateMerchant:output_type -> api.Merchant
+	2,  // 13: api.MerchantService.GetMerchant:output_type -> api.Merchant
+	5,  // 14: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
+	2,  // 15: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
+	11, // 16: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
+	6,  // 17: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
+	8,  // 18: api.MerchantService.GenerateMerchantDescription:output_type -> api.GenerateMerchantDescriptionResponse
+	12, // [12:19] is the sub-list for method output_type
+	5,  // [5:12] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_proto_merchant_proto_init() }
