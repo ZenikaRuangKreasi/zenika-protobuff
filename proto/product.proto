@@ -41,7 +41,21 @@ service ProductService {
       delete: "/api/v1/products/{id}"
     };
   }
+  rpc GenerateProductDescription(Product) returns (GenerateProductDescriptionResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/products/generate-description/{id}"
+      body: "*"
+    };
+  }
 
+}
+
+message GenerateProductDescriptionResponse {
+  string message = 1;
+  GenerateProductDescriptionData data = 2;
+}
+message GenerateProductDescriptionData {
+  string description=1;
 }
 
 message OrderProductsListRequest {
@@ -103,7 +117,6 @@ message Product{
     uint64 price=3;
     uint32 qty=4;
     string desc=5;
-
 }
 message UpdateProductRequest{
   string id=1;

@@ -608,6 +608,102 @@ func (x *MerchantInformation) GetPhone() string {
 	return ""
 }
 
+type GenerateMerchantDescriptionResponse struct {
+	state         protoimpl.MessageState           `protogen:"open.v1"`
+	Message       string                           `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Data          *GenerateMerchantDescriptionData `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GenerateMerchantDescriptionResponse) Reset() {
+	*x = GenerateMerchantDescriptionResponse{}
+	mi := &file_proto_merchant_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GenerateMerchantDescriptionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GenerateMerchantDescriptionResponse) ProtoMessage() {}
+
+func (x *GenerateMerchantDescriptionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_merchant_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GenerateMerchantDescriptionResponse.ProtoReflect.Descriptor instead.
+func (*GenerateMerchantDescriptionResponse) Descriptor() ([]byte, []int) {
+	return file_proto_merchant_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GenerateMerchantDescriptionResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *GenerateMerchantDescriptionResponse) GetData() *GenerateMerchantDescriptionData {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type GenerateMerchantDescriptionData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Description   string                 `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GenerateMerchantDescriptionData) Reset() {
+	*x = GenerateMerchantDescriptionData{}
+	mi := &file_proto_merchant_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GenerateMerchantDescriptionData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GenerateMerchantDescriptionData) ProtoMessage() {}
+
+func (x *GenerateMerchantDescriptionData) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_merchant_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GenerateMerchantDescriptionData.ProtoReflect.Descriptor instead.
+func (*GenerateMerchantDescriptionData) Descriptor() ([]byte, []int) {
+	return file_proto_merchant_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GenerateMerchantDescriptionData) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
 var File_proto_merchant_proto protoreflect.FileDescriptor
 
 const file_proto_merchant_proto_rawDesc = "" +
@@ -677,14 +773,20 @@ const file_proto_merchant_proto_rawDesc = "" +
 	"merchantId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x14\n" +
-	"\x05phone\x18\x04 \x01(\tR\x05phone2\xbe\x04\n" +
+	"\x05phone\x18\x04 \x01(\tR\x05phone\"y\n" +
+	"#GenerateMerchantDescriptionResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x128\n" +
+	"\x04data\x18\x02 \x01(\v2$.api.GenerateMerchantDescriptionDataR\x04data\"C\n" +
+	"\x1fGenerateMerchantDescriptionData\x12 \n" +
+	"\vdescription\x18\x01 \x01(\tR\vdescription2\xcf\x05\n" +
 	"\x0fMerchantService\x12L\n" +
 	"\x0eCreateMerchant\x12\r.api.Merchant\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\"\x11/api/v1/merchants\x12M\n" +
 	"\vGetMerchant\x12\x0f.api.MerchantId\x1a\r.api.Merchant\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/api/v1/merchants/{id}\x12a\n" +
 	"\rListMerchants\x12\x19.api.ListMerchantsRequest\x1a\x1a.api.ListMerchantsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/merchants\x12S\n" +
 	"\x0eUpdateMerchant\x12\x14.google.api.HttpBody\x1a\r.api.Merchant\"\x1c\x82\xd3\xe4\x93\x02\x16:\x01*\x1a\x11/api/v1/merchants\x12Y\n" +
 	"\x0eDeleteMerchant\x12\x0f.api.MerchantId\x1a\x16.google.protobuf.Empty\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/api/v1/merchants/{id}\x12{\n" +
-	"\x13MerchantInformation\x12\x16.google.protobuf.Empty\x1a .api.MerchantInformationResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/merchants/user-informationB?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
+	"\x13MerchantInformation\x12\x16.google.protobuf.Empty\x1a .api.MerchantInformationResponse\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/merchants/user-information\x12\x8e\x01\n" +
+	"\x1bGenerateMerchantDescription\x12\r.api.Merchant\x1a(.api.GenerateMerchantDescriptionResponse\"6\x82\xd3\xe4\x93\x020:\x01*\"+/api/v1/merchants/generate-description/{id}B?Z=github.com/ZenikaRuangKreasi/zenika-protobuff/gen/proto;protob\x06proto3"
 
 var (
 	file_proto_merchant_proto_rawDescOnce sync.Once
@@ -698,18 +800,20 @@ func file_proto_merchant_proto_rawDescGZIP() []byte {
 	return file_proto_merchant_proto_rawDescData
 }
 
-var file_proto_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_proto_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_proto_merchant_proto_goTypes = []any{
-	(*FileMeta)(nil),                    // 0: api.FileMeta
-	(*File)(nil),                        // 1: api.File
-	(*Merchant)(nil),                    // 2: api.Merchant
-	(*MerchantId)(nil),                  // 3: api.MerchantId
-	(*ListMerchantsRequest)(nil),        // 4: api.ListMerchantsRequest
-	(*ListMerchantsResponse)(nil),       // 5: api.ListMerchantsResponse
-	(*MerchantInformationResponse)(nil), // 6: api.MerchantInformationResponse
-	(*MerchantInformation)(nil),         // 7: api.MerchantInformation
-	(*httpbody.HttpBody)(nil),           // 8: google.api.HttpBody
-	(*emptypb.Empty)(nil),               // 9: google.protobuf.Empty
+	(*FileMeta)(nil),                            // 0: api.FileMeta
+	(*File)(nil),                                // 1: api.File
+	(*Merchant)(nil),                            // 2: api.Merchant
+	(*MerchantId)(nil),                          // 3: api.MerchantId
+	(*ListMerchantsRequest)(nil),                // 4: api.ListMerchantsRequest
+	(*ListMerchantsResponse)(nil),               // 5: api.ListMerchantsResponse
+	(*MerchantInformationResponse)(nil),         // 6: api.MerchantInformationResponse
+	(*MerchantInformation)(nil),                 // 7: api.MerchantInformation
+	(*GenerateMerchantDescriptionResponse)(nil), // 8: api.GenerateMerchantDescriptionResponse
+	(*GenerateMerchantDescriptionData)(nil),     // 9: api.GenerateMerchantDescriptionData
+	(*httpbody.HttpBody)(nil),                   // 10: google.api.HttpBody
+	(*emptypb.Empty)(nil),                       // 11: google.protobuf.Empty
 }
 var file_proto_merchant_proto_depIdxs = []int32{
 	0,  // 0: api.File.meta:type_name -> api.FileMeta
@@ -717,23 +821,26 @@ var file_proto_merchant_proto_depIdxs = []int32{
 	1,  // 2: api.Merchant.logo:type_name -> api.File
 	2,  // 3: api.ListMerchantsResponse.merchants:type_name -> api.Merchant
 	7,  // 4: api.MerchantInformationResponse.data:type_name -> api.MerchantInformation
-	2,  // 5: api.MerchantService.CreateMerchant:input_type -> api.Merchant
-	3,  // 6: api.MerchantService.GetMerchant:input_type -> api.MerchantId
-	4,  // 7: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
-	8,  // 8: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
-	3,  // 9: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
-	9,  // 10: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
-	2,  // 11: api.MerchantService.CreateMerchant:output_type -> api.Merchant
-	2,  // 12: api.MerchantService.GetMerchant:output_type -> api.Merchant
-	5,  // 13: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
-	2,  // 14: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
-	9,  // 15: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
-	6,  // 16: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
-	11, // [11:17] is the sub-list for method output_type
-	5,  // [5:11] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	9,  // 5: api.GenerateMerchantDescriptionResponse.data:type_name -> api.GenerateMerchantDescriptionData
+	2,  // 6: api.MerchantService.CreateMerchant:input_type -> api.Merchant
+	3,  // 7: api.MerchantService.GetMerchant:input_type -> api.MerchantId
+	4,  // 8: api.MerchantService.ListMerchants:input_type -> api.ListMerchantsRequest
+	10, // 9: api.MerchantService.UpdateMerchant:input_type -> google.api.HttpBody
+	3,  // 10: api.MerchantService.DeleteMerchant:input_type -> api.MerchantId
+	11, // 11: api.MerchantService.MerchantInformation:input_type -> google.protobuf.Empty
+	2,  // 12: api.MerchantService.GenerateMerchantDescription:input_type -> api.Merchant
+	2,  // 13: api.MerchantService.CreateMerchant:output_type -> api.Merchant
+	2,  // 14: api.MerchantService.GetMerchant:output_type -> api.Merchant
+	5,  // 15: api.MerchantService.ListMerchants:output_type -> api.ListMerchantsResponse
+	2,  // 16: api.MerchantService.UpdateMerchant:output_type -> api.Merchant
+	11, // 17: api.MerchantService.DeleteMerchant:output_type -> google.protobuf.Empty
+	6,  // 18: api.MerchantService.MerchantInformation:output_type -> api.MerchantInformationResponse
+	8,  // 19: api.MerchantService.GenerateMerchantDescription:output_type -> api.GenerateMerchantDescriptionResponse
+	13, // [13:20] is the sub-list for method output_type
+	6,  // [6:13] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_proto_merchant_proto_init() }
@@ -748,7 +855,7 @@ func file_proto_merchant_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_merchant_proto_rawDesc), len(file_proto_merchant_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
